@@ -20,6 +20,7 @@ public class View_Debt_Repayment extends AppCompatActivity {
         TextView loanAmountView = (TextView)findViewById(R.id.displayLoanAmount);
         loanAmountView.setText(getIntent().getExtras().getString("loanAmount"));
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
