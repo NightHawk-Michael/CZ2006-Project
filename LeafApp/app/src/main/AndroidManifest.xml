@@ -21,6 +21,10 @@
         <activity
             android:name=".Debt_Repayment"
             android:label="@string/title_activity_debt__repayment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View_Debt_Repayment"
+            android:label="@string/title_activity_view__debt__repayment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

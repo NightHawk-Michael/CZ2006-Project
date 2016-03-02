@@ -14,10 +14,18 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.clarissapink.leafapp.View_Debt_Repayment"/>
+      <point      
+        x = "2364"      
+        y = "128"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.example.clarissapink.leafapp.Debt_Repayment"/>
       <point      
         x = "1280"      
-        y = "116"/>
+        y = "112"/>
     </statePointEntry>
   </locations>
 </navigationModel>
