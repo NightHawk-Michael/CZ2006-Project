@@ -10,4 +10,5 @@
     </string-array>
     <string name="title_activity_view__debt__repayment">View_Debt_Repayment</string>
     <string name="title_activity_applicable_grant_result">ApplicableGrantResult</string>
+    <string name="title_activity_applicable_grant">ApplicableGrant</string>
 </resources>

@@ -29,6 +29,10 @@
         <activity
             android:name=".ApplicableGrantResult"
             android:label="@string/title_activity_applicable_grant_result"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ApplicableGrant"
+            android:label="@string/title_activity_applicable_grant"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
