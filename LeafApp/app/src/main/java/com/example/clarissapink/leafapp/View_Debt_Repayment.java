@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 public class View_Debt_Repayment extends AppCompatActivity {
 
@@ -15,6 +16,9 @@ public class View_Debt_Repayment extends AppCompatActivity {
         setContentView(R.layout.activity_view__debt__repayment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView loanAmountView = (TextView)findViewById(R.id.displayLoanAmount);
+        loanAmountView.setText(getIntent().getExtras().getString("loanAmount"));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

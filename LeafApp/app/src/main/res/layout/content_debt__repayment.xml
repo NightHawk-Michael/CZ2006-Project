@@ -36,7 +36,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/userLoanAmount"
         android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_alignEnd="@+id/button5" />
@@ -47,8 +47,8 @@
         android:text="Year Of Loan"
         android:id="@+id/textView3"
         android:textSize="22dp"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/userLoanAmount"
+        android:layout_alignStart="@+id/userLoanAmount"
         android:layout_marginTop="53dp" />
 
     <Spinner
