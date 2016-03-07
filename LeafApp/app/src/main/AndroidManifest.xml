@@ -33,6 +33,18 @@
         <activity
             android:name=".ApplicableGrant"
             android:label="@string/title_activity_applicable_grant"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FlatAvailable"
+            android:label="@string/title_activity_flat_available"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FlatAvailableResult"
+            android:label="@string/title_activity_flat_available_result"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AffordableFlat"
+            android:label="@string/title_activity_affordable_flat"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

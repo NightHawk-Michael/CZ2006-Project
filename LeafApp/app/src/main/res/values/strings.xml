@@ -11,4 +11,7 @@
     <string name="title_activity_view__debt__repayment">View_Debt_Repayment</string>
     <string name="title_activity_applicable_grant_result">ApplicableGrantResult</string>
     <string name="title_activity_applicable_grant">ApplicableGrant</string>
+    <string name="title_activity_flat_available">FlatAvailable</string>
+    <string name="title_activity_flat_available_result">FlatAvailableResult</string>
+    <string name="title_activity_affordable_flat">AffordableFlat</string>
 </resources>
