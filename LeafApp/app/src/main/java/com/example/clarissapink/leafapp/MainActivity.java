@@ -19,22 +19,22 @@ public class MainActivity extends AppCompatActivity {
     {
         String button_text;
         button_text = ((Button) view).getText().toString();
-        if(button_text.equals("      Debt Repayment        "))
+        if(button_text.equals("Debt Repayment"))
         {
             Intent intent = new Intent(this, Debt_Repayment.class);
             startActivity(intent);
         }
-        else if(button_text.equals("     Applicable Grant     "))
+        else if(button_text.equals("Applicable Grant"))
         {
             Intent intent = new Intent(this, ApplicableGrant.class);
             startActivity(intent);
         }
-        else if(button_text.equals("      Affordable Flat      "))
+        else if(button_text.equals("Affordable Flat"))
         {
             Intent intent = new Intent(this, AffordableFlat.class);
             startActivity(intent);
         }
-        else if(button_text.equals("      Flat Availiability     "))
+        else if(button_text.equals("Flat Availability"))
         {
             Intent intent = new Intent(this, FlatAvailable.class);
             startActivity(intent);
