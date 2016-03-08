@@ -14,4 +14,11 @@
     <string name="title_activity_flat_available">FlatAvailable</string>
     <string name="title_activity_flat_available_result">FlatAvailableResult</string>
     <string name="title_activity_affordable_flat">AffordableFlat</string>
+    <string-array name="repaymentPeriod">
+        <item>5 Years</item>
+        <item>10 Years</item>
+        <item>15 Years</item>
+        <item>20 Years</item>
+    </string-array>
+    <string name="title_activity_affordable_flat_result">AffordableFlatResult</string>
 </resources>

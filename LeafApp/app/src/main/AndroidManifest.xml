@@ -45,6 +45,10 @@
         <activity
             android:name=".AffordableFlat"
             android:label="@string/title_activity_affordable_flat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AffordableFlatResult"
+            android:label="@string/title_activity_affordable_flat_result"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
