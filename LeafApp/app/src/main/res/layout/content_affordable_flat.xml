@@ -60,4 +60,16 @@
         android:spinnerMode="dropdown"
         android:layout_below="@+id/textView21"
         android:layout_alignStart="@+id/textView21" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:onClick="searchButton"
+        android:id="@+id/button10"
+        android:textSize="20dp"
+        android:background="#4238fa"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/spinnerAFRepaymentPeriod"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

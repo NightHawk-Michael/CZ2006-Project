@@ -162,5 +162,17 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/checkBox18"
             android:layout_alignParentLeft="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:onClick="searchButton"
+            android:id="@+id/button8"
+            android:textSize="20dp"
+            android:background="#4238fa"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/checkBox19"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </ScrollView>

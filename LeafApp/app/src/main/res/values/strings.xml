@@ -11,6 +11,35 @@
     <string name="title_activity_view__debt__repayment">View_Debt_Repayment</string>
     <string name="title_activity_applicable_grant_result">ApplicableGrantResult</string>
     <string name="title_activity_applicable_grant">ApplicableGrant</string>
+    <string-array name="typeOfApplicant">
+        <item>First-Timer Applicants</item>
+        <item>Second-Timer Applicants</item>
+        <item>First-Timer and Second-Timer Couple Applicants</item>
+        <item>Non-Citizen Spouse Scheme</item>
+        <item>Single Singapore Citizen Scheme</item>
+        <item>Joint Singles Scheme or Orphans Scheme</item>
+    </string-array>
+    <string-array name="averageMonthlyHouseholdIncome">
+        <item>Up to $1,500</item>
+        <item>$1,500 to $2,000</item>
+        <item>$2,001 to $2,500</item>
+        <item>$2,501 to $3,000</item>
+        <item>$3,001 to $3,500</item>
+        <item>$3,501 to $4,000</item>
+        <item>$4,001 to $4,500</item>
+        <item>$4,501 to $5,000</item>
+        <item>$5,001 to $5,500</item>
+        <item>$5,501 to $6,000</item>
+        <item>$6,001 to $6,500</item>
+        <item>$6,501 to $7,000</item>
+        <item>$7,001 to $7,500</item>
+        <item>$7,501 to $8,000</item>
+        <item>$8,001 to $8,500</item>
+    </string-array>
+    <string-array name="salesLaunch">
+        <item>July 2013 to May 2015 Sales Launch</item>
+        <item>From November 2015 Sales Launch</item>
+    </string-array>
     <string name="title_activity_flat_available">FlatAvailable</string>
     <string name="title_activity_flat_available_result">FlatAvailableResult</string>
     <string name="title_activity_affordable_flat">AffordableFlat</string>
