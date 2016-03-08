@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(button_text.equals("      Affordable Flat      "))
         {
-            Intent intent = new Intent(this, FlatAvailable.class);
+            Intent intent = new Intent(this, AffordableFlat.class);
             startActivity(intent);
         }
         else if(button_text.equals("      Flat Availiability     "))
