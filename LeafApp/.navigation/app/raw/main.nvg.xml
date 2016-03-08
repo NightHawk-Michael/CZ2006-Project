@@ -6,7 +6,7 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.example.clarissapink.leafapp.ApplicableGrantResult"/>
+        className = "com.example.clarissapink.leafapp.views.ApplicableGrantResult"/>
       <point      
         x = "3424"      
         y = "100"/>
@@ -14,7 +14,7 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.example.clarissapink.leafapp.MainActivity"/>
+        className = "com.example.clarissapink.leafapp.views.MainActivity"/>
       <point      
         x = "312"      
         y = "116"/>
@@ -22,7 +22,7 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.example.clarissapink.leafapp.View_Debt_Repayment"/>
+        className = "com.example.clarissapink.leafapp.views.View_Debt_Repayment"/>
       <point      
         x = "2344"      
         y = "104"/>
@@ -30,7 +30,7 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.example.clarissapink.leafapp.Debt_Repayment"/>
+        className = "com.example.clarissapink.leafapp.views.Debt_Repayment"/>
       <point      
         x = "1280"      
         y = "112"/>

@@ -1,4 +1,4 @@
-package com.example.clarissapink.leafapp;
+package com.example.clarissapink.leafapp.views;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.clarissapink.leafapp.R;
 
 public class View_Debt_Repayment extends AppCompatActivity {
 

@@ -1,8 +1,10 @@
-package com.example.clarissapink.leafapp;
+package com.example.clarissapink.leafapp.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.example.clarissapink.leafapp.R;
 
 public class ApplicableGrant extends AppCompatActivity {
 

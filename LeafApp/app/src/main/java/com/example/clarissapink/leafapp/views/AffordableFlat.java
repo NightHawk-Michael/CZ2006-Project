@@ -1,4 +1,4 @@
-package com.example.clarissapink.leafapp;
+package com.example.clarissapink.leafapp.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.clarissapink.leafapp.R;
 
 public class AffordableFlat extends AppCompatActivity {
     Spinner spinner;
