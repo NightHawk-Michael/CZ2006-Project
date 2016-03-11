@@ -17,32 +17,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void showGreetings(View view)
-    {
+    public void showGreetings(View view) {
         String button_text;
         button_text = ((Button) view).getText().toString();
-        if(button_text.equals("Debt Repayment"))
-        {
+        if (button_text.equals("Debt Repayment")) {
             Intent intent = new Intent(this, Debt_Repayment.class);
             startActivity(intent);
-        }
-        else if(button_text.equals("Applicable Grant"))
-        {
+        } else if (button_text.equals("Applicable Grant")) {
             Intent intent = new Intent(this, ApplicableGrant.class);
             startActivity(intent);
-        }
-        else if(button_text.equals("Affordable Flat"))
-        {
+        } else if (button_text.equals("Affordable Flat")) {
             Intent intent = new Intent(this, AffordableFlat.class);
             startActivity(intent);
-        }
-        else if(button_text.equals("Flat Availability"))
-        {
+        } else if (button_text.equals("Flat Availability")) {
             Intent intent = new Intent(this, FlatAvailable.class);
             startActivity(intent);
         }
     }
 
+    public void btn1(View view) {
+        Intent intent = new Intent(this, FlatAvailable.class);
+        startActivity(intent);
+    }
+
+    public void btn2(View view) {
+        Intent intent = new Intent(this, AffordableFlat.class);
+        startActivity(intent);
+    }
+
+    public void btn3(View view) {
+        Intent intent = new Intent(this, ApplicableGrant.class);
+        startActivity(intent);
+    }
+
+    public void btn4(View view) {
+        Intent intent = new Intent(this, Debt_Repayment.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

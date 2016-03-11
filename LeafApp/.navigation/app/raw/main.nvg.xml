@@ -6,18 +6,50 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.example.clarissapink.leafapp.views.ApplicableGrantResult"/>
+        className = "com.example.clarissapink.leafapp.views.AffordableFlat"/>
       <point      
-        x = "3424"      
-        y = "100"/>
+        x = "2748"      
+        y = "1180"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.clarissapink.leafapp.views.ApplicableGrant"/>
+      <point      
+        x = "1176"      
+        y = "1240"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.clarissapink.leafapp.views.FlatAvailableResult"/>
+      <point      
+        x = "340"      
+        y = "1228"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.clarissapink.leafapp.views.Debt_Repayment"/>
+      <point      
+        x = "1056"      
+        y = "48"/>
     </statePointEntry>
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.example.clarissapink.leafapp.views.MainActivity"/>
       <point      
-        x = "312"      
-        y = "116"/>
+        x = "220"      
+        y = "48"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.clarissapink.leafapp.views.AffordableFlatResult"/>
+      <point      
+        x = "3368"      
+        y = "1036"/>
     </statePointEntry>
     <statePointEntry>
       <state      
@@ -30,10 +62,18 @@
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "com.example.clarissapink.leafapp.views.Debt_Repayment"/>
+        className = "com.example.clarissapink.leafapp.views.FlatAvailable"/>
       <point      
-        x = "1280"      
-        y = "112"/>
+        x = "1992"      
+        y = "1296"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.example.clarissapink.leafapp.views.ApplicableGrantResult"/>
+      <point      
+        x = "3424"      
+        y = "100"/>
     </statePointEntry>
   </locations>
 </navigationModel>

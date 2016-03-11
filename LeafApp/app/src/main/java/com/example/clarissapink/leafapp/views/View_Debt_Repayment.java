@@ -1,5 +1,6 @@
 package com.example.clarissapink.leafapp.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,18 +20,28 @@ public class View_Debt_Repayment extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TextView loanAmountView = (TextView)findViewById(R.id.displayLoanAmount);
+        TextView loanAmountView = (TextView) findViewById(R.id.displayLoanAmount);
         loanAmountView.setText(getIntent().getExtras().getString("loanAmount"));
+    }
 
+    public void btn1(View view) {
+        Intent intent = new Intent(this, FlatAvailable.class);
+        startActivity(intent);
+    }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    public void btn2(View view) {
+        Intent intent = new Intent(this, AffordableFlat.class);
+        startActivity(intent);
+    }
+
+    public void btn3(View view) {
+        Intent intent = new Intent(this, ApplicableGrant.class);
+        startActivity(intent);
+    }
+
+    public void btn4(View view) {
+        Intent intent = new Intent(this, Debt_Repayment.class);
+        startActivity(intent);
     }
 
 }

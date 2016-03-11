@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#a6d662">
+
+            <ImageButton
+                android:id="@+id/btmSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#a6d662"
+                android:onClick="btn1"
+                android:padding="8dp"
+                android:src="@drawable/ssearch" />
+
+            <ImageButton
+                android:id="@+id/btmPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#a6d662"
+                android:onClick="btn2"
+                android:padding="8dp"
+                android:src="@drawable/sprice" />
+
+            <ImageButton
+                android:id="@+id/btmWrite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#a6d662"
+                android:onClick="btn3"
+                android:padding="8dp"
+                android:src="@drawable/swrite" />
+
+            <ImageButton
+                android:id="@+id/btmCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#a6d662"
+                android:onClick="btn4"
+                android:padding="8dp"
+                android:src="@drawable/scal" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

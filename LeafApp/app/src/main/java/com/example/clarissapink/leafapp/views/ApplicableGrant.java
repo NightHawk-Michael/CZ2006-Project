@@ -17,6 +17,7 @@ import com.example.clarissapink.leafapp.R;
 public class ApplicableGrant extends AppCompatActivity {
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,12 +74,31 @@ public class ApplicableGrant extends AppCompatActivity {
         });
 
     }
-    public void searchButton(View view)
-    {
+
+    public void btn1(View view) {
+        Intent intent = new Intent(this, FlatAvailable.class);
+        startActivity(intent);
+    }
+
+    public void btn2(View view) {
+        Intent intent = new Intent(this, AffordableFlat.class);
+        startActivity(intent);
+    }
+
+    public void btn3(View view) {
+        Intent intent = new Intent(this, ApplicableGrant.class);
+        startActivity(intent);
+    }
+
+    public void btn4(View view) {
+        Intent intent = new Intent(this, Debt_Repayment.class);
+        startActivity(intent);
+    }
+
+    public void searchButton(View view) {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
-        if(buttonSearch.equals("Search"))
-        {
+        if (buttonSearch.equals("Search")) {
             Intent intent = new Intent(this, ApplicableGrantResult.class);
             startActivity(intent);
         }

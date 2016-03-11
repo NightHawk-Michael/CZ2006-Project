@@ -23,7 +23,7 @@ public class Debt_Repayment extends AppCompatActivity {
         setContentView(R.layout.activity_debt__repayment);
 
         final EditText userLoanAmount = (EditText) findViewById(R.id.userLoanAmount);
-        Button cal = (Button)findViewById(R.id.calButton);
+        Button cal = (Button) findViewById(R.id.calButton);
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,8 +33,8 @@ public class Debt_Repayment extends AppCompatActivity {
             }
         });
 
-        spinner = (Spinner)findViewById(R.id.spinner);
-        adapter = ArrayAdapter.createFromResource(this,R.array.yearOfLoan,android.R.layout.simple_spinner_item);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        adapter = ArrayAdapter.createFromResource(this, R.array.yearOfLoan, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -49,6 +49,26 @@ public class Debt_Repayment extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void btn1(View view) {
+        Intent intent = new Intent(this, FlatAvailable.class);
+        startActivity(intent);
+    }
+
+    public void btn2(View view) {
+        Intent intent = new Intent(this, AffordableFlat.class);
+        startActivity(intent);
+    }
+
+    public void btn3(View view) {
+        Intent intent = new Intent(this, ApplicableGrant.class);
+        startActivity(intent);
+    }
+
+    public void btn4(View view) {
+        Intent intent = new Intent(this, Debt_Repayment.class);
+        startActivity(intent);
     }
 
 }

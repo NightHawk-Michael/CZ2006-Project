@@ -23,4 +23,10 @@
 
     <include layout="@layout/content_debt__repayment" />
 
+    <include
+        layout="@layout/content_footer"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="bottom" />
+
 </android.support.design.widget.CoordinatorLayout>
