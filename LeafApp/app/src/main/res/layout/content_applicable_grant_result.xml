@@ -26,20 +26,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Based on the information provided, you are eligible for :"
-        android:id="@+id/textView6"
-        android:textSize="25dp"
-        android:layout_below="@+id/button6"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp" />
+        android:text="XXX(from database)"
+        android:id="@+id/grantAmount"
+        android:textSize="22dp"
+        android:layout_below="@+id/textView22"
+        android:layout_alignStart="@+id/button6"
+        android:layout_marginTop="41dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="XXX(from database)"
-        android:id="@+id/grantAmount"
-        android:textSize="25dp"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/button6" />
+        android:text="Based on the information provided, you are eligible for:"
+        android:id="@+id/textView22"
+        android:layout_marginTop="41dp"
+        android:textSize="22dp"
+        android:width="300dp"
+        android:layout_below="@+id/button6"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
