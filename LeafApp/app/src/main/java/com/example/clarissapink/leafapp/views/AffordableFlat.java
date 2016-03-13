@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.clarissapink.leafapp.MapDisplay;
 import com.example.clarissapink.leafapp.R;
 
 public class AffordableFlat extends AppCompatActivity {
@@ -65,7 +66,7 @@ public class AffordableFlat extends AppCompatActivity {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            Intent intent = new Intent(this, AffordableFlatResult.class);
+            Intent intent = new Intent(this, MapDisplay.class);
             startActivity(intent);
         }
 

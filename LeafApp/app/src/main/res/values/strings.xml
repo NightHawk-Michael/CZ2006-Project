@@ -50,4 +50,6 @@
         <item>20 Years</item>
     </string-array>
     <string name="title_activity_affordable_flat_result">AffordableFlatResult</string>
+    <string name="title_activity_display_maps">Map</string>
+    <string name="title_activity_map_display">MapDisplay</string>
 </resources>
