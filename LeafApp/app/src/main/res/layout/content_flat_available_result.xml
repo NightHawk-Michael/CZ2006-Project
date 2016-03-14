@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,9 +12,16 @@
     tools:context=".views.FlatAvailableResult"
     tools:showIn="@layout/activity_flat_available_result">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="434dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="1500dp">
+        android:layout_height="wrap_content">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,18 +59,6 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Flat Details 3"
-            android:id="@+id/textView19"
-            android:textSize="45dp"
-            android:background="#b6b2b2"
-            android:layout_marginTop="112dp"
-            android:layout_below="@+id/textView18"
-            android:layout_alignStart="@+id/textView18" />
-
-        <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,4 +88,5 @@
             android:layout_alignStart="@+id/textView23" />
 
     </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

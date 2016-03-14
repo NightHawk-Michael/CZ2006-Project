@@ -16,180 +16,203 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:background="#b5d8a0"
-            android:onClick="showGreetings"
-            android:text="      Flat Availiability     "
-            android:textColor="#ffffff"
-            android:textSize="20dp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Room Type:"
-            android:textSize="22dp"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/button9"
-            android:layout_alignEnd="@+id/checkBox16" />
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="#b5d8a0"
+                android:onClick="showGreetings"
+                android:text="      Flat Availiability     "
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal" />
 
-        <CheckBox
-            android:id="@+id/checkBox9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="1 Room Flat"
-            android:textSize="18dp"
-            android:layout_below="@+id/textView11"
-            android:layout_alignStart="@+id/button9" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/checkBox16"
+                android:layout_below="@+id/button9"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="30dp"
+                android:text="Room Type:"
+                android:textSize="22dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="2 Room Flat"
-            android:textSize="18dp"
-            android:layout_below="@+id/checkBox9"
-            android:layout_alignStart="@+id/checkBox11" />
+            <CheckBox
+                android:id="@+id/checkBox9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/button9"
+                android:layout_below="@+id/textView11"
+                android:layout_marginLeft="30dp"
+                android:checked="true"
+                android:text="1 Room Flat"
+                android:textSize="18dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="3 Room Flat"
-            android:textSize="18dp"
-            android:layout_below="@+id/checkBox10"
-            android:layout_alignStart="@+id/checkBox9" />
+            <CheckBox
+                android:id="@+id/checkBox10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox11"
+                android:layout_below="@+id/checkBox9"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:text="2 Room Flat"
+                android:textSize="18dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="4 Room Flat"
-            android:textSize="18dp"
-            android:layout_below="@+id/checkBox11"
-            android:layout_alignStart="@+id/checkBox11" />
+            <CheckBox
+                android:id="@+id/checkBox11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox9"
+                android:layout_below="@+id/checkBox10"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:text="3 Room Flat"
+                android:textSize="18dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="5 Room Flat"
-            android:textSize="18dp"
-            android:layout_below="@+id/checkBox12"
-            android:layout_alignStart="@+id/checkBox12" />
+            <CheckBox
+                android:id="@+id/checkBox12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox11"
+                android:layout_below="@+id/checkBox11"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:text="4 Room Flat"
+                android:textSize="18dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="Executive"
-            android:textSize="18dp"
-            android:layout_below="@+id/checkBox13"
-            android:layout_alignStart="@+id/checkBox13" />
+            <CheckBox
+                android:id="@+id/checkBox13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox12"
+                android:layout_below="@+id/checkBox12"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:text="5 Room Flat"
+                android:textSize="18dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:text="3 Gen"
-            android:textSize="18dp"
-            android:layout_below="@+id/checkBox14"
-            android:layout_alignStart="@+id/checkBox14" />
+            <CheckBox
+                android:id="@+id/checkBox14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox13"
+                android:layout_below="@+id/checkBox13"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:text="Executive"
+                android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"
-            android:textSize="22dp"
-            android:layout_below="@+id/checkBox15"
-            android:layout_toStartOf="@+id/button8"
-            android:layout_marginTop="32dp" />
+            <CheckBox
+                android:id="@+id/checkBox15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox14"
+                android:layout_below="@+id/checkBox14"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:text="3 Gen"
+                android:textSize="18dp" />
 
-        <Spinner
-            android:id="@+id/spinnerFALocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView12" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView11"
+                android:layout_below="@+id/checkBox15"
+                android:layout_marginTop="33dp"
+                android:layout_marginLeft="30dp"
+                android:text="Location"
+                android:textSize="22dp" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/spinnerFALocation"
-            android:text="Price Range:"
-            android:textSize="22dp" />
+            <Spinner
+                android:id="@+id/spinnerFALocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/checkBox15"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/textView12" />
 
-        <CheckBox
-            android:id="@+id/checkBox16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView13"
-            android:checked="false"
-            android:text="S$50,000 - S$200,000" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/spinnerFALocation"
+                android:layout_marginLeft="30dp"
+                android:text="Price Range:"
+                android:textSize="22dp" />
 
-        <CheckBox
-            android:id="@+id/checkBox17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/checkBox16"
-            android:checked="false"
-            android:text="S$200,001 - S$400,000" />
+            <CheckBox
+                android:id="@+id/checkBox16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView13"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:textSize="18dp"
+                android:text="S$50,000 - S$200,000" />
 
-        <CheckBox
-            android:id="@+id/checkBox18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/checkBox17"
-            android:checked="false"
-            android:text="S$400,001 - S$600,000" />
+            <CheckBox
+                android:id="@+id/checkBox17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/checkBox16"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:textSize="18dp"
+                android:text="S$200,001 - S$400,000" />
 
-        <CheckBox
-            android:id="@+id/checkBox19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/checkBox18"
-            android:checked="false"
-            android:text=">S$600,001" />
+            <CheckBox
+                android:id="@+id/checkBox18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/checkBox17"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:textSize="18dp"
+                android:text="S$400,001 - S$600,000" />
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkBox19"
-            android:layout_centerHorizontal="true"
-            android:background="#4238fa"
-            android:onClick="searchButton"
-            android:text="Search"
-            android:textColor="#ffffff"
-            android:textSize="20dp" />
-        </RelativeLayout>
+            <CheckBox
+                android:id="@+id/checkBox19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/checkBox18"
+                android:layout_marginLeft="30dp"
+                android:checked="false"
+                android:textSize="18dp"
+                android:text=">S$600,001" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkBox19"
+                android:layout_centerHorizontal="true"
+                android:background="#4238fa"
+                android:onClick="searchButton"
+                android:text="Search"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>
 
 
