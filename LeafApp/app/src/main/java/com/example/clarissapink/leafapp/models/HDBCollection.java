@@ -7,6 +7,8 @@ public class HDBCollection {
     private ArrayList<HDBFlat> collection;
     private String region;
 
+    public HDBCollection(){}
+
     public HDBCollection(ArrayList<HDBFlat> collection, String region) {
         this.collection = collection;
         this.region = region;
