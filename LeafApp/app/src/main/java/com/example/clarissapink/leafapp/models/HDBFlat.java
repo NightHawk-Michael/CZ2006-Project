@@ -2,26 +2,51 @@ package com.example.clarissapink.leafapp.models;
 
 public class HDBFlat {
 
-    private int iD;
+    private int id;
+    private int year;
+    private String town;
     private String roomType;
-    private String priceRange;
-    private String location;
-    private Boolean availabilityStatus;
+    private String minPrice;
+    private String maxPrice;
+    private String minPriceLess;
+    private String maxPriceLess;
 
-    public HDBFlat(int iD, String roomType, String priceRange, String location, Boolean availabilityStatus) {
-        this.iD = iD;
+    public HDBFlat(){
+    }
+
+    public HDBFlat(int id, int year, String town, String roomType, String minPrice, String maxPrice, String minPriceLess, String maxPriceLess) {
+        this.id = id;
+        this.year = year;
+        this.town = town;
         this.roomType = roomType;
-        this.priceRange = priceRange;
-        this.location = location;
-        this.availabilityStatus = availabilityStatus;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        this.minPriceLess = minPriceLess;
+        this.maxPriceLess = maxPriceLess;
     }
 
-    public int getiD() {
-        return iD;
+    public int getId() {
+        return id;
     }
 
-    public void setiD(int iD) {
-        this.iD = iD;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public String getRoomType() {
@@ -32,27 +57,35 @@ public class HDBFlat {
         this.roomType = roomType;
     }
 
-    public String getPriceRange() {
-        return priceRange;
+    public String getMinPrice() {
+        return minPrice;
     }
 
-    public void setPriceRange(String priceRange) {
-        this.priceRange = priceRange;
+    public void setMinPrice(String minPrice) {
+        this.minPrice = minPrice;
     }
 
-    public String getLocation() {
-        return location;
+    public String getMaxPrice() {
+        return maxPrice;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setMaxPrice(String maxPrice) {
+        this.maxPrice = maxPrice;
     }
 
-    public Boolean getAvailabilityStatus() {
-        return availabilityStatus;
+    public String getMinPriceLess() {
+        return minPriceLess;
     }
 
-    public void setAvailabilityStatus(Boolean availabilityStatus) {
-        this.availabilityStatus = availabilityStatus;
+    public void setMinPriceLess(String minPriceLess) {
+        this.minPriceLess = minPriceLess;
+    }
+
+    public String getMaxPriceLess() {
+        return maxPriceLess;
+    }
+
+    public void setMaxPriceLess(String maxPriceLess) {
+        this.maxPriceLess = maxPriceLess;
     }
 }

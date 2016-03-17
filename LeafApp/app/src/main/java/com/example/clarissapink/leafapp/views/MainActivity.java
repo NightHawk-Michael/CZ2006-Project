@@ -1,6 +1,9 @@
 package com.example.clarissapink.leafapp.views;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -8,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.clarissapink.leafapp.ApiManager;
+import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +20,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Create Database
+        DatabaseHandler db = new DatabaseHandler(this);
+        //check connection
+        boolean connected = checkConnection();
+
+        if (connected == true) {
+            ApiManager apimgr = new ApiManager(db);
+            apimgr.getApiData();
+        }else {
+            //need to access an existing database here
+        }
+
     }
 
     public void showGreetings(View view) {
@@ -75,5 +93,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //method to check if there is internet connection
+    private boolean checkConnection() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) { // connected to the internet
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                return true; // connected to wifi
+            } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                return true; // connected to mobile data
+            } else {
+                return false; // not connected
+            }
+        }
+        return false;
     }
 }
