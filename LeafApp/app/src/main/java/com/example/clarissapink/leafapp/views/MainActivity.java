@@ -2,6 +2,7 @@ package com.example.clarissapink.leafapp.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -14,24 +15,28 @@ import android.widget.Button;
 import com.example.clarissapink.leafapp.ApiManager;
 import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.models.HDBCollection;
 
 public class MainActivity extends AppCompatActivity {
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //Create Database
-        DatabaseHandler db = new DatabaseHandler(this);
+        DatabaseHandler databaseHandler = new DatabaseHandler(this);
+        SQLiteDatabase db = databaseHandler.getReadableDatabase();
+
         //check connection
         boolean connected = checkConnection();
 
         if (connected == true) {
-            ApiManager apimgr = new ApiManager(db);
+            ApiManager apimgr = new ApiManager(databaseHandler);
             apimgr.getApiData();
-        }else {
-            //need to access an existing database here
         }
+
+        HDBCollection hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
 
     }
 

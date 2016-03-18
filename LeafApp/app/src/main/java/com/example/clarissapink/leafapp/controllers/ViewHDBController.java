@@ -13,9 +13,9 @@ import org.json.JSONObject;
 import java.util.*;
 public class ViewHDBController {
     protected HDBCollection HDBcollection = new HDBCollection();
-    protected ArrayList<HDBFlat> HDBlist;
+    protected List<HDBFlat> HDBlist;
     protected JSONObject userInputs = new JSONObject();
-    protected ArrayList<HDBFlat> searchResults;
+    protected List<HDBFlat> searchResults;
 
     public ViewHDBController(){
         HDBlist = HDBcollection.getCollection();
