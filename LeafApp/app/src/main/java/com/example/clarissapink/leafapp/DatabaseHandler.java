@@ -1,32 +1,45 @@
 package com.example.clarissapink.leafapp;
 
-
-        import android.content.ContentValues;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import com.example.clarissapink.leafapp.models.HDBFlat;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the class that will handle the database for our app
+ *
+ * @author Bryant
+ *
+ */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    // All Static variables
-    // Database Version
+    /**
+     *  Represents the path of the database.
+     */
     public String databasePath = "";
 
+    /**
+     * Represents the version of the database.
+     */
     private static final int DATABASE_VERSION = 1;
 
-    // Database Name
+    /**
+     * Represents the name of the database.
+     */
     private static final String DATABASE_NAME = "hdb.db";
 
-    // Contacts table name
+    /**
+     * Represents the name of the HDB table.
+     */
     private static final String TABLE_HDB = "hdb_table";
 
-    // Contacts Table Columns names
+    /**
+     * Represents the column names to the HDB table
+     */
     private static final String KEY_ID = "id";
     private static final String KEY_YEAR = "financial_year";
     private static final String KEY_TOWN = "town";
@@ -36,12 +49,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_MIN_SELL_LESS = "min_selling_price_less_ahg_shg";
     private static final String KEY_MAX_SELL_LESS = "max_selling_price_less_ahg_shg";
 
+
+    /**
+     * Creates a DatabaseHandler with the given context.
+     * @param context
+     */
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         databasePath = context.getDatabasePath("hdb.db").getPath();
     }
 
-    // Creating Tables
+    /**
+     * This method will create a create a table in the given database.
+     * This method is automatically called upon calling of methods getWritableDatabase() or getReadableDatabase().
+     * @param db  The database for which the table will be created in.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_HDB_TABLE = "CREATE TABLE " + TABLE_HDB + "("
@@ -51,21 +73,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_HDB_TABLE);
     }
 
-    // Upgrading database
+    /**
+     * This method will create a table in the given database if table does not exist.
+     * This method is automatically called upon calling of methods getWritableDatabase() or getReadableDatabase().
+     * If table exists, older table is deleted and OnCreate() is called.
+     * @param db  The database for which the table will be updated in
+     * @param oldVersion  Old version number
+     * @param newVersion  New version number
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_HDB);
-
-        // Create tables again
         onCreate(db);
     }
 
     /**
-     * All CRUD(Create, Read, Update, Delete) Operations
+     * This method will insert an HDB instance into the database
+     * @param hdb  hdb to be inserted into the table
      */
-
-    // Adding new HDB flat
     void addHDB(HDBFlat hdb) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -79,12 +104,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_MIN_SELL_LESS, hdb.getMinPriceLess());
         values.put(KEY_MAX_SELL_LESS, hdb.getMaxPriceLess());
 
-        // Inserting Row
         db.insert(TABLE_HDB, null, values);
         db.close(); // Closing database connection
     }
 
-    // Getting single HDB flat
+    /**
+     * This method will get an HDB instance from the database
+     * @param id  id of the HDB flat to be retrieved
+     * @return hdb  HDB object to be returned
+     */
     public HDBFlat getHDB(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -103,7 +131,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return hdb;
     }
 
-    // Getting All HDB flats
+    /**
+     * This method will get a ArrayList of HDBFlats from the database
+     * @return hdbList  ArrayList of HDBFlats
+     */
     public List<HDBFlat> getAllHDB() {
         List<HDBFlat> hdbList = new ArrayList<HDBFlat>();
         // Select All Query

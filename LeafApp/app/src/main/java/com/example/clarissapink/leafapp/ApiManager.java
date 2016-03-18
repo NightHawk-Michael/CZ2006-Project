@@ -18,20 +18,46 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-//This Class will retrieve data from the government API.
+/**
+ * This class will manage the gov data API
+ * @author Bryant
+ */
 public class ApiManager {
+
+    /**
+     * Declaration of a DatabaseHandler to be used later
+     */
     private DatabaseHandler db;
 
+    /**
+     * Creates a new ApiManager object for the given database
+     * @param db  The database where the data from the API will be inserted to
+     */
     public ApiManager( DatabaseHandler db){
         this.db = db;
     }
 
+    /**
+     * This method will execute the http call.
+     */
     public void getApiData() {
         new JSONTask().execute("https://data.gov.sg/api/action/datastore_search?resource_id=d23b9636-5812-4b33-951e-b209de710dd5&limit=200");
     }
 
+    /**
+     * This class that extends AsyncTask allows the application to conduct Asynchronous Tasks at the "backend" of the app.
+     * This will allow the http call and the insertion to the database to be done without disruption to the UI
+     */
     public class JSONTask extends AsyncTask<String, String, String> {
 
+        /**
+         * This method is one of the steps to an AsyncTask
+         * When invoked, it allows the application to perform background computation that takes a long time
+         * The parameters, params which in this case is the URL of the HttpCall, also known as the URL of our API is passed
+         * The result of this method is passed to the last step, which is onPostExecute()
+         * @param params  The URL of the HTTPCall
+         * @return  We will not be returning a value for now.
+         */
         @Override
         protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
@@ -104,6 +130,10 @@ public class ApiManager {
             return null;
         }
 
+        /**
+         * This method will be invoked on the UI thread after background computation finishes
+         * @param result  This is the result from the background computation.
+         */
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
