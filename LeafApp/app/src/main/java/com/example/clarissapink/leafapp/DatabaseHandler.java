@@ -16,6 +16,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
+    public String databasePath = "";
+
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
@@ -36,6 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        databasePath = context.getDatabasePath("hdb.db").getPath();
     }
 
     // Creating Tables

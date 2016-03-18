@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         boolean connected = checkConnection();
 
         if (connected == true) {
-            ApiManager apimgr = new ApiManager(databaseHandler);
-            apimgr.getApiData();
+            ApiManager apiMgr = new ApiManager(databaseHandler);
+            apiMgr.getApiData();
         }
 
         HDBCollection hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
