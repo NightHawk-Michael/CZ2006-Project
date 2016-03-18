@@ -47,7 +47,7 @@ public class FlatAvailable extends AppCompatActivity {
     }
 
     public void btn4(View view) {
-        Intent intent = new Intent(this, Debt_Repayment.class);
+        Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);
     }
 

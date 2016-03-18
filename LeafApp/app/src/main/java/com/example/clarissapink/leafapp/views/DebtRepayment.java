@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.R;
 
-public class Debt_Repayment extends AppCompatActivity {
+public class DebtRepayment extends AppCompatActivity {
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
 
@@ -27,7 +27,7 @@ public class Debt_Repayment extends AppCompatActivity {
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Debt_Repayment.this, View_Debt_Repayment.class);
+                Intent intent = new Intent(DebtRepayment.this, ViewDebtRepayment.class);
                 intent.putExtra("loanAmount", userLoanAmount.getText().toString());
                 startActivity(intent);
             }
@@ -67,7 +67,7 @@ public class Debt_Repayment extends AppCompatActivity {
     }
 
     public void btn4(View view) {
-        Intent intent = new Intent(this, Debt_Repayment.class);
+        Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);
     }
 

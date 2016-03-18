@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         String button_text;
         button_text = ((Button) view).getText().toString();
         if (button_text.equals("Debt Repayment")) {
-            Intent intent = new Intent(this, Debt_Repayment.class);
+            Intent intent = new Intent(this, DebtRepayment.class);
             startActivity(intent);
         } else if (button_text.equals("Applicable Grant")) {
             Intent intent = new Intent(this, ApplicableGrant.class);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btn4(View view) {
-        Intent intent = new Intent(this, Debt_Repayment.class);
+        Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);
     }
 

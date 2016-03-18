@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -91,7 +90,7 @@ public class ApplicableGrant extends AppCompatActivity {
     }
 
     public void btn4(View view) {
-        Intent intent = new Intent(this, Debt_Repayment.class);
+        Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);
     }
 
