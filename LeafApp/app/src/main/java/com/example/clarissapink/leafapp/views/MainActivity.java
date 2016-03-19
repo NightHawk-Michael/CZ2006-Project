@@ -16,10 +16,18 @@ import com.example.clarissapink.leafapp.ApiManager;
 import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.R;
 import com.example.clarissapink.leafapp.models.HDBCollection;
-
+/**
+ * This class will manage the footer buttons and displays Debt Repayment result
+ *
+ * @author YongLing
+ *
+ */
 public class MainActivity extends AppCompatActivity {
+    /**
+     * This method will save the state of the application in a bundle
+     * @param savedInstanceState save state created previously
+     */
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -39,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
         HDBCollection hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
 
     }
-
+    /**
+     * This method navigates to different classes (DebtRepayment, Applicable Grant, Affordable Flat, Flat Availability) based on user click input.
+     * @param view stores what the user interact with the button
+     */
     public void showGreetings(View view) {
         String button_text;
         button_text = ((Button) view).getText().toString();
@@ -57,22 +68,37 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
+    /**
+     * This method navigates to FlatAvailable
+     * @param view stores what the user interact with the button
+     */
     public void btn1(View view) {
         Intent intent = new Intent(this, FlatAvailable.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to AffordableFlat
+     * @param view stores what the user interact with the button
+     */
     public void btn2(View view) {
         Intent intent = new Intent(this, AffordableFlat.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to ApplicableGrant
+     * @param view stores what the user interact with the button
+     */
     public void btn3(View view) {
         Intent intent = new Intent(this, ApplicableGrant.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to DebtRepayment
+     * @param view stores what the user interact with the button
+     */
     public void btn4(View view) {
         Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);

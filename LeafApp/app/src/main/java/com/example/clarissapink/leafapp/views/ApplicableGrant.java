@@ -12,11 +12,29 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.R;
-
+/**
+ * This class will manage the footer buttons and displays Debt Repayment result
+ *
+ * @author YongLing
+ *
+ */
 public class ApplicableGrant extends AppCompatActivity {
+    /**
+     * Initialize a Spinner Object
+     */
     Spinner spinner;
+    /**
+     * Creates an array adapter to add data in to the Spinner
+     */
     ArrayAdapter<CharSequence> adapter;
 
+    /**
+     * This method will save the state of the application in a bundle
+     * it will instantiate the spinner object for TypeOfApplicant within the class
+     * it will instantiate the spinner object for AverageMonthlyHouseholdIncome within the class
+     * it will instantiate the spinner object for SalesLaunch within the class
+     * @param savedInstanceState save state created previously
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,26 +92,46 @@ public class ApplicableGrant extends AppCompatActivity {
 
     }
 
+    /**
+     * This method navigates to FlatAvailable
+     * @param view stores what the user interact with the button
+     */
     public void btn1(View view) {
         Intent intent = new Intent(this, FlatAvailable.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to AffordableFlat
+     * @param view stores what the user interact with the button
+     */
     public void btn2(View view) {
         Intent intent = new Intent(this, AffordableFlat.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to ApplicableGrant
+     * @param view stores what the user interact with the button
+     */
     public void btn3(View view) {
         Intent intent = new Intent(this, ApplicableGrant.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to DebtRepayment
+     * @param view stores what the user interact with the button
+     */
     public void btn4(View view) {
         Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates the searchButton in AffordableFlat
+     * @param view stores what the user interact with the button
+     */
     public void searchButton(View view) {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();

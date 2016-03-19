@@ -93,7 +93,7 @@ public class AffordableFlat extends AppCompatActivity {
     }
 
     /**
-     * This method navigates the searchButton to AffordableFlat
+     * This method navigates the searchButton on AffordableFlat
      * @param view stores what the user interact with the button
      */
     public void searchButton(View view) {
