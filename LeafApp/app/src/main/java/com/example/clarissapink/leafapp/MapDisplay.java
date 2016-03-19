@@ -19,52 +19,81 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
+/**
+ * This class will manage the map displayed on the app
+ * @author Emily
+ */
 public class MapDisplay extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    /**
+     * Creates a TAG to get where the Map is located at
+     */
     public static final String TAG = MapDisplay.class.getSimpleName();
 
-    /*
-     * Define a request code to send to Google Play services
+    /**
+     * Define a request code to send to Google Play services upon failure
      * This code is returned in Activity.onActivityResult
      */
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    /**
+     * Declaration of a GoogleMap, might be null if Google Play services APK is not available.
+     */
+    private GoogleMap mMap;
 
+    /**
+     * Declaration of a GoogleAPIClient to get the latest client in Google Play Services
+     */
     private GoogleApiClient mGoogleApiClient;
+
+    /**
+     * Declaration of a LocationRequest to get the details of user's location
+     */
     private LocationRequest mLocationRequest;
 
-    @Override
+    /**
+     * This method will save the state of the application in a bundle
+     * @param savedInstanceState save state created previously
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_display);
         setUpMapIfNeeded();
 
+        /**
+         * Create the GoogleApiClient object
+         */
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
 
-        // Create the LocationRequest object
+        /**
+         * Create the LocationRequest object
+         */
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
     }
 
-    @Override
+    /**
+     * This method disconnect from location services when Activity is paused
+     * It reconnects when the Activity is resumed
+     */
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
         mGoogleApiClient.connect();
     }
 
-    @Override
+    /**
+     * This method disconnect from location services when Activity is paused
+     */
     protected void onPause() {
         super.onPause();
 
@@ -75,27 +104,13 @@ public class MapDisplay extends FragmentActivity implements
     }
 
     /**
-     * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
-     * installed) and the map has not already been instantiated.. This will ensure that we only ever
-     * call {@link #setUpMap()} once when {@link #mMap} is not null.
-     * <p/>
-     * If it isn't installed {@link SupportMapFragment} (and
-     * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
-     * install/update the Google Play services APK on their device.
-     * <p/>
-     * A user can return to this FragmentActivity after following the prompt and correctly
-     * installing/updating/enabling the Google Play services. Since the FragmentActivity may not
-     * have been completely destroyed during this process (it is likely that it would only be
-     * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
-     * method in {@link #onResume()} to guarantee that it will be called.
+     * This method sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
+     * installed) and the map has not already been instantiated..
      */
     private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
-            // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
             }
@@ -103,15 +118,15 @@ public class MapDisplay extends FragmentActivity implements
     }
 
     /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
+     * This method is where set up map according to a default location
      */
     private void setUpMap() {
         mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
 
+    /**
+     * This method handles new location
+     */
     private void handleNewLocation(Location location) {
         Log.d(TAG, location.toString());
 
@@ -120,7 +135,6 @@ public class MapDisplay extends FragmentActivity implements
 
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
 
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(currentLatitude, currentLongitude)).title("Current Location"));
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
                 .title("I am here!");
@@ -130,16 +144,12 @@ public class MapDisplay extends FragmentActivity implements
         mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
     }
 
-    @Override
+    /**
+     * This method gets current location when the client successfully connected to the location services
+     * @param bundle saves the dynamic data of location
+     */
     public void onConnected(Bundle bundle) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
@@ -151,41 +161,35 @@ public class MapDisplay extends FragmentActivity implements
         }
     }
 
-    @Override
+    /**
+     * This method suspends the connection
+     * @param i contains variable to suspend the connection
+     */
     public void onConnectionSuspended(int i) {
 
     }
 
-    @Override
+    /**
+     * This method handles connection failure
+     * @param connectionResult gets connection result
+     */
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        /*
-         * Google Play services can resolve some errors it detects.
-         * If the error has a resolution, try sending an Intent to
-         * start a Google Play services activity that can resolve
-         * error.
-         */
         if (connectionResult.hasResolution()) {
             try {
-                // Start an Activity that tries to resolve the error
                 connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
-                /*
-                 * Thrown if Google Play services canceled the original
-                 * PendingIntent
-                 */
             } catch (IntentSender.SendIntentException e) {
-                // Log the error
                 e.printStackTrace();
             }
         } else {
-            /*
-             * If no resolution is available, display a dialog to the
-             * user with the error.
-             */
             Log.i(TAG, "Location services connection failed with code " + connectionResult.getErrorCode());
         }
     }
 
-    @Override
+    /**
+     * This new method gets called every time a new location is detected by Google Play Services
+     * It calls handleNewLocation to get to the new location
+     * @param location stores the new location detected
+     */
     public void onLocationChanged(Location location) {
         handleNewLocation(location);
     }

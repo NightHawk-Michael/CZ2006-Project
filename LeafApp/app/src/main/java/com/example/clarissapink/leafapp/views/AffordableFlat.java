@@ -13,12 +13,25 @@ import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.MapDisplay;
 import com.example.clarissapink.leafapp.R;
-
+/**
+ * This class will manage the buttons in Affordable screen
+ * @author Emily
+ */
 public class AffordableFlat extends AppCompatActivity {
+    /**
+     * Initialize a Spinner Object
+     */
     Spinner spinner;
+    /**
+     * Creates an array adapter
+     */
     ArrayAdapter<CharSequence> adapter;
 
-    @Override
+    /**
+     * This method will save the state of the application in a bundle
+     * it will instantiate the spinner object within the class
+     * @param savedInstanceState save state created previously
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affordable_flat);
@@ -32,7 +45,7 @@ public class AffordableFlat extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " sel   ected", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -42,26 +55,47 @@ public class AffordableFlat extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * This method navigates to FlatAvailable
+     * @param view stores what the user interact with the button
+     */
     public void btn1(View view) {
         Intent intent = new Intent(this, FlatAvailable.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to AffordableFlat
+     * @param view stores what the user interact with the button
+     */
     public void btn2(View view) {
         Intent intent = new Intent(this, AffordableFlat.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to ApplicableGrant
+     * @param view stores what the user interact with the button
+     */
     public void btn3(View view) {
         Intent intent = new Intent(this, ApplicableGrant.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates to DebtRepayment
+     * @param view stores what the user interact with the button
+     */
     public void btn4(View view) {
         Intent intent = new Intent(this, DebtRepayment.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates the searchButton to AffordableFlat
+     * @param view stores what the user interact with the button
+     */
     public void searchButton(View view) {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
