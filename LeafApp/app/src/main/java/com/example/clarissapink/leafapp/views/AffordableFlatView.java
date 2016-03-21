@@ -8,41 +8,53 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.MapDisplay;
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.controllers.ViewHDBController;
+import com.example.clarissapink.leafapp.models.HDBCollection;
+import com.example.clarissapink.leafapp.models.UserInputs;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class will manage the buttons in Affordable screen
  * @author Emily
  */
 public class AffordableFlatView extends AppCompatActivity {
-    /**
-     * Initialize a Spinner Object
-     */
-    Spinner spinner;
-    /**
-     * Creates an array adapter
-     */
+
     ArrayAdapter<CharSequence> adapter;
 
-    /**
-     * This method will save the state of the application in a bundle
-     * it will instantiate the spinner object within the class
-     * @param savedInstanceState save state created previously
-     */
+    Spinner repaymentPeriod;
+    EditText monthlyInstallment;
+    Button searchButton;
+    HDBCollection hdbCollection;
+    UserInputs inputs;
+
+    double monthlyIn;
+    int repaymentP;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affordable_flat);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        spinner = (Spinner) findViewById(R.id.spinnerAFRepaymentPeriod);
+        Bundle flatavail = getIntent().getExtras();
+        hdbCollection = flatavail.getParcelable("hdbCollection");
+        inputs = flatavail.getParcelable("inputs");
+        monthlyInstallment = (EditText) findViewById(R.id.monthlyInstallment);
+        searchButton = (Button)findViewById(R.id.searchButton);
+        //spinner
+        repaymentPeriod = (Spinner) findViewById(R.id.spinnerAFRepaymentPeriod);
         adapter = ArrayAdapter.createFromResource(this, R.array.repaymentPeriod, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        repaymentPeriod.setAdapter(adapter);
+        repaymentPeriod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
@@ -53,6 +65,15 @@ public class AffordableFlatView extends AppCompatActivity {
 
             }
         });
+
+        searchButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
+                repaymentP = Integer.parseInt(repaymentPeriod.toString());
+
+            }
+    });
     }
 
 
@@ -100,7 +121,11 @@ public class AffordableFlatView extends AppCompatActivity {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            Intent intent = new Intent(this, MapDisplay.class);
+            ViewHDBController availController = new ViewHDBController(hdbCollection, inputs);
+
+            Intent intent = new Intent(this, AffordableFlatResultView.class);
+            intent.putExtra("hdbCollection", hdbCollection);
+            intent.putExtra("inputs", inputs);
             startActivity(intent);
         }
 

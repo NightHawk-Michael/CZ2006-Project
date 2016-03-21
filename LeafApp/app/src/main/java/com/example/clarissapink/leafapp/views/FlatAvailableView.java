@@ -23,7 +23,6 @@ import java.util.List;
  */
 public class FlatAvailableView extends AppCompatActivity {
 
-
     CheckBox room1;
     CheckBox room2;
     CheckBox room3;
@@ -41,7 +40,6 @@ public class FlatAvailableView extends AppCompatActivity {
     HDBCollection hdbCollection;
     UserInputs inputs;
     List<String> selectedRoomType = new ArrayList<String>();
-
 
     String roomType;
     String region;
