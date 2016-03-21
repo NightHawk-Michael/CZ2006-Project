@@ -8,10 +8,7 @@ import com.example.clarissapink.leafapp.models.AffordableFlatDetails;
 import com.example.clarissapink.leafapp.models.DebtRepaymentDetails;
 import com.example.clarissapink.leafapp.models.GrantInformation;
 import com.example.clarissapink.leafapp.models.HDBCollection;
-import com.example.clarissapink.leafapp.models.HDBFlat;
 import com.example.clarissapink.leafapp.models.UserInputs;
-
-import java.util.ArrayList;
 
 /**
  * Created by Michael on 21/3/2016.
