@@ -5,7 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import com.example.clarissapink.leafapp.models.HDBFlat;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +20,11 @@ import java.util.List;
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
+    private SQLiteDatabase myDataBase;
     /**
      *  Represents the path of the database.
      */
-    public String databasePath = "";
+    public String DATABASE_PATH = "";
 
     /**
      * Represents the version of the database.
@@ -56,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        databasePath = context.getDatabasePath("hdb.db").getPath();
+        DATABASE_PATH = context.getDatabasePath("hdb.db").getPath();
     }
 
     /**
@@ -73,6 +77,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_HDB_TABLE);
     }
 
+    //Check database already exist or not
+    public boolean checkDataBase()
+    {
+        boolean checkDB;
+        String myPath = DATABASE_PATH;
+        File dbfile = new File(myPath);
+        checkDB = dbfile.exists();
+        return checkDB;
+    }
+
+    //delete database
+    public void db_delete()
+    {
+        File file = new File(DATABASE_PATH);
+        if(file.exists())
+        {
+            file.delete();
+            System.out.println("delete database file.");
+        }
+    }
+
+    //Open database
+    public SQLiteDatabase  openDatabase()
+    {
+        String myPath = DATABASE_PATH;
+        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+        return myDataBase;
+    }
+
+    public synchronized void closeDataBase()
+    {
+        if(myDataBase != null)
+            myDataBase.close();
+        super.close();
+    }
     /**
      * This method will create a table in the given database if table does not exist.
      * This method is automatically called upon calling of methods getWritableDatabase() or getReadableDatabase().

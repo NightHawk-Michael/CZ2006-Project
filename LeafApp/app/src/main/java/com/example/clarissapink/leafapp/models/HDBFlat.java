@@ -1,6 +1,9 @@
 package com.example.clarissapink.leafapp.models;
 
-public class HDBFlat {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class HDBFlat implements Parcelable {
 
     private int id;
     private int year;
@@ -23,6 +26,21 @@ public class HDBFlat {
         this.maxPrice = maxPrice;
         this.minPriceLess = minPriceLess;
         this.maxPriceLess = maxPriceLess;
+    }
+
+    /**
+     * Contructor for when using parcelable to pass object between activities
+     * @param in
+     */
+    public HDBFlat(Parcel in){
+        this.id = in.readInt();
+        this.year = in.readInt();
+        this.town = in.readString();
+        this.roomType = in.readString();
+        this.minPrice = in.readString();
+        this.maxPrice = in.readString();
+        this.minPriceLess = in.readString();
+        this. maxPriceLess = in.readString();
     }
 
     public int getId() {
@@ -88,4 +106,32 @@ public class HDBFlat {
     public void setMaxPriceLess(String maxPriceLess) {
         this.maxPriceLess = maxPriceLess;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(year);
+        dest.writeString(town);
+        dest.writeString(roomType);
+        dest.writeString(minPrice);
+        dest.writeString(maxPrice);
+        dest.writeString(minPriceLess);
+        dest.writeString(maxPriceLess);
+    }
+
+    public static Parcelable.Creator<HDBFlat> CREATOR = new Parcelable.Creator<HDBFlat>(){
+
+        @Override
+        public HDBFlat createFromParcel (Parcel source){
+            return new HDBFlat(source);
+        }
+        public HDBFlat[] newArray(int size) {
+            return new HDBFlat[size];
+        }
+    };
 }

@@ -28,7 +28,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:background="#b5d8a0"
-                android:onClick="showGreetings"
                 android:text="      Flat Availiability     "
                 android:textColor="#ffffff"
                 android:textSize="20dp"

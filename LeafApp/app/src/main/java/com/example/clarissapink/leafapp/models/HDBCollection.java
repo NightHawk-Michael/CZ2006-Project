@@ -1,19 +1,25 @@
 package com.example.clarissapink.leafapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class HDBCollection {
+public class HDBCollection implements Parcelable {
 
     private List<HDBFlat> collection;
-//    private String region;
 
     public HDBCollection() {
     }
 
     public HDBCollection(List<HDBFlat> collection) {
         this.collection = collection;
-//        this.region = region;
+    }
+
+    public HDBCollection(Parcel in){
+//        collection = new ArrayList<HDBFlat>();
+        this.collection = in.readArrayList(HDBFlat.class.getClassLoader());
     }
 
     public List<HDBFlat> getCollection() {
@@ -23,13 +29,28 @@ public class HDBCollection {
     public void setCollection(ArrayList<HDBFlat> collection) {
         this.collection = collection;
     }
+
+    // This method is required for parcelable
+    // For not return 0
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeList(collection);
+
+    }
+
+    public static Parcelable.Creator<HDBCollection> CREATOR = new Parcelable.Creator<HDBCollection>(){
+
+        @Override
+        public HDBCollection createFromParcel (Parcel source){
+            return new HDBCollection(source);
+        }
+        public HDBCollection[] newArray(int size) {
+            return new HDBCollection[size];
+        }
+    };
 }
-//
-//    public String getRegion() {
-//        return region;
-//    }
-//
-//    public void setRegion(String region) {
-//        this.region = region;
-//    }
-//}

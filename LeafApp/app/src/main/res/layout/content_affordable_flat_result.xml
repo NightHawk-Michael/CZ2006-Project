@@ -31,7 +31,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:background="#b5d8a0"
-                android:onClick="showGreetings"
                 android:text="      Affordable Flat      "
                 android:textColor="#ffffff"
                 android:textSize="20dp" />

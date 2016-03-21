@@ -16,13 +16,25 @@ import com.example.clarissapink.leafapp.ApiManager;
 import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.R;
 import com.example.clarissapink.leafapp.models.HDBCollection;
+import com.example.clarissapink.leafapp.models.UserInputs;
+
 /**
  * This class will manage the footer buttons and displays Debt Repayment result
  *
  * @author YongLing
  *
  */
+<<<<<<< Updated upstream:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainPageView.java
 public class MainPageView extends AppCompatActivity {
+=======
+public class MainActivity extends AppCompatActivity{
+    DatabaseHandler databaseHandler;
+    SQLiteDatabase db;
+    HDBCollection hdbCollection;
+    UserInputs inputs;
+
+
+>>>>>>> Stashed changes:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainActivity.java
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -32,19 +44,23 @@ public class MainPageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Create Database
-        DatabaseHandler databaseHandler = new DatabaseHandler(this);
-        SQLiteDatabase db = databaseHandler.getReadableDatabase();
 
+        databaseHandler = new DatabaseHandler(this);
+        boolean exists = databaseHandler.checkDataBase();
         //check connection
         boolean connected = checkConnection();
 
-        if (connected == true) {
+        inputs = new UserInputs();
+
+        if(exists) {
+            db = databaseHandler.openDatabase();
+            db = databaseHandler.getReadableDatabase();
+        } else if (connected == true) {
             ApiManager apiMgr = new ApiManager(databaseHandler);
             apiMgr.getApiData();
         }
 
-        HDBCollection hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
+        hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
 
     }
     /**
@@ -64,7 +80,13 @@ public class MainPageView extends AppCompatActivity {
             Intent intent = new Intent(this, AffordableFlatView.class);
             startActivity(intent);
         } else if (button_text.equals("Flat Availability")) {
+<<<<<<< Updated upstream:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainPageView.java
             Intent intent = new Intent(this, FlatAvailableView.class);
+=======
+            Intent intent = new Intent(this, FlatAvailable.class);
+            intent.putExtra("hdbCollection", hdbCollection);
+            intent.putExtra("inputs", inputs);
+>>>>>>> Stashed changes:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainActivity.java
             startActivity(intent);
         }
     }
