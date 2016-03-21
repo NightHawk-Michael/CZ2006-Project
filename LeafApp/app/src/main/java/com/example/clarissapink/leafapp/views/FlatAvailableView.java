@@ -23,6 +23,12 @@ import java.util.List;
  */
 public class FlatAvailableView extends AppCompatActivity {
 
+<<<<<<< Updated upstream
+=======
+    /**
+     * Attributes to indicate various checkboxes in this activity
+     */
+>>>>>>> Stashed changes
     CheckBox room1;
     CheckBox room2;
     CheckBox room3;
@@ -37,6 +43,9 @@ public class FlatAvailableView extends AppCompatActivity {
     CheckBox priceRange4;
     Button searchButton;
 
+    /**
+     * Other attributes
+     */
     HDBCollection hdbCollection;
     UserInputs inputs;
     List<String> selectedRoomType = new ArrayList<String>();
@@ -61,10 +70,9 @@ public class FlatAvailableView extends AppCompatActivity {
         hdbCollection = flatavail.getParcelable("hdbCollection");
         inputs = flatavail.getParcelable("inputs");
 
-
-
-
-
+        /**
+         * Initializing checkboxes and buttons
+         */
         room1 = (CheckBox)findViewById(R.id.checkBox9);
         room2 = (CheckBox)findViewById(R.id.checkBox10);
         room3 = (CheckBox)findViewById(R.id.checkBox11);
@@ -130,6 +138,7 @@ public class FlatAvailableView extends AppCompatActivity {
      * This method navigates the searchButton to FlatAvailableResults
      * @param view stores what the user interact with the button
      */
+
     public void searchButton(View view) {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
