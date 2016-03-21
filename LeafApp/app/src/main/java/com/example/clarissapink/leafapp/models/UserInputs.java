@@ -3,9 +3,6 @@ package com.example.clarissapink.leafapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 /**
  * Created by Michael on 18/3/2016.
  */

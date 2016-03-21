@@ -14,9 +14,6 @@ import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class will manage the buttons in FlatAvailable screen
  * @author Emily
