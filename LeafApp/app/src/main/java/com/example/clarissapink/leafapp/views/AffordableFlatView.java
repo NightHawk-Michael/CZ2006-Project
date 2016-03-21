@@ -40,12 +40,14 @@ public class AffordableFlatView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //for parsel
         Bundle flatafford = getIntent().getExtras();
 
         hdbCollection = flatafford.getParcelable("hdbCollection");
         inputs = flatafford.getParcelable("inputs");
         monthlyInstallment = (EditText) findViewById(R.id.monthlyInstallment);
-        searchButton = (Button)findViewById(R.id.searchButtonAF);
+        searchButton = (Button) findViewById(R.id.searchButtonAF);
+
         //spinner
         repaymentPeriod = (Spinner) findViewById(R.id.spinnerAFRepaymentPeriod);
         adapter = ArrayAdapter.createFromResource(this, R.array.repaymentPeriod, android.R.layout.simple_spinner_item);
@@ -66,8 +68,9 @@ public class AffordableFlatView extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
-                repaymentP = Integer.parseInt(repaymentPeriod.toString());
+                repaymentP = Integer.parseInt(repaymentPeriod.getItemAtPosition(repaymentPeriod.getSelectedItemPosition()).toString());
 
             }
     });
