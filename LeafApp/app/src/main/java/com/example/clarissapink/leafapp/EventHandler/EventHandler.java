@@ -88,7 +88,7 @@ public class EventHandler {
     public void updateSelectedSale(boolean selectedSale) {
         this.inputs.setSelectedSale(selectedSale);
     }
-    public void updateSelectedRoomType(ArrayList<String> selectedRoomType) {
+    public void updateSelectedRoomType(String[] selectedRoomType) {
         this.inputs.setSelectedRoomType(selectedRoomType);
     }
     public void updateRegion(String region){
