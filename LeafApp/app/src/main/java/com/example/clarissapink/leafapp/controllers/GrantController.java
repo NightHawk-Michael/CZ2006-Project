@@ -38,7 +38,7 @@ public class GrantController {
     }
 
     /**
-     * transfer the data to the ApplicableGrantResult view.
+     * transfer the data to the ApplicableGrantResultView view.
      */
     public void displayGrant(){
 

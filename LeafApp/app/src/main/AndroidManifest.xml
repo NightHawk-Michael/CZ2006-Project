@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.MainPageView"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -30,35 +30,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.DebtRepayment"
+            android:name=".views.DebtRepaymentView"
             android:label="@string/title_activity_debt__repayment"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.ViewDebtRepayment"
+            android:name=".views.DebtRepaymentResultView"
             android:label="@string/title_activity_view__debt__repayment"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.ApplicableGrantResult"
+            android:name=".views.ApplicableGrantResultView"
             android:label="@string/title_activity_applicable_grant_result"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.ApplicableGrant"
+            android:name=".views.ApplicableGrantView"
             android:label="@string/title_activity_applicable_grant"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.FlatAvailable"
+            android:name=".views.FlatAvailableView"
             android:label="@string/title_activity_flat_available"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.FlatAvailableResult"
+            android:name=".views.FlatAvailableResultView"
             android:label="@string/title_activity_flat_available_result"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.AffordableFlat"
+            android:name=".views.AffordableFlatView"
             android:label="@string/title_activity_affordable_flat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.AffordableFlatResult"
+            android:name=".views.AffordableFlatResultView"
             android:label="@string/title_activity_affordable_flat_result"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--

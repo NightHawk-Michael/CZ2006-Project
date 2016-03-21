@@ -38,7 +38,7 @@ public class DebtController {
     }
 
     /**
-     * transfer the data to the ViewDebtRepayment view.
+     * transfer the data to the DebtRepaymentResultView view.
      */
     public void displayDebt(){
 

@@ -22,7 +22,7 @@ import com.example.clarissapink.leafapp.models.HDBCollection;
  * @author YongLing
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainPageView extends AppCompatActivity {
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -48,59 +48,59 @@ public class MainActivity extends AppCompatActivity {
 
     }
     /**
-     * This method navigates to different classes (DebtRepayment, Applicable Grant, Affordable Flat, Flat Availability) based on user click input.
+     * This method navigates to different classes (DebtRepaymentView, Applicable Grant, Affordable Flat, Flat Availability) based on user click input.
      * @param view stores what the user interact with the button
      */
     public void showGreetings(View view) {
         String button_text;
         button_text = ((Button) view).getText().toString();
         if (button_text.equals("Debt Repayment")) {
-            Intent intent = new Intent(this, DebtRepayment.class);
+            Intent intent = new Intent(this, DebtRepaymentView.class);
             startActivity(intent);
         } else if (button_text.equals("Applicable Grant")) {
-            Intent intent = new Intent(this, ApplicableGrant.class);
+            Intent intent = new Intent(this, ApplicableGrantView.class);
             startActivity(intent);
         } else if (button_text.equals("Affordable Flat")) {
-            Intent intent = new Intent(this, AffordableFlat.class);
+            Intent intent = new Intent(this, AffordableFlatView.class);
             startActivity(intent);
         } else if (button_text.equals("Flat Availability")) {
-            Intent intent = new Intent(this, FlatAvailable.class);
+            Intent intent = new Intent(this, FlatAvailableView.class);
             startActivity(intent);
         }
     }
     /**
-     * This method navigates to FlatAvailable
+     * This method navigates to FlatAvailableView
      * @param view stores what the user interact with the button
      */
     public void btn1(View view) {
-        Intent intent = new Intent(this, FlatAvailable.class);
+        Intent intent = new Intent(this, FlatAvailableView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to AffordableFlat
+     * This method navigates to AffordableFlatView
      * @param view stores what the user interact with the button
      */
     public void btn2(View view) {
-        Intent intent = new Intent(this, AffordableFlat.class);
+        Intent intent = new Intent(this, AffordableFlatView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to ApplicableGrant
+     * This method navigates to ApplicableGrantView
      * @param view stores what the user interact with the button
      */
     public void btn3(View view) {
-        Intent intent = new Intent(this, ApplicableGrant.class);
+        Intent intent = new Intent(this, ApplicableGrantView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to DebtRepayment
+     * This method navigates to DebtRepaymentView
      * @param view stores what the user interact with the button
      */
     public void btn4(View view) {
-        Intent intent = new Intent(this, DebtRepayment.class);
+        Intent intent = new Intent(this, DebtRepaymentView.class);
         startActivity(intent);
     }
 

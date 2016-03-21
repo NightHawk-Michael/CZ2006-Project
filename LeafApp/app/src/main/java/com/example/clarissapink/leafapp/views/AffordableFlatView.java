@@ -3,22 +3,21 @@ package com.example.clarissapink.leafapp.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.clarissapink.leafapp.MapDisplay;
 import com.example.clarissapink.leafapp.R;
 /**
- * This class will manage the footer buttons and displays Debt Repayment result
- *
- * @author YongLing
- *
+ * This class will manage the buttons in Affordable screen
+ * @author Emily
  */
-public class DebtRepayment extends AppCompatActivity {
+public class AffordableFlatView extends AppCompatActivity {
     /**
      * Initialize a Spinner Object
      */
@@ -30,34 +29,17 @@ public class DebtRepayment extends AppCompatActivity {
 
     /**
      * This method will save the state of the application in a bundle
-     * it will instantiate the spinner object for YearOfLoan within the class
+     * it will instantiate the spinner object within the class
      * @param savedInstanceState save state created previously
      */
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_debt__repayment);
+        setContentView(R.layout.activity_affordable_flat);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        /**
-         *  Retrieve Loan Amount entered by user
-         *  Loan Amount entered by user will be pass to the ViewDebtRepayment class upon executing cal
-         *  @param userLoanAmount  Loan Amount User Entered
-         *  @param intent  Pass data from DebtRepayment to ViewDebtRepayment
-         *  @param putExtra bundle EditText with intent when calling the next activity
-         */
-        final EditText userLoanAmount = (EditText) findViewById(R.id.userLoanAmount);
-        Button cal = (Button) findViewById(R.id.calButton);
-        cal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DebtRepayment.this, ViewDebtRepayment.class);
-                intent.putExtra("loanAmount", userLoanAmount.getText().toString());
-                startActivity(intent);
-            }
-        });
-
-        spinner = (Spinner) findViewById(R.id.spinnerDRYearOfLoan);
-        adapter = ArrayAdapter.createFromResource(this, R.array.yearOfLoan, android.R.layout.simple_spinner_item);
+        spinner = (Spinner) findViewById(R.id.spinnerAFRepaymentPeriod);
+        adapter = ArrayAdapter.createFromResource(this, R.array.repaymentPeriod, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -71,46 +53,56 @@ public class DebtRepayment extends AppCompatActivity {
 
             }
         });
-
     }
 
+
     /**
-     * This method navigates to FlatAvailable
+     * This method navigates to FlatAvailableView
      * @param view stores what the user interact with the button
      */
     public void btn1(View view) {
-        Intent intent = new Intent(this, FlatAvailable.class);
+        Intent intent = new Intent(this, FlatAvailableView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to AffordableFlat
+     * This method navigates to AffordableFlatView
      * @param view stores what the user interact with the button
      */
     public void btn2(View view) {
-        Intent intent = new Intent(this, AffordableFlat.class);
+        Intent intent = new Intent(this, AffordableFlatView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to ApplicableGrant
+     * This method navigates to ApplicableGrantView
      * @param view stores what the user interact with the button
      */
     public void btn3(View view) {
-        Intent intent = new Intent(this, ApplicableGrant.class);
+        Intent intent = new Intent(this, ApplicableGrantView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to DebtRepayment
+     * This method navigates to DebtRepaymentView
      * @param view stores what the user interact with the button
      */
     public void btn4(View view) {
-        Intent intent = new Intent(this, DebtRepayment.class);
+        Intent intent = new Intent(this, DebtRepaymentView.class);
         startActivity(intent);
     }
 
+    /**
+     * This method navigates the searchButton on AffordableFlatView
+     * @param view stores what the user interact with the button
+     */
+    public void searchButton(View view) {
+        String buttonSearch;
+        buttonSearch = ((Button) view).getText().toString();
+        if (buttonSearch.equals("Search")) {
+            Intent intent = new Intent(this, MapDisplay.class);
+            startActivity(intent);
+        }
+
+    }
 }
-
-
-

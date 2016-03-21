@@ -18,7 +18,7 @@ import com.example.clarissapink.leafapp.R;
  * @author YongLing
  *
  */
-public class ApplicableGrant extends AppCompatActivity {
+public class ApplicableGrantView extends AppCompatActivity {
     /**
      * Initialize a Spinner Object
      */
@@ -93,50 +93,50 @@ public class ApplicableGrant extends AppCompatActivity {
     }
 
     /**
-     * This method navigates to FlatAvailable
+     * This method navigates to FlatAvailableView
      * @param view stores what the user interact with the button
      */
     public void btn1(View view) {
-        Intent intent = new Intent(this, FlatAvailable.class);
+        Intent intent = new Intent(this, FlatAvailableView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to AffordableFlat
+     * This method navigates to AffordableFlatView
      * @param view stores what the user interact with the button
      */
     public void btn2(View view) {
-        Intent intent = new Intent(this, AffordableFlat.class);
+        Intent intent = new Intent(this, AffordableFlatView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to ApplicableGrant
+     * This method navigates to ApplicableGrantView
      * @param view stores what the user interact with the button
      */
     public void btn3(View view) {
-        Intent intent = new Intent(this, ApplicableGrant.class);
+        Intent intent = new Intent(this, ApplicableGrantView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to DebtRepayment
+     * This method navigates to DebtRepaymentView
      * @param view stores what the user interact with the button
      */
     public void btn4(View view) {
-        Intent intent = new Intent(this, DebtRepayment.class);
+        Intent intent = new Intent(this, DebtRepaymentView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates the searchButton in AffordableFlat
+     * This method navigates the searchButton in AffordableFlatView
      * @param view stores what the user interact with the button
      */
     public void searchButton(View view) {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            Intent intent = new Intent(this, ApplicableGrantResult.class);
+            Intent intent = new Intent(this, ApplicableGrantResultView.class);
             startActivity(intent);
         }
 

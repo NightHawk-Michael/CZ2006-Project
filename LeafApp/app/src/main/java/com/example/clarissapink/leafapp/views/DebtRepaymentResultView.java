@@ -5,73 +5,67 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.clarissapink.leafapp.R;
 /**
- * This class will manage the buttons in FlatAvailable screen
- * @author Emily
+ * This class will manage the footer buttons and displays Debt Repayment result
+ *
+ * @author YongLing
+ *
  */
-public class FlatAvailable extends AppCompatActivity {
-
+public class DebtRepaymentResultView extends AppCompatActivity {
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
      */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flat_available);
+        setContentView(R.layout.activity_view__debt__repayment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /**
+         * Displays the loan amount user entered in debt_repayment screen
+         */
+        TextView loanAmountView = (TextView) findViewById(R.id.displayLoanAmount);
+        loanAmountView.setText(getIntent().getExtras().getString("loanAmount"));
     }
 
     /**
-     * This method navigates the searchButton to FlatAvailableResults
-     * @param view stores what the user interact with the button
-     */
-    public void searchButton(View view) {
-        String buttonSearch;
-        buttonSearch = ((Button) view).getText().toString();
-        if (buttonSearch.equals("Search")) {
-            Intent intent = new Intent(this, FlatAvailableResult.class);
-            startActivity(intent);
-        }
-
-    }
-
-    /**
-     * This method navigates to FlatAvailable
+     * This method navigates to FlatAvailableView
      * @param view stores what the user interact with the button
      */
     public void btn1(View view) {
-        Intent intent = new Intent(this, FlatAvailable.class);
+        Intent intent = new Intent(this, FlatAvailableView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to AffordableFlat
+     * This method navigates to AffordableFlatView
      * @param view stores what the user interact with the button
      */
     public void btn2(View view) {
-        Intent intent = new Intent(this, AffordableFlat.class);
+        Intent intent = new Intent(this, AffordableFlatView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to ApplicableGrant
+     * This method navigates to ApplicableGrantView
      * @param view stores what the user interact with the button
      */
-   public void btn3(View view) {
-        Intent intent = new Intent(this, ApplicableGrant.class);
+    public void btn3(View view) {
+        Intent intent = new Intent(this, ApplicableGrantView.class);
         startActivity(intent);
     }
 
     /**
-     * This method navigates to DebtRepayment
+     * This method navigates to DebtRepaymentView
      * @param view stores what the user interact with the button
      */
     public void btn4(View view) {
-        Intent intent = new Intent(this, DebtRepayment.class);
+        Intent intent = new Intent(this, DebtRepaymentView.class);
         startActivity(intent);
     }
 

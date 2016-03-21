@@ -28,7 +28,7 @@ public class AffordableFlatController {
     }
 
     /**
-     * Transfer all data to the AffordableFlatResult view
+     * Transfer all data to the AffordableFlatResultView view
      */
     public void displayList(){
 
