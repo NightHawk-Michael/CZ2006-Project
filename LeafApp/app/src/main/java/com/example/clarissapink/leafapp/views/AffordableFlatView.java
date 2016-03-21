@@ -45,7 +45,7 @@ public class AffordableFlatView extends AppCompatActivity {
         hdbCollection = flatafford.getParcelable("hdbCollection");
         inputs = flatafford.getParcelable("inputs");
         monthlyInstallment = (EditText) findViewById(R.id.monthlyInstallment);
-        searchButton = (Button)findViewById(R.id.searchButton);
+        searchButton = (Button)findViewById(R.id.searchButtonAF);
         //spinner
         repaymentPeriod = (Spinner) findViewById(R.id.spinnerAFRepaymentPeriod);
         adapter = ArrayAdapter.createFromResource(this, R.array.repaymentPeriod, android.R.layout.simple_spinner_item);

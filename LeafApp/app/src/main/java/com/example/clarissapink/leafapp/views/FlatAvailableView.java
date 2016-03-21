@@ -79,7 +79,7 @@ public class FlatAvailableView extends AppCompatActivity {
         priceRange2 = (CheckBox)findViewById(R.id.checkBox17);
         priceRange3 = (CheckBox)findViewById(R.id.checkBox18);
         priceRange4 = (CheckBox)findViewById(R.id.checkBox19);
-        searchButton = (Button)findViewById(R.id.searchButton);
+        searchButton = (Button)findViewById(R.id.searchButtonFA);
 
         searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
