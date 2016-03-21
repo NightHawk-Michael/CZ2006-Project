@@ -118,7 +118,7 @@ public class AffordableFlatView extends AppCompatActivity {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            ViewHDBController availController = new ViewHDBController(hdbCollection, inputs);
+            ViewHDBController availController = new ViewHDBController(hdbCollection);
 
             Intent intent = new Intent(this, AffordableFlatResultView.class);
             intent.putExtra("hdbCollection", hdbCollection);

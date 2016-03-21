@@ -46,7 +46,7 @@ public class UserInputs implements Parcelable{
         this.loanAmt = in.readDouble();
         this.typeOfGrant = in.readString();
         this.selectedSale = in.readByte() != 0;
-        this.selectedRoomType = in.readStringArray();
+        this.selectedRoomType = in.createStringArray();
         this.region = in.readString();
         this.priceRange = in.readString();
     }

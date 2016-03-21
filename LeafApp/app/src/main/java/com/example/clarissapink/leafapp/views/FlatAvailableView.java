@@ -138,7 +138,7 @@ public class FlatAvailableView extends AppCompatActivity {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            ViewHDBController availController = new ViewHDBController(hdbCollection, inputs);
+            ViewHDBController availController = new ViewHDBController(hdbCollection);
 //            HDBCollection availFlats = new HDBCollection(availController.findFlats(inputs.getSelectedRoomType(), inputs.getRegion(), inputs.getPriceRange()));
 
             // HERE, we call the method for the controller from the eventhandler,
