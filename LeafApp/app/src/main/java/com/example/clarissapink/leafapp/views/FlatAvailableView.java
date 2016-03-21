@@ -23,12 +23,6 @@ import java.util.List;
  */
 public class FlatAvailableView extends AppCompatActivity {
 
-<<<<<<< Updated upstream
-=======
-    /**
-     * Attributes to indicate various checkboxes in this activity
-     */
->>>>>>> Stashed changes
     CheckBox room1;
     CheckBox room2;
     CheckBox room3;

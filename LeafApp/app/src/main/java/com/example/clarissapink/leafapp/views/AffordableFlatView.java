@@ -12,14 +12,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.clarissapink.leafapp.MapDisplay;
 import com.example.clarissapink.leafapp.R;
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class will manage the buttons in Affordable screen
@@ -44,9 +40,10 @@ public class AffordableFlatView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Bundle flatavail = getIntent().getExtras();
-        hdbCollection = flatavail.getParcelable("hdbCollection");
-        inputs = flatavail.getParcelable("inputs");
+        Bundle flatafford = getIntent().getExtras();
+
+        hdbCollection = flatafford.getParcelable("hdbCollection");
+        inputs = flatafford.getParcelable("inputs");
         monthlyInstallment = (EditText) findViewById(R.id.monthlyInstallment);
         searchButton = (Button)findViewById(R.id.searchButton);
         //spinner
