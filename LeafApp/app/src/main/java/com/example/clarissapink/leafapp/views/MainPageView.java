@@ -24,17 +24,13 @@ import com.example.clarissapink.leafapp.models.UserInputs;
  * @author YongLing
  *
  */
-<<<<<<< Updated upstream:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainPageView.java
-public class MainPageView extends AppCompatActivity {
-=======
-public class MainActivity extends AppCompatActivity{
+public class MainPageView extends AppCompatActivity{
     DatabaseHandler databaseHandler;
     SQLiteDatabase db;
     HDBCollection hdbCollection;
     UserInputs inputs;
 
 
->>>>>>> Stashed changes:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainActivity.java
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -64,7 +60,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
     /**
-     * This method navigates to different classes (DebtRepaymentView, Applicable Grant, Affordable Flat, Flat Availability) based on user click input.
+     * This method navigates to different classes (DebtRepayment, Applicable Grant, Affordable Flat, Flat Availability) based on user click input.
      * @param view stores what the user interact with the button
      */
     public void showGreetings(View view) {
@@ -80,18 +76,14 @@ public class MainActivity extends AppCompatActivity{
             Intent intent = new Intent(this, AffordableFlatView.class);
             startActivity(intent);
         } else if (button_text.equals("Flat Availability")) {
-<<<<<<< Updated upstream:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainPageView.java
             Intent intent = new Intent(this, FlatAvailableView.class);
-=======
-            Intent intent = new Intent(this, FlatAvailable.class);
             intent.putExtra("hdbCollection", hdbCollection);
             intent.putExtra("inputs", inputs);
->>>>>>> Stashed changes:LeafApp/app/src/main/java/com/example/clarissapink/leafapp/views/MainActivity.java
             startActivity(intent);
         }
     }
     /**
-     * This method navigates to FlatAvailableView
+     * This method navigates to FlatAvailable
      * @param view stores what the user interact with the button
      */
     public void btn1(View view) {
@@ -100,7 +92,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
-     * This method navigates to AffordableFlatView
+     * This method navigates to AffordableFlat
      * @param view stores what the user interact with the button
      */
     public void btn2(View view) {
@@ -109,7 +101,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
-     * This method navigates to ApplicableGrantView
+     * This method navigates to ApplicableGrant
      * @param view stores what the user interact with the button
      */
     public void btn3(View view) {
@@ -118,7 +110,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
-     * This method navigates to DebtRepaymentView
+     * This method navigates to DebtRepayment
      * @param view stores what the user interact with the button
      */
     public void btn4(View view) {
