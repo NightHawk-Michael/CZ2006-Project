@@ -42,7 +42,7 @@ public class FlatAvailableView extends AppCompatActivity {
      */
     HDBCollection hdbCollection;
     UserInputs inputs;
-    List<String> selectedRoomType = new ArrayList<String>();
+    String[] selectedRoomType = new String[7];
 
     String roomType;
     String region;
@@ -87,25 +87,25 @@ public class FlatAvailableView extends AppCompatActivity {
 
 
                 if (room1.isChecked()) {
-                    selectedRoomType.add("1-room");
+                    selectedRoomType[0] = "1-room";
                 }
                 if (room2.isChecked()) {
-                    selectedRoomType.add("2-room");
+                    selectedRoomType[1] = "2-room";
                 }
                 if (room3.isChecked()) {
-                    selectedRoomType.add("3-room");
+                    selectedRoomType[2] = "3-room";
                 }
                 if (room4.isChecked()) {
-                    selectedRoomType.add("4-room");
+                    selectedRoomType[3] = "4-room";
                 }
                 if (room5.isChecked()) {
-                    selectedRoomType.add("5-room");
+                    selectedRoomType[4] = "5-room";
                 }
                 if (executive.isChecked()) {
-                    selectedRoomType.add("executive");
+                    selectedRoomType[5] = "executive";
                 }
                 if (gen3.isChecked()) {
-                    selectedRoomType.add("3-gen");
+                    selectedRoomType[6] = "3-gen";
                 }
                 if (priceRange1.isChecked()) {
                     priceRange = "50,000 - 200,000";
@@ -122,7 +122,8 @@ public class FlatAvailableView extends AppCompatActivity {
             }
         });
 
-        // edit user inputs before passing on parsel to controller
+        // edit user inputs before passing
+        // n parsel to controller
 
     }
 

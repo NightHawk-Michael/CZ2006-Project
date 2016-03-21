@@ -18,14 +18,12 @@ public class ViewHDBController {
     //    protected List<HDBFlat> HDBlist;
 //    protected JSONObject userInputs = new JSONObject();
     protected List<HDBFlat> searchResults;
-    protected UserInputs inputs;
 
     /**
      * Constructor which construct a HDBList
      */
-    public ViewHDBController(HDBCollection collection, UserInputs inputs){
+    public ViewHDBController(HDBCollection collection){
         this.collection = collection;
-        this.inputs = inputs;
     }
 //
 //    /**
@@ -84,11 +82,23 @@ public class ViewHDBController {
 //        /* fill in the code here */
 //    }
 
-    public List<HDBFlat> findFlats(String roomType, String region, String priceRange){
+    public List<HDBFlat> findFlats(UserInputs inputs){
         List<HDBFlat> searchResults = new ArrayList<HDBFlat>();
+        String[] roomType = inputs.getSelectedRoomType();
+        String region = inputs.getRegion();
+        String priceRange = inputs.getPriceRange();
+        double minPrice = Double.parseDouble(priceRange.substring(0, 6));
+        double maxPrice = Double.parseDouble(priceRange.substring(9));
         for(HDBFlat flat: collection.getCollection()){
-            if(flat.getRoomType()==roomType && flat.getTown()==region && Integer.parseInt(priceRange)<=Integer.parseInt(flat.getMinPrice())){
-                searchResults.add(flat);
+            if(flat.getTown()== region){
+                if(flat.getMinPrice() >= minPrice && flat.getMaxPrice() <= maxPrice){
+                    for(int i=0; i<roomType.length; i++){
+                        if(flat.getRoomType().equals(roomType[i])){
+                            searchResults.add(flat);
+                            break;
+                        }
+                    }
+                }
             }
         }
         if (searchResults != null){

@@ -9,8 +9,8 @@ public class HDBFlat implements Parcelable {
     private int year;
     private String town;
     private String roomType;
-    private String minPrice;
-    private String maxPrice;
+    private double minPrice;
+    private double maxPrice;
     private String minPriceLess;
     private String maxPriceLess;
 
@@ -22,8 +22,8 @@ public class HDBFlat implements Parcelable {
         this.year = year;
         this.town = town;
         this.roomType = roomType;
-        this.minPrice = minPrice;
-        this.maxPrice = maxPrice;
+        this.minPrice = Double.parseDouble(minPrice);
+        this.maxPrice = Double.parseDouble(maxPrice);
         this.minPriceLess = minPriceLess;
         this.maxPriceLess = maxPriceLess;
     }
@@ -37,10 +37,10 @@ public class HDBFlat implements Parcelable {
         this.year = in.readInt();
         this.town = in.readString();
         this.roomType = in.readString();
-        this.minPrice = in.readString();
-        this.maxPrice = in.readString();
+        this.minPrice = in.readDouble();
+        this.maxPrice = in.readDouble();
         this.minPriceLess = in.readString();
-        this. maxPriceLess = in.readString();
+        this.maxPriceLess = in.readString();
     }
 
     public int getId() {
@@ -75,20 +75,20 @@ public class HDBFlat implements Parcelable {
         this.roomType = roomType;
     }
 
-    public String getMinPrice() {
+    public double getMinPrice() {
         return minPrice;
     }
 
     public void setMinPrice(String minPrice) {
-        this.minPrice = minPrice;
+        this.minPrice = Double.parseDouble(minPrice);
     }
 
-    public String getMaxPrice() {
+    public double getMaxPrice() {
         return maxPrice;
     }
 
     public void setMaxPrice(String maxPrice) {
-        this.maxPrice = maxPrice;
+        this.maxPrice = Double.parseDouble(maxPrice);
     }
 
     public String getMinPriceLess() {
@@ -118,8 +118,8 @@ public class HDBFlat implements Parcelable {
         dest.writeInt(year);
         dest.writeString(town);
         dest.writeString(roomType);
-        dest.writeString(minPrice);
-        dest.writeString(maxPrice);
+        dest.writeDouble(minPrice);
+        dest.writeDouble(maxPrice);
         dest.writeString(minPriceLess);
         dest.writeString(maxPriceLess);
     }

@@ -3,6 +3,9 @@ package com.example.clarissapink.leafapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * Created by Michael on 18/3/2016.
  */
@@ -43,7 +46,7 @@ public class UserInputs implements Parcelable{
         this.loanAmt = in.readDouble();
         this.typeOfGrant = in.readString();
         this.selectedSale = in.readByte() != 0;
-        this.selectedRoomType = (String[]) in.readArray(String.class.getClassLoader());
+        this.selectedRoomType = in.readStringArray();
         this.region = in.readString();
         this.priceRange = in.readString();
     }
@@ -134,7 +137,7 @@ public class UserInputs implements Parcelable{
         dest.writeDouble(loanAmt);
         dest.writeString(typeOfGrant);
         dest.writeByte((byte) (selectedSale ? 1 : 0));
-        dest.writeArray(selectedRoomType);
+        dest.writeStringArray(selectedRoomType);
         dest.writeString(region);
         dest.writeString(priceRange);
     }
