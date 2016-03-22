@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.lang.Math;
 
 import com.example.clarissapink.leafapp.R;
 /**
@@ -27,6 +29,8 @@ public class DebtRepaymentView extends AppCompatActivity {
      * Creates an array adapter
      */
     ArrayAdapter<CharSequence> adapter;
+    final double interestRate = 2.6;
+    public Spinner spinnerDRYearOfLoan;
 
     /**
      * This method will save the state of the application in a bundle
@@ -38,37 +42,66 @@ public class DebtRepaymentView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debt__repayment);
 
-        /**
-         *  Retrieve Loan Amount entered by user
-         *  Loan Amount entered by user will be pass to the DebtRepaymentResultView class upon executing cal
-         *  @param userLoanAmount  Loan Amount User Entered
-         *  @param intent  Pass data from DebtRepaymentView to DebtRepaymentResultView
-         *  @param putExtra bundle EditText with intent when calling the next activity
-         */
-        final EditText userLoanAmount = (EditText) findViewById(R.id.userLoanAmount);
-        Button cal = (Button) findViewById(R.id.calButton);
-        cal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DebtRepaymentView.this, DebtRepaymentResultView.class);
-                intent.putExtra("loanAmount", userLoanAmount.getText().toString());
-                startActivity(intent);
-            }
-        });
-
-        spinner = (Spinner) findViewById(R.id.spinnerDRYearOfLoan);
+        spinnerDRYearOfLoan = (Spinner) findViewById(R.id.spinnerDRYearOfLoan);
         adapter = ArrayAdapter.createFromResource(this, R.array.yearOfLoan, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerDRYearOfLoan.setAdapter(adapter);
+        spinnerDRYearOfLoan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
+                TextView myText = (TextView) view;
+                Toast.makeText(getBaseContext(), myText.getText() + " selected", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        /**
+         *  Retrieve Loan Amount entered by user
+         *  Loan Amount entered by user will be pass to the ViewDebtRepayment class upon executing cal
+         *  @param userLoanAmount  Loan Amount User Entered
+         *  @param intent  Pass data from DebtRepayment to ViewDebtRepayment
+         *  @param putExtra bundle EditText with intent when calling the next activity
+         */
+
+
+        // get button
+        Button cal = (Button) findViewById(R.id.calButton);
+        // button listener
+        cal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double interestRate = 0.026;
+                double loanAmt, noOfYears, mthlyDR, mthlyAmt, mthlyinterestRate, powerYear;
+                String answer;
+
+                // pass data over to another activity
+                Intent intent = new Intent(DebtRepaymentView.this, DebtRepaymentResultView.class);
+
+                // retrieve, pass user input loan amount
+                EditText userLoanAmount = (EditText) findViewById(R.id.userLoanAmount);
+                intent.putExtra("loanAmount", userLoanAmount.getText().toString());
+
+                // retrieve, pass year of loan
+                String YearOfLoan = spinnerDRYearOfLoan.getSelectedItem().toString();
+                intent.putExtra("yearOfLoan", spinnerDRYearOfLoan.getSelectedItem().toString());
+
+                loanAmt = Double.parseDouble(userLoanAmount.getText().toString());
+                noOfYears = Double.parseDouble(spinnerDRYearOfLoan.getSelectedItem().toString());
+
+                mthlyAmt = loanAmt * (interestRate / 12);
+                powerYear = (1 / (Math.pow((1 + (interestRate / 12)), ((noOfYears) * 12))));
+                mthlyinterestRate = 1 - powerYear;
+                mthlyDR = mthlyAmt / mthlyinterestRate;
+
+                answer = String.format("%.2f", mthlyDR);
+                intent.putExtra("answer", answer.toString());
+
+                // start ViewDebtRepayment activity
+                startActivity(intent);
             }
         });
 

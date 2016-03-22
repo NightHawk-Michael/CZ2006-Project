@@ -29,8 +29,14 @@ public class DebtRepaymentResultView extends AppCompatActivity {
         /**
          * Displays the loan amount user entered in debt_repayment screen
          */
+        TextView yearOfLoanView = (TextView) findViewById(R.id.displayYearOfLoan);
+        yearOfLoanView.setText(getIntent().getExtras().getString("yearOfLoan"));
+
         TextView loanAmountView = (TextView) findViewById(R.id.displayLoanAmount);
         loanAmountView.setText(getIntent().getExtras().getString("loanAmount"));
+
+        TextView loanRepaymentPerMView = (TextView) findViewById(R.id.displayLoanRepaymentPerM);
+        loanRepaymentPerMView.setText(getIntent().getExtras().getString("answer"));
     }
 
     /**
