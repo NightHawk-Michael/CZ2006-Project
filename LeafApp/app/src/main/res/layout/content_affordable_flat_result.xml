@@ -15,14 +15,16 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="434dp"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
             <Button
                 android:id="@+id/button11"
@@ -33,7 +35,8 @@
                 android:background="#b5d8a0"
                 android:text="      Affordable Flat      "
                 android:textColor="#ffffff"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -42,45 +45,17 @@
                 android:layout_below="@+id/button11"
                 android:text="Here are the Affordable Flat for you!"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="30dp"
+                android:textSize="22dp"
                 android:layout_alignParentEnd="true" />
 
-            <TextView
-                android:id="@+id/textView17"
+            <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/button11"
+                android:id="@+id/flatDetailsAFList"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView16"
-                android:layout_marginTop="57dp"
-                android:background="#b6b2b2"
-                android:text="Flat Details 1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="45dp" />
+                android:clickable="true" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/button11"
-                android:layout_below="@+id/textView17"
-                android:layout_marginTop="102dp"
-                android:background="#b6b2b2"
-                android:text="Flat Details 2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="45dp" />
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/button11"
-                android:layout_below="@+id/textView18"
-                android:layout_marginTop="112dp"
-                android:background="#b6b2b2"
-                android:text="Flat Details 3"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="45dp" />
-
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

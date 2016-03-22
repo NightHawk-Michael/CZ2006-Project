@@ -99,7 +99,6 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (room1.isChecked()) {
-                    room1.toggle();
                     selectedRoomType[0] = "1-room";
                 }
             }
@@ -108,7 +107,6 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (room2.isChecked()) {
-                    room2.toggle();
                     selectedRoomType[1] = "2-room";
                 }
             }
@@ -117,8 +115,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (room3.isChecked()) {
-                    room3.toggle();
-                    selectedRoomType[2] = "3-room";
+                     selectedRoomType[2] = "3-room";
                 }
             }
         });
@@ -126,8 +123,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (room4.isChecked()) {
-                    room4.toggle();
-                    selectedRoomType[3] = "4-room";
+                     selectedRoomType[3] = "4-room";
                 }
             }
         });
@@ -135,8 +131,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (room5.isChecked()) {
-                    room5.toggle();
-                    selectedRoomType[4] = "5-room";
+                     selectedRoomType[4] = "5-room";
                 }
             }
         });
@@ -144,8 +139,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (executive.isChecked()) {
-                    executive.toggle();
-                    selectedRoomType[5] = "executive";
+                     selectedRoomType[5] = "executive";
                 }
             }
         });
@@ -153,7 +147,6 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (gen3.isChecked()) {
-                    gen3.toggle();
                     selectedRoomType[6] = "3-gen";
                 }
             }
@@ -162,8 +155,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange1.isChecked()) {
-                    priceRange1.toggle();
-                    inputs.setPriceRange("50,000 - 200,000");
+                     inputs.setPriceRange("50,000 - 200,000");
                 }
             }
         });
@@ -171,8 +163,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange2.isChecked()) {
-                    priceRange2.toggle();
-                    inputs.setPriceRange("200,001 - 400,000");
+                     inputs.setPriceRange("200,001 - 400,000");
                 }
             }
         });
@@ -180,7 +171,6 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange3.isChecked()) {
-                    priceRange3.toggle();
                     inputs.setPriceRange("400,001 - 600,000");
                 }
             }
@@ -189,7 +179,6 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange4.isChecked()) {
-                    priceRange4.toggle();
                     inputs.setPriceRange(">600,001");
                 }
         }

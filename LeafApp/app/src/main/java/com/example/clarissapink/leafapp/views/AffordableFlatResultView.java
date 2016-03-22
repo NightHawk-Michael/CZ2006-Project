@@ -1,11 +1,15 @@
 package com.example.clarissapink.leafapp.views;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
+import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.R;
 /**
  * This class will display the Affordable Flats
@@ -24,7 +28,36 @@ public class AffordableFlatResultView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+       // populateAFListViewFromDB();
     }
+
+/*    private void populateAFListViewFromDB() {
+        Cursor cursor = myDb.getAllRows();
+        //Allow activity to manage lifetime of the cursor ; deprecated
+        startManagingCursor(cursor);
+
+        //Setup mapping from cursor to view fields:
+        String[] fromFieldNames = new String[]
+                {DatabaseHandl.};
+        int[] toViewIDs = new int[]
+                {R.id.locationAF, R.id.priceRangeAF};//get the IDS from layout
+
+        //Create adaptor to map columns of the DB onto elements in the UI
+        SimpleCursorAdapter myCursorAdaptor =
+                new simpleCursorAdaptor(
+                        this,
+                        R.layout.af_list_layout_, //row layout template (new activity)
+                        Cursor,          //cursor (set of DB records to map)
+                        fromFieldNames,    //DB Column names
+                        toViewIDs     //view IDS to put information in
+                );
+        //Set the adapter for the list view
+        ListView myList = (ListView) findViewById(R.id.flatDetailsAFList);
+        myList.setAdapter(myCursorAdapter);
+
+    }*/
+
+
 
     /**
      * This method navigates to FlatAvailableView

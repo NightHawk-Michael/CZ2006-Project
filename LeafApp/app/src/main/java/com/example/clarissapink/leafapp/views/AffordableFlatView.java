@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
@@ -65,16 +66,25 @@ public class AffordableFlatView extends AppCompatActivity {
             }
         });
 
-        searchButton.setOnClickListener(new View.OnClickListener(){
+/*        searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                //Intent intent = new Intent(AffordableFlatView.this, AffordableFlatController.class);
 
                 monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
+                inputs.setMonthlyIncome(monthlyIn);
+
                 repaymentP = Integer.parseInt(repaymentPeriod.getItemAtPosition(repaymentPeriod.getSelectedItemPosition()).toString());
+                //is yearToPay repaymentP?
+                inputs.setYearToPay(repaymentP);
+             //   startActivity(intent);
 
             }
-    });
-    }
+        });*/
+
+
+
+   }
 
 
     /**
@@ -122,6 +132,14 @@ public class AffordableFlatView extends AppCompatActivity {
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
             ViewHDBController availController = new ViewHDBController(hdbCollection);
+
+            //Passing monthlyIn & repaymentP
+            monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
+            inputs.setMonthlyIncome(monthlyIn);
+            repaymentP = Integer.parseInt(repaymentPeriod.getItemAtPosition(repaymentPeriod.getSelectedItemPosition()).toString());
+            //is yearToPay repaymentP?
+            inputs.setYearToPay(repaymentP);
+            //
 
             Intent intent = new Intent(this, AffordableFlatResultView.class);
             intent.putExtra("hdbCollection", hdbCollection);

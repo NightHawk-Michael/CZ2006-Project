@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerAFRepaymentPeriod"
         android:spinnerMode="dropdown"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView21"
         android:layout_alignStart="@+id/textView21" />
 
