@@ -1,9 +1,14 @@
 package com.example.clarissapink.leafapp.controllers;
 
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.HDBFlat;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +16,7 @@ import java.util.List;
  * @author Michael
  * Created on 19 March 2016.
  */
-public class AffordableFlatController {
+public class AffordableFlatController implements Parcelable {
     protected HDBCollection collection = new HDBCollection();
     protected List<HDBFlat> searchResults;
     protected UserInputs inputs;
@@ -20,30 +25,49 @@ public class AffordableFlatController {
      */
     public AffordableFlatController(){}
 
-    public AffordableFlatController(HDBCollection collection, UserInputs inputs){
+    public AffordableFlatController(HDBCollection collection){
         this.collection = collection;
         this.inputs = inputs;
     }
-    /**
-     * Update all user inputs
-     * @param monthlyIncome
-     * @param amtRepay
-     * @param yearToPay
-     * @param loanAmt
-     * @param typeOfGrant
-     * @param selectedSale
-     * @param selectedRoomType
-     * @param region
-     */
-    public void updateUserInputs(double monthlyIncome, double amtRepay, int yearToPay, double loanAmt, String typeOfGrant, boolean selectedSale, String selectedRoomType, String region){
 
+    public AffordableFlatController(Parcel in){
+        this.collection = in.readParcelable(AffordableFlatController.class.getClassLoader());
     }
 
-    /**
-     * Transfer all data to the AffordableFlatResultView view
-     */
-    public void displayList(){
+    public List<HDBFlat> findAffordableFlats(UserInputs inputs) {
+        List<HDBFlat> searchResults = new ArrayList<HDBFlat>();
+        double monthlyInstallment = inputs.getMonthlyIncome();
+        int repaymentPeriod = inputs.getYearToPay();
+        double totalFlatPrice = 12 * monthlyInstallment * repaymentPeriod;
+        for(HDBFlat flat: collection.getCollection()){
+            if(flat.getMinPrice() <= totalFlatPrice){
+                searchResults.add(flat);
+            }
+            return searchResults;
+        }
+
+        return null;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(collection,flags);
 
     }
+    public static Parcelable.Creator<AffordableFlatController> CREATOR = new Parcelable.Creator<AffordableFlatController>(){
+
+        @Override
+        public AffordableFlatController createFromParcel (Parcel source){
+            return new AffordableFlatController(source);
+        }
+        public AffordableFlatController[] newArray(int size) {
+            return new AffordableFlatController[size];
+        }
+    };
 
 }

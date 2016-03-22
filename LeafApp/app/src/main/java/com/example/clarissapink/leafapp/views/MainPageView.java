@@ -16,6 +16,7 @@ import com.example.clarissapink.leafapp.ApiManager;
 import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
@@ -31,6 +32,7 @@ public class MainPageView extends AppCompatActivity{
     SQLiteDatabase db;
     HDBCollection hdbCollection;
     ViewHDBController availFlatsCtr;
+    AffordableFlatController affordFlatsCtr;
     EventHandler eventHandler;
     UserInputs inputs;
 
@@ -62,7 +64,8 @@ public class MainPageView extends AppCompatActivity{
 
         hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
         availFlatsCtr = new ViewHDBController(hdbCollection);
-         eventHandler = new EventHandler(inputs,hdbCollection,availFlatsCtr);
+        affordFlatsCtr = new AffordableFlatController(hdbCollection);
+         eventHandler = new EventHandler(inputs,hdbCollection,availFlatsCtr,affordFlatsCtr);
 
     }
     /**

@@ -12,11 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
-import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
-import com.example.clarissapink.leafapp.controllers.ViewHDBController;
-import com.example.clarissapink.leafapp.models.HDBCollection;
-import com.example.clarissapink.leafapp.models.UserInputs;
 
 /**
  * This class will manage the buttons in Affordable screen
@@ -29,11 +26,10 @@ public class AffordableFlatView extends AppCompatActivity {
     Spinner repaymentPeriod;
     EditText monthlyInstallment;
     Button searchButton;
-    HDBCollection hdbCollection;
-    UserInputs inputs;
 
-    double monthlyIn;
-    int repaymentP;
+    EventHandler eventHandler;
+    double monthlyIn =0;
+    int repaymentP =0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +40,7 @@ public class AffordableFlatView extends AppCompatActivity {
         //for parsel
         Bundle flatafford = getIntent().getExtras();
 
-        hdbCollection = flatafford.getParcelable("hdbCollection");
-        inputs = flatafford.getParcelable("inputs");
+        eventHandler = flatafford.getParcelable("eventHandler");
         monthlyInstallment = (EditText) findViewById(R.id.monthlyInstallment);
         searchButton = (Button) findViewById(R.id.searchButtonAF);
 
@@ -66,6 +61,9 @@ public class AffordableFlatView extends AppCompatActivity {
             }
         });
 
+
+
+
 /*        searchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -84,7 +82,7 @@ public class AffordableFlatView extends AppCompatActivity {
 
 
 
-   }
+    }
 
 
     /**
@@ -131,19 +129,16 @@ public class AffordableFlatView extends AppCompatActivity {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            ViewHDBController availController = new ViewHDBController(hdbCollection);
+            Intent intent = new Intent(this, AffordableFlatResultView.class);
 
             //Passing monthlyIn & repaymentP
             monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
-            inputs.setMonthlyIncome(monthlyIn);
-            repaymentP = Integer.parseInt(repaymentPeriod.getItemAtPosition(repaymentPeriod.getSelectedItemPosition()).toString());
-            //is yearToPay repaymentP?
-            inputs.setYearToPay(repaymentP);
-            //
+            repaymentP = Integer.parseInt(repaymentPeriod.getSelectedItem().toString());
 
-            Intent intent = new Intent(this, AffordableFlatResultView.class);
-            intent.putExtra("hdbCollection", hdbCollection);
-            intent.putExtra("inputs", inputs);
+            //update user input using eventhandler
+            eventHandler.setAffordFlatInputs(monthlyIn, repaymentP);
+
+            intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);
         }
 

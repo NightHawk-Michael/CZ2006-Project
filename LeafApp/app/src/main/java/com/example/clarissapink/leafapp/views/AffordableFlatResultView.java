@@ -1,23 +1,25 @@
 package com.example.clarissapink.leafapp.views;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
-import com.example.clarissapink.leafapp.DatabaseHandler;
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.models.HDBFlat;
+
+import java.util.List;
+
 /**
  * This class will display the Affordable Flats
  * @author Emily
  */
 
 public class AffordableFlatResultView extends AppCompatActivity {
-
+    EventHandler eventHandler;
+    List<HDBFlat> flatResult;
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -28,7 +30,13 @@ public class AffordableFlatResultView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       // populateAFListViewFromDB();
+        Bundle flatAffordResult = getIntent().getExtras();
+
+        eventHandler = flatAffordResult.getParcelable("eventHandler");
+
+        flatResult = eventHandler.findAffordFlats();
+
+        // populateAFListViewFromDB();
     }
 
 /*    private void populateAFListViewFromDB() {
