@@ -9,13 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
-import com.example.clarissapink.leafapp.controllers.ViewHDBController;
-import com.example.clarissapink.leafapp.models.HDBCollection;
-import com.example.clarissapink.leafapp.models.UserInputs;
 
 /**
  * This class will manage the buttons in FlatAvailable screen
@@ -42,9 +41,10 @@ public class FlatAvailableView extends AppCompatActivity{
     /**
      * Other attributes
      */
-    HDBCollection hdbCollection;
-    UserInputs inputs;
+    EventHandler eventHandler;
     String[] selectedRoomType = new String[7];
+    String selectedPriceRange;
+    String selectedLocation;
 
 
     /**
@@ -60,8 +60,7 @@ public class FlatAvailableView extends AppCompatActivity{
         Bundle flatavail = getIntent().getExtras();
 
 
-        hdbCollection = flatavail.getParcelable("hdbCollection");
-        inputs = flatavail.getParcelable("inputs");
+        eventHandler = flatavail.getParcelable("eventHandler");
 
         /**
          * Initializing checkboxes and buttons
@@ -95,57 +94,57 @@ public class FlatAvailableView extends AppCompatActivity{
         priceRange4 = (CheckBox)findViewById(R.id.checkBox19);
         searchButton = (Button)findViewById(R.id.searchButtonFA);
 
-        room1.setOnClickListener(new View.OnClickListener() {
+        room1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton room1, boolean isChecked) {
                 if (room1.isChecked()) {
                     selectedRoomType[0] = "1-room";
                 }
             }
         });
-        room2.setOnClickListener(new View.OnClickListener() {
+        room2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton room2, boolean isChecked) {
                 if (room2.isChecked()) {
                     selectedRoomType[1] = "2-room";
                 }
             }
         });
-        room3.setOnClickListener(new View.OnClickListener() {
+        room3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton room3, boolean isChecked) {
                 if (room3.isChecked()) {
-                     selectedRoomType[2] = "3-room";
+                    selectedRoomType[2] = "3-room";
                 }
             }
         });
-        room4.setOnClickListener(new View.OnClickListener() {
+        room4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton room4, boolean isChecked) {
                 if (room4.isChecked()) {
-                     selectedRoomType[3] = "4-room";
+                    selectedRoomType[3] = "4-room";
                 }
             }
         });
-        room5.setOnClickListener(new View.OnClickListener() {
+        room5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton room5, boolean isChecked) {
                 if (room5.isChecked()) {
-                     selectedRoomType[4] = "5-room";
+                    selectedRoomType[4] = "5-room";
                 }
             }
         });
-        executive.setOnClickListener(new View.OnClickListener() {
+        executive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton executive, boolean isChecked) {
                 if (executive.isChecked()) {
-                     selectedRoomType[5] = "executive";
+                    selectedRoomType[5] = "executive";
                 }
             }
         });
-        gen3.setOnClickListener(new View.OnClickListener() {
+        gen3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton gen3, boolean isChecked) {
                 if (gen3.isChecked()) {
                     selectedRoomType[6] = "3-gen";
                 }
@@ -155,7 +154,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange1.isChecked()) {
-                     inputs.setPriceRange("50,000 - 200,000");
+                     selectedPriceRange = "50,000 - 200,000";
                 }
             }
         });
@@ -163,7 +162,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange2.isChecked()) {
-                     inputs.setPriceRange("200,001 - 400,000");
+                     selectedPriceRange = "200,001 - 400,000";
                 }
             }
         });
@@ -171,7 +170,7 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange3.isChecked()) {
-                    inputs.setPriceRange("400,001 - 600,000");
+                    selectedPriceRange = "400,001 - 600,000";
                 }
             }
         });
@@ -179,11 +178,15 @@ public class FlatAvailableView extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (priceRange4.isChecked()) {
-                    inputs.setPriceRange(">600,001");
+                    selectedPriceRange = ">600,000";
                 }
         }
         });
 
+        selectedLocation = location.getSelectedItem().toString();
+
+        //update user input ising eventhandler
+        eventHandler.setAvailFlatInputs(selectedRoomType,selectedLocation,selectedPriceRange);
 
         // edit user inputs before passing
         // n parsel to controller
@@ -201,15 +204,10 @@ public class FlatAvailableView extends AppCompatActivity{
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            ViewHDBController availController = new ViewHDBController(hdbCollection);
-//            HDBCollection availFlats = new HDBCollection(availController.findFlats(inputs.getSelectedRoomType(), inputs.getRegion(), inputs.getPriceRange()));
-
             // HERE, we call the method for the controller from the eventhandler,
             // THEN, we pass the result object to the next activity
-
             Intent intent = new Intent(this, FlatAvailableResultView.class);
-            intent.putExtra("hdbCollection", hdbCollection);
-            intent.putExtra("inputs", inputs);
+            intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);
         }
 

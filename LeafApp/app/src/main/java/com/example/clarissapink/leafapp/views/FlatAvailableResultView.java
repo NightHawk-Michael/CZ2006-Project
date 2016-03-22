@@ -6,7 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.models.HDBFlat;
+
+import java.util.List;
 
 /**
  * This class will display the FlatsAvailable
@@ -14,6 +18,11 @@ import com.example.clarissapink.leafapp.R;
  */
 
 public class FlatAvailableResultView extends AppCompatActivity {
+
+
+
+    EventHandler eventHandler;
+    List<HDBFlat> flatResult;
 
     /**
      * This method will save the state of the application in a bundle
@@ -24,6 +33,15 @@ public class FlatAvailableResultView extends AppCompatActivity {
         setContentView(R.layout.activity_flat_available_result);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        Bundle flatAvailResult = getIntent().getExtras();
+
+        eventHandler = flatAvailResult.getParcelable("eventHandler");
+
+        flatResult = eventHandler.findAvailFlats();
+
+
     }
 
     /**

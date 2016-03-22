@@ -14,7 +14,9 @@ import android.widget.Button;
 
 import com.example.clarissapink.leafapp.ApiManager;
 import com.example.clarissapink.leafapp.DatabaseHandler;
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
+import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
@@ -28,6 +30,8 @@ public class MainPageView extends AppCompatActivity{
     DatabaseHandler databaseHandler;
     SQLiteDatabase db;
     HDBCollection hdbCollection;
+    ViewHDBController availFlatsCtr;
+    EventHandler eventHandler;
     UserInputs inputs;
 
 
@@ -57,6 +61,8 @@ public class MainPageView extends AppCompatActivity{
         }
 
         hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
+        availFlatsCtr = new ViewHDBController(hdbCollection);
+         eventHandler = new EventHandler(inputs,hdbCollection,availFlatsCtr);
 
     }
     /**
@@ -79,8 +85,7 @@ public class MainPageView extends AppCompatActivity{
             startActivity(intent);
         } else if (button_text.equals("Flat Availability")) {
             Intent intent = new Intent(this, FlatAvailableView.class);
-            intent.putExtra("hdbCollection", hdbCollection);
-            intent.putExtra("inputs", inputs);
+            intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);
         }
     }

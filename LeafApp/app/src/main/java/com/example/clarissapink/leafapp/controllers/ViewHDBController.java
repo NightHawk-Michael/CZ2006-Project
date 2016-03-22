@@ -1,6 +1,9 @@
 package com.example.clarissapink.leafapp.controllers;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.HDBFlat;
 import com.example.clarissapink.leafapp.models.UserInputs;
@@ -13,7 +16,7 @@ import java.util.List;
  * @author Michael
  * Created on 19 March 2016
  */
-public class ViewHDBController {
+public class ViewHDBController implements Parcelable {
     protected HDBCollection collection = new HDBCollection();
     //    protected List<HDBFlat> HDBlist;
 //    protected JSONObject userInputs = new JSONObject();
@@ -25,6 +28,11 @@ public class ViewHDBController {
     public ViewHDBController(HDBCollection collection){
         this.collection = collection;
     }
+
+    public ViewHDBController(Parcel in){
+        this.collection = in.readParcelable(HDBCollection.class.getClassLoader());
+    }
+
 //
 //    /**
 //     * Update all the User Inputs.
@@ -87,18 +95,46 @@ public class ViewHDBController {
         String[] roomType = inputs.getSelectedRoomType();
         String region = inputs.getRegion();
         String priceRange = inputs.getPriceRange();
-        double minPrice = Double.parseDouble(priceRange.substring(0, 6));
-        double maxPrice = Double.parseDouble(priceRange.substring(9));
+//        double minPrice = Double.parseDouble(priceRange.substring(0, 6));
+//        double maxPrice = Double.parseDouble(priceRange.substring(9));
         for(HDBFlat flat: collection.getCollection()){
             if(flat.getTown()== region){
-                if(flat.getMinPrice() >= minPrice && flat.getMaxPrice() <= maxPrice){
-                    for(int i=0; i<roomType.length; i++){
-                        if(flat.getRoomType().equals(roomType[i])){
+                if(priceRange.equals("50,001 - 200,000"))
+                    if(flat.getMinPrice() >= 50000 && flat.getMaxPrice() <= 200000){
+                      for(int i=0; i<roomType.length; i++){
+                         if(flat.getRoomType().equals(roomType[i])){
                             searchResults.add(flat);
                             break;
+                         }
+                      }
+                    }
+                else if(priceRange.equals("200,001 - 400,000"))
+                    if(flat.getMinPrice() >= 200001 && flat.getMaxPrice() <= 400000){
+                        for(int i=0; i<roomType.length; i++){
+                            if(flat.getRoomType().equals(roomType[i])){
+                                searchResults.add(flat);
+                                break;
+                            }
                         }
                     }
-                }
+                else if(priceRange.equals("400,001 - 600,000"))
+                    if(flat.getMinPrice() >= 400001 && flat.getMaxPrice() <= 600000){
+                        for(int i=0; i<roomType.length; i++){
+                            if(flat.getRoomType().equals(roomType[i])){
+                                searchResults.add(flat);
+                                break;
+                            }
+                        }
+                    }
+                else if (priceRange.equals(">600000"))
+                    if(flat.getMinPrice() > 600000){
+                        for(int i=0; i<roomType.length; i++){
+                            if(flat.getRoomType().equals(roomType[i])){
+                                searchResults.add(flat);
+                                break;
+                            }
+                        }
+                    }
             }
         }
         if (searchResults != null){
@@ -106,4 +142,25 @@ public class ViewHDBController {
         }
         else return null;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(collection,flags);
+
+    }
+    public static Parcelable.Creator<ViewHDBController> CREATOR = new Parcelable.Creator<ViewHDBController>(){
+
+        @Override
+        public ViewHDBController createFromParcel (Parcel source){
+            return new ViewHDBController(source);
+        }
+        public ViewHDBController[] newArray(int size) {
+            return new ViewHDBController[size];
+        }
+    };
 }

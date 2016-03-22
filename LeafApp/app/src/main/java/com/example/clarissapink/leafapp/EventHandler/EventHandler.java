@@ -1,51 +1,56 @@
 package com.example.clarissapink.leafapp.EventHandler;
 
-import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
-import com.example.clarissapink.leafapp.controllers.DebtController;
-import com.example.clarissapink.leafapp.controllers.GrantController;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
-import com.example.clarissapink.leafapp.models.AffordableFlatDetails;
-import com.example.clarissapink.leafapp.models.DebtRepaymentDetails;
-import com.example.clarissapink.leafapp.models.GrantInformation;
 import com.example.clarissapink.leafapp.models.HDBCollection;
+import com.example.clarissapink.leafapp.models.HDBFlat;
 import com.example.clarissapink.leafapp.models.UserInputs;
+
+import java.util.List;
 
 /**
  * Created by Michael on 21/3/2016.
  */
-public class EventHandler {
+public class EventHandler implements Parcelable {
     private UserInputs inputs;
     private HDBCollection flatCollection;
-    private GrantInformation grantInfo;
-    private DebtRepaymentDetails debtRepayDetails;
-    private AffordableFlatDetails affordableFlatDetails;
+//    private GrantInformation grantInfo;
+//    private DebtRepaymentDetails debtRepayDetails;
+//    private AffordableFlatDetails affordableFlatDetails;
     private ViewHDBController viewHDBController;
-    private GrantController grantController;
-    private DebtController debtController;
-    private AffordableFlatController affordableFlatController;
+//    private GrantController grantController;
+//    private DebtController debtController;
+//    private AffordableFlatController affordableFlatController;
 
     //Constructor
     public EventHandler(UserInputs inputs,
                         HDBCollection flatCollection,
-                        GrantInformation grantInfo,
-                        DebtRepaymentDetails debtRepayDetails,
-                        AffordableFlatDetails affordableFlatDetails,
-                        ViewHDBController viewHDBController,
-                        GrantController grantController,
-                        DebtController debtController,
-                        AffordableFlatController affordableFlatController
+//                        GrantInformation grantInfo,
+//                        DebtRepaymentDetails debtRepayDetails,
+//                        AffordableFlatDetails affordableFlatDetails,
+                        ViewHDBController viewHDBController
+//                            ,GrantController grantController,
+//                        DebtController debtController,
+//                        AffordableFlatController affordableFlatController
                         ){
         this.inputs = inputs;
         this.flatCollection = flatCollection;
-        this.grantInfo = grantInfo;
-        this.debtRepayDetails = debtRepayDetails;
-        this.affordableFlatDetails = affordableFlatDetails;
+//        this.grantInfo = grantInfo;
+//        this.debtRepayDetails = debtRepayDetails;
+//        this.affordableFlatDetails = affordableFlatDetails;
         this.viewHDBController = viewHDBController;
-        this.grantController = grantController;
-        this.debtController = debtController;
-        this.affordableFlatController = affordableFlatController;
+//        this.grantController = grantController;
+//        this.debtController = debtController;
+//        this.affordableFlatController = affordableFlatController;
     }
 
+    public EventHandler(Parcel in){
+        this.inputs = in.readParcelable(UserInputs.class.getClassLoader());
+        this.flatCollection = in.readParcelable(HDBCollection.class.getClassLoader());
+        this.viewHDBController = in.readParcelable(ViewHDBController.class.getClassLoader());
+    }
     public UserInputs getInputs(){
         return this.inputs;
     }
@@ -54,17 +59,17 @@ public class EventHandler {
         return this.flatCollection;
     }
 
-    public GrantInformation getGrantInformation(){
-        return this.grantInfo;
-    }
-
-    public DebtRepaymentDetails getDebtRepaymentDetails(){
-        return this.debtRepayDetails;
-    }
-
-    public AffordableFlatDetails affordableFlatDetails(){
-        return  this.affordableFlatDetails;
-    }
+//    public GrantInformation getGrantInformation(){
+//        return this.grantInfo;
+//    }
+//
+//    public DebtRepaymentDetails getDebtRepaymentDetails(){
+//        return this.debtRepayDetails;
+//    }
+//
+//    public AffordableFlatDetails affordableFlatDetails(){
+//        return  this.affordableFlatDetails;
+//    }
 
     // This handle the events when user choose to search for available flats (ViewHDBFlat)
     public void updateMonthlyIncome(double monthlyIncome) {
@@ -100,4 +105,36 @@ public class EventHandler {
         this.viewHDBController.findFlats(userInputs);
     }
 
+    public List<HDBFlat> findAvailFlats(){
+        return viewHDBController.findFlats(inputs);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(inputs, flags);
+        dest.writeParcelable(flatCollection, flags);
+        dest.writeParcelable(viewHDBController, flags);
+    }
+
+    public void setAvailFlatInputs(String[] selectedRoomType, String selectedLocation, String selectedPriceRange){
+        inputs.setSelectedRoomType(selectedRoomType);
+        inputs.setRegion(selectedLocation);
+        inputs.setPriceRange(selectedPriceRange);
+    }
+
+    public static Parcelable.Creator<EventHandler> CREATOR = new Parcelable.Creator<EventHandler>(){
+
+        @Override
+        public EventHandler createFromParcel (Parcel source){
+            return new EventHandler(source);
+        }
+        public EventHandler[] newArray(int size) {
+            return new EventHandler[size];
+        }
+    };
 }
