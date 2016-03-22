@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/Location"
+                android:id="@+id/LocationFA"
                 android:layout_gravity="center_horizontal"
                 android:textSize="22dp" />
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/roomFlat"
+                android:id="@+id/roomFlatFA"
                 android:layout_gravity="center_horizontal"
                 android:textSize="22dp" />
 
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/priceRange"
+                android:id="@+id/priceRangeFA"
                 android:layout_gravity="center_horizontal"
                 android:textSize="22dp" />
 

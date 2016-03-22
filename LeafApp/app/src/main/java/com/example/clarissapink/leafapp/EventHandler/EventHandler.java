@@ -90,7 +90,7 @@ public class EventHandler implements Parcelable {
     public void updateSelectedSale(boolean selectedSale) {
         this.inputs.setSelectedSale(selectedSale);
     }
-    public void updateSelectedRoomType(String[] selectedRoomType) {
+    public void updateSelectedRoomType(String selectedRoomType) {
         this.inputs.setSelectedRoomType(selectedRoomType);
     }
     public void updateRegion(String region){
@@ -109,6 +109,16 @@ public class EventHandler implements Parcelable {
         return viewHDBController.findFlats(inputs);
     }
 
+    public String getSelectedRoomType(){
+        return inputs.getSelectedRoomType();
+    }
+    public String getSelectedLocation(){
+        return inputs.getRegion();
+    }
+    public String getSelectedPriceRange(){
+        return inputs.getPriceRange();
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -121,7 +131,7 @@ public class EventHandler implements Parcelable {
         dest.writeParcelable(viewHDBController, flags);
     }
 
-    public void setAvailFlatInputs(String[] selectedRoomType, String selectedLocation, String selectedPriceRange){
+    public void setAvailFlatInputs(String selectedRoomType, String selectedLocation, String selectedPriceRange){
         inputs.setSelectedRoomType(selectedRoomType);
         inputs.setRegion(selectedLocation);
         inputs.setPriceRange(selectedPriceRange);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
@@ -34,12 +35,24 @@ public class FlatAvailableResultView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         Bundle flatAvailResult = getIntent().getExtras();
-
         eventHandler = flatAvailResult.getParcelable("eventHandler");
 
+
+        TextView roomTypeText = (TextView)findViewById(R.id.roomFlatFA);
+        TextView locationText = (TextView)findViewById(R.id.LocationFA);
+        TextView priceRangeText = (TextView)findViewById(R.id.priceRangeFA);
+
+
+        roomTypeText.setText(eventHandler.getSelectedRoomType());
+        locationText.setText(eventHandler.getSelectedLocation());
+        priceRangeText.setText(eventHandler.getSelectedPriceRange());
+
+
+
+
         flatResult = eventHandler.findAvailFlats();
+
 
 
     }

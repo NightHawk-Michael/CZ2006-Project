@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,27 +20,20 @@ import com.example.clarissapink.leafapp.R;
  */
 public class FlatAvailableView extends AppCompatActivity{
 
-    ArrayAdapter<CharSequence> adapter;
+    ArrayAdapter<CharSequence> roomTypeAdapter;
+    ArrayAdapter<CharSequence> locationAdapter;
+    ArrayAdapter<CharSequence> priceRangeAdapter;
 
-    CheckBox room1;
-    CheckBox room2;
-    CheckBox room3;
-    CheckBox room4;
-    CheckBox room5;
-    CheckBox executive;
-    CheckBox gen3;
-    Spinner location;
-    CheckBox priceRange1;
-    CheckBox priceRange2;
-    CheckBox priceRange3;
-    CheckBox priceRange4;
+    Spinner roomTypeSpinner;
+    Spinner locationSpinner;
+    Spinner priceRangeSpinner;
     Button searchButton;
 
     /**
      * Other attributes
      */
     EventHandler eventHandler;
-    String[] selectedRoomType = new String[7];
+    String selectedRoomType;
     String selectedPriceRange;
     String selectedLocation;
 
@@ -58,25 +49,21 @@ public class FlatAvailableView extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         Bundle flatavail = getIntent().getExtras();
-
-
         eventHandler = flatavail.getParcelable("eventHandler");
 
         /**
          * Initializing checkboxes and buttons
          */
-        room1 = (CheckBox)findViewById(R.id.checkBox9);
-        room2 = (CheckBox)findViewById(R.id.checkBox10);
-        room3 = (CheckBox)findViewById(R.id.checkBox11);
-        room4 = (CheckBox)findViewById(R.id.checkBox12);
-        room5 = (CheckBox)findViewById(R.id.checkBox13);
-        executive = (CheckBox)findViewById(R.id.checkBox14);
-        gen3 = (CheckBox)findViewById(R.id.checkBox15);
-        location = (Spinner)findViewById(R.id.spinnerFALocation);
-        adapter = ArrayAdapter.createFromResource(this, R.array.locSpinnerItems, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        location.setAdapter(adapter);
-        location.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        roomTypeSpinner = (Spinner)findViewById(R.id.spinnerFAroomType);
+        locationSpinner = (Spinner)findViewById(R.id.spinnerFALocation);
+        priceRangeSpinner = (Spinner)findViewById(R.id.spinnerFApriceRange);
+
+        searchButton = (Button)findViewById(R.id.searchButtonFA);
+
+        roomTypeAdapter = ArrayAdapter.createFromResource(this, R.array.roomSelectedSpinner, android.R.layout.simple_spinner_item);
+        roomTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        roomTypeSpinner.setAdapter(roomTypeAdapter);
+        roomTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
@@ -88,102 +75,40 @@ public class FlatAvailableView extends AppCompatActivity{
             }
         });
 
-        priceRange1 = (CheckBox)findViewById(R.id.checkBox16);
-        priceRange2 = (CheckBox)findViewById(R.id.checkBox17);
-        priceRange3 = (CheckBox)findViewById(R.id.checkBox18);
-        priceRange4 = (CheckBox)findViewById(R.id.checkBox19);
-        searchButton = (Button)findViewById(R.id.searchButtonFA);
+        locationAdapter = ArrayAdapter.createFromResource(this, R.array.locSpinnerItems, android.R.layout.simple_spinner_item);
+        locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSpinner.setAdapter(locationAdapter);
+        locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
+            }
 
-        room1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton room1, boolean isChecked) {
-                if (room1.isChecked()) {
-                    selectedRoomType[0] = "1-room";
-                }
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
-        });
-        room2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton room2, boolean isChecked) {
-                if (room2.isChecked()) {
-                    selectedRoomType[1] = "2-room";
-                }
-            }
-        });
-        room3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton room3, boolean isChecked) {
-                if (room3.isChecked()) {
-                    selectedRoomType[2] = "3-room";
-                }
-            }
-        });
-        room4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton room4, boolean isChecked) {
-                if (room4.isChecked()) {
-                    selectedRoomType[3] = "4-room";
-                }
-            }
-        });
-        room5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton room5, boolean isChecked) {
-                if (room5.isChecked()) {
-                    selectedRoomType[4] = "5-room";
-                }
-            }
-        });
-        executive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton executive, boolean isChecked) {
-                if (executive.isChecked()) {
-                    selectedRoomType[5] = "executive";
-                }
-            }
-        });
-        gen3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton gen3, boolean isChecked) {
-                if (gen3.isChecked()) {
-                    selectedRoomType[6] = "3-gen";
-                }
-            }
-        });
-        priceRange1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceRange1.isChecked()) {
-                     selectedPriceRange = "50,000 - 200,000";
-                }
-            }
-        });
-        priceRange2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceRange2.isChecked()) {
-                     selectedPriceRange = "200,001 - 400,000";
-                }
-            }
-        });
-        priceRange3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceRange3.isChecked()) {
-                    selectedPriceRange = "400,001 - 600,000";
-                }
-            }
-        });
-        priceRange4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (priceRange4.isChecked()) {
-                    selectedPriceRange = ">600,000";
-                }
-        }
         });
 
-        selectedLocation = location.getSelectedItem().toString();
+        priceRangeAdapter = ArrayAdapter.createFromResource(this, R.array.priceRangeSpinner, android.R.layout.simple_spinner_item);
+        priceRangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        priceRangeSpinner.setAdapter(priceRangeAdapter);
+        priceRangeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        selectedRoomType = roomTypeSpinner.getSelectedItem().toString();
+        selectedLocation = locationSpinner.getSelectedItem().toString();
+        selectedPriceRange  = priceRangeSpinner.getSelectedItem().toString();
 
         //update user input ising eventhandler
         eventHandler.setAvailFlatInputs(selectedRoomType,selectedLocation,selectedPriceRange);
@@ -204,8 +129,6 @@ public class FlatAvailableView extends AppCompatActivity{
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            // HERE, we call the method for the controller from the eventhandler,
-            // THEN, we pass the result object to the next activity
             Intent intent = new Intent(this, FlatAvailableResultView.class);
             intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);

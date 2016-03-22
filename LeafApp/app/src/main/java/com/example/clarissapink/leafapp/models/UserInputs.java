@@ -13,18 +13,18 @@ public class UserInputs implements Parcelable{
     private double loanAmt;
     private String typeOfGrant;
     private boolean selectedSale;
-    private String[] selectedRoomType;
-    private String region;
-    private String priceRange;
+    private String selectedRoomType = "";
+    private String region = "";
+    private String priceRange = "";
 
     public UserInputs(){}
 
-    public UserInputs(String region, String[] selectedRoomType, String priceRange){
+    public UserInputs(String region, String selectedRoomType, String priceRange){
         this.region = region;
         this.selectedRoomType = selectedRoomType;
         this.priceRange = priceRange;
     }
-    public UserInputs(double monthlyIncome, double amtRepay, int yearToPay, double loanAmt, String typeOfGrant, boolean selectedSale, String[] selectedRoomType, String region,String priceRange){
+    public UserInputs(double monthlyIncome, double amtRepay, int yearToPay, double loanAmt, String typeOfGrant, boolean selectedSale, String selectedRoomType, String region,String priceRange){
         this.monthlyIncome = monthlyIncome;
         this.amtRepay = amtRepay;
         this.yearToPay = yearToPay;
@@ -43,7 +43,7 @@ public class UserInputs implements Parcelable{
         this.loanAmt = in.readDouble();
         this.typeOfGrant = in.readString();
         this.selectedSale = in.readByte() != 0;
-        this.selectedRoomType = in.createStringArray();
+        this.selectedRoomType = in.readString();
         this.region = in.readString();
         this.priceRange = in.readString();
     }
@@ -96,11 +96,11 @@ public class UserInputs implements Parcelable{
         this.selectedSale = selectedSale;
     }
 
-    public String[] getSelectedRoomType() {
+    public String getSelectedRoomType() {
         return selectedRoomType;
     }
 
-    public void setSelectedRoomType(String[] selectedRoomType) {
+    public void setSelectedRoomType(String selectedRoomType) {
         this.selectedRoomType = selectedRoomType;
     }
 
@@ -134,7 +134,7 @@ public class UserInputs implements Parcelable{
         dest.writeDouble(loanAmt);
         dest.writeString(typeOfGrant);
         dest.writeByte((byte) (selectedSale ? 1 : 0));
-        dest.writeStringArray(selectedRoomType);
+        dest.writeString(selectedRoomType);
         dest.writeString(region);
         dest.writeString(priceRange);
     }

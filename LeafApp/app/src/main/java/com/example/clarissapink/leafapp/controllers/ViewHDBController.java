@@ -92,49 +92,47 @@ public class ViewHDBController implements Parcelable {
 
     public List<HDBFlat> findFlats(UserInputs inputs){
         List<HDBFlat> searchResults = new ArrayList<HDBFlat>();
-        String[] roomType = inputs.getSelectedRoomType();
+        String roomType = inputs.getSelectedRoomType();
         String region = inputs.getRegion();
         String priceRange = inputs.getPriceRange();
 //        double minPrice = Double.parseDouble(priceRange.substring(0, 6));
 //        double maxPrice = Double.parseDouble(priceRange.substring(9));
         for(HDBFlat flat: collection.getCollection()){
             if(flat.getTown()== region){
-                if(priceRange.equals("50,001 - 200,000"))
-                    if(flat.getMinPrice() >= 50000 && flat.getMaxPrice() <= 200000){
-                      for(int i=0; i<roomType.length; i++){
-                         if(flat.getRoomType().equals(roomType[i])){
+                if(priceRange.equals("50,001 - 200,000")) {
+                    if (flat.getMinPrice() >= 50000 && flat.getMaxPrice() <= 200000) {
+                        if (flat.getRoomType().equals(roomType)) {
                             searchResults.add(flat);
                             break;
-                         }
-                      }
-                    }
-                else if(priceRange.equals("200,001 - 400,000"))
-                    if(flat.getMinPrice() >= 200001 && flat.getMaxPrice() <= 400000){
-                        for(int i=0; i<roomType.length; i++){
-                            if(flat.getRoomType().equals(roomType[i])){
-                                searchResults.add(flat);
-                                break;
-                            }
                         }
                     }
-                else if(priceRange.equals("400,001 - 600,000"))
-                    if(flat.getMinPrice() >= 400001 && flat.getMaxPrice() <= 600000){
-                        for(int i=0; i<roomType.length; i++){
-                            if(flat.getRoomType().equals(roomType[i])){
-                                searchResults.add(flat);
-                                break;
-                            }
+                }
+                else if(priceRange.equals("200,001 - 400,000")) {
+                    if (flat.getMinPrice() >= 200001 && flat.getMaxPrice() <= 400000) {
+                        if (flat.getRoomType().equals(roomType)) {
+                            searchResults.add(flat);
+                            break;
                         }
                     }
-                else if (priceRange.equals(">600000"))
-                    if(flat.getMinPrice() > 600000){
-                        for(int i=0; i<roomType.length; i++){
-                            if(flat.getRoomType().equals(roomType[i])){
-                                searchResults.add(flat);
-                                break;
-                            }
+                }
+                else if(priceRange.equals("400,001 - 600,000")) {
+                    if (flat.getMinPrice() >= 400001 && flat.getMaxPrice() <= 600000) {
+                        if (flat.getRoomType().equals(roomType)) {
+                            searchResults.add(flat);
+                            break;
                         }
                     }
+                }
+                else if(priceRange.equals(">600000")) {
+                    if (flat.getMinPrice() > 600000) {
+                        if (flat.getRoomType().equals(roomType)) {
+                            searchResults.add(flat);
+                            break;
+                        }
+                    }
+                }
+
+
             }
         }
         if (searchResults != null){
