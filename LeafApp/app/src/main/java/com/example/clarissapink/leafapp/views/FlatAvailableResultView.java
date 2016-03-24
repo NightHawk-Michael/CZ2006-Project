@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,8 +29,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
     private ListView lv;
     private ArrayList<String> strArr;
     private ArrayAdapter<String> adapter;
-
-
+    public String flatLocation;
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -55,15 +56,38 @@ public class FlatAvailableResultView extends AppCompatActivity {
         lv = (ListView)findViewById(R.id.listView);
 
         strArr = eventHandler.findAvailFlats();
+        String noFlatFound = "No flat found!";
         if (strArr.size()== 0 ){
-        strArr.add("No flats found!");
+        strArr.add(noFlatFound);
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strArr);
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        /**
+         * onclick listener for data in listview
+         */
+        if(!strArr.contains(noFlatFound)){
+            String tmp = strArr.get(0);
+            flatLocation = tmp.substring(0,tmp.indexOf(' '));
+            lv.setOnItemClickListener(onListClick);
+        }
+
     }
+
+    /**
+     * method to handler onListClick
+     */
+
+    private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+            //create intent
+            Intent i = new Intent(FlatAvailableResultView.this, MapDisplay.class);
+            i.putExtra("location", flatLocation);
+            startActivity(i);
+        }
+    };
 
     /**
      * This method navigates to FlatAvailableResults

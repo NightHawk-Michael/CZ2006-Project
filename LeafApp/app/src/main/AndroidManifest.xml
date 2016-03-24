@@ -74,7 +74,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapDisplay"
+            android:name=".views.MapDisplay"
             android:label="@string/title_activity_map_display"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
