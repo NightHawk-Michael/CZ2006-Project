@@ -26,34 +26,37 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/roomFlatFA"
         android:layout_gravity="center_horizontal"
         android:textSize="22sp"
         android:layout_below="@+id/LocationFA"
-        android:layout_alignStart="@+id/LocationFA" />
+        android:layout_alignStart="@+id/LocationFA"
+        android:textAlignment="center" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/LocationFA"
         android:layout_gravity="center_horizontal"
         android:textSize="22sp"
         android:layout_below="@+id/button10"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/priceRangeFA"
         android:layout_gravity="center_horizontal"
         android:textSize="22sp"
         android:layout_below="@+id/roomFlatFA"
-        android:layout_alignStart="@+id/roomFlatFA" />
+        android:layout_alignStart="@+id/roomFlatFA"
+        android:textAlignment="center" />
 
     <ListView
         android:id="@+id/listView"
