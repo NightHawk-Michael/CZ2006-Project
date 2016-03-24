@@ -83,8 +83,7 @@ public class MainPageView extends AppCompatActivity{
             startActivity(intent);
         } else if (button_text.equals("Affordable Flat")) {
             Intent intent = new Intent(this, AffordableFlatView.class);
-            intent.putExtra("hdbCollection", hdbCollection);
-            intent.putExtra("inputs", inputs);
+            intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);
         } else if (button_text.equals("Flat Availability")) {
             Intent intent = new Intent(this, FlatAvailableView.class);
