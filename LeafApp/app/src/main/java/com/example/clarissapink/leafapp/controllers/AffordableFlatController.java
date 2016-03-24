@@ -38,15 +38,19 @@ public class AffordableFlatController implements Parcelable {
         List<HDBFlat> searchResults = new ArrayList<HDBFlat>();
         double monthlyInstallment = inputs.getMonthlyIncome();
         int repaymentPeriod = inputs.getYearToPay();
-        double totalFlatPrice = 12 * monthlyInstallment * repaymentPeriod;
+        double interest = 0.026;
+        double loan = monthlyInstallment/(interest/12) * (1-1/(Math.pow((1 + 0.026 / 12), 12*repaymentPeriod)));
+
         for(HDBFlat flat: collection.getCollection()){
-            if(flat.getMinPrice() <= totalFlatPrice){
+            if(flat.getMinPrice() <= loan){
                 searchResults.add(flat);
             }
+
+        }
+        if (searchResults != null){
             return searchResults;
         }
-
-        return null;
+        else return null;
     }
 
     @Override

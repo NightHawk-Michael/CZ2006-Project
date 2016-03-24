@@ -126,8 +126,13 @@ public class EventHandler implements Parcelable {
         return inputs.getPriceRange();
     }
 
-    public List<HDBFlat> findAffordFlats(){
-        return affordableFlatController.findAffordableFlats(inputs);
+    public ArrayList<String> findAffordFlats(){
+        ArrayList<String> result = new ArrayList<>();
+        List<HDBFlat> resultList = affordableFlatController.findAffordableFlats(inputs);
+        for(HDBFlat hdb : resultList){
+            result.add(hdb.getTown() + " " + hdb.getRoomType() + "\n" + hdb.getMinPrice() + " - " + hdb.getMaxPrice());
+        }
+        return result;
     }
 
     public void setAvailFlatInputs(String selectedRoomType, String selectedLocation, String selectedPriceRange){

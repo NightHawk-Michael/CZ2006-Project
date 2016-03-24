@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
-import com.example.clarissapink.leafapp.models.HDBFlat;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * This class will display the Affordable Flats
@@ -19,7 +20,10 @@ import java.util.List;
 
 public class AffordableFlatResultView extends AppCompatActivity {
     EventHandler eventHandler;
-    List<HDBFlat> flatResult;
+    private ListView lv;
+    private ArrayList<String> strArr;
+    private ArrayAdapter<String> adapter;
+
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -34,9 +38,18 @@ public class AffordableFlatResultView extends AppCompatActivity {
 
         eventHandler = flatAffordResult.getParcelable("eventHandler");
 
-        flatResult = eventHandler.findAffordFlats();
 
-        // populateAFListViewFromDB();
+        strArr= new ArrayList<String>();
+        lv = (ListView)findViewById(R.id.listView2);
+
+        strArr = eventHandler.findAffordFlats();
+        if (strArr.size()== 0 ){
+            strArr.add("No flats found!");
+        }
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strArr);
+        lv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
 /*    private void populateAFListViewFromDB() {
