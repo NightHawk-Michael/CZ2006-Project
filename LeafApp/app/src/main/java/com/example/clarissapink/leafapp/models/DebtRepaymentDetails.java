@@ -1,21 +1,45 @@
 package com.example.clarissapink.leafapp.models;
 
-public class DebtRepaymentDetails {
-    private double interestRate;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    public DebtRepaymentDetails(double interestRate) {
-        this.interestRate = interestRate;
+public class DebtRepaymentDetails implements Parcelable {
+    private double monthlyRepayment;
+
+    public DebtRepaymentDetails(double monthlyRepayment) {
+        this.monthlyRepayment = monthlyRepayment;
     }
 
-    public DebtRepaymentDetails(int ir) {
-        this.interestRate = ir;
+    public DebtRepaymentDetails(Parcel in){
+        this.monthlyRepayment = in.readDouble();
     }
 
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public double getInterestRate() {
-        return interestRate;
+    public double getMonthlyRepayment() {
+        return monthlyRepayment;
     }
+
+    public void setMonthlyRepayment(double monthlyRepayment) {
+        this.monthlyRepayment = monthlyRepayment;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(monthlyRepayment);
+
+    }
+    public static Parcelable.Creator<DebtRepaymentDetails> CREATOR = new Parcelable.Creator<DebtRepaymentDetails>(){
+
+        @Override
+        public DebtRepaymentDetails createFromParcel (Parcel source){
+            return new DebtRepaymentDetails(source);
+        }
+        public DebtRepaymentDetails[] newArray(int size) {
+            return new DebtRepaymentDetails[size];
+        }
+    };
 }

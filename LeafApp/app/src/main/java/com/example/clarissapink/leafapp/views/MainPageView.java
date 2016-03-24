@@ -17,7 +17,9 @@ import com.example.clarissapink.leafapp.DatabaseHandler;
 import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
 import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
+import com.example.clarissapink.leafapp.controllers.DebtController;
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
+import com.example.clarissapink.leafapp.models.DebtRepaymentDetails;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
@@ -31,8 +33,10 @@ public class MainPageView extends AppCompatActivity{
     DatabaseHandler databaseHandler;
     SQLiteDatabase db;
     HDBCollection hdbCollection;
+    DebtRepaymentDetails debt;
     ViewHDBController availFlatsCtr;
     AffordableFlatController affordFlatsCtr;
+    DebtController debtCtr;
     EventHandler eventHandler;
     UserInputs inputs;
 
@@ -63,9 +67,11 @@ public class MainPageView extends AppCompatActivity{
         }
 
         hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
+        debt = new DebtRepaymentDetails(0);
         availFlatsCtr = new ViewHDBController(hdbCollection);
         affordFlatsCtr = new AffordableFlatController(hdbCollection);
-         eventHandler = new EventHandler(inputs,hdbCollection,availFlatsCtr,affordFlatsCtr);
+        debtCtr = new DebtController();
+         eventHandler = new EventHandler(inputs,hdbCollection, debt, availFlatsCtr,affordFlatsCtr,debtCtr);
 
     }
     /**
@@ -77,6 +83,7 @@ public class MainPageView extends AppCompatActivity{
         button_text = ((Button) view).getText().toString();
         if (button_text.equals("Debt Repayment")) {
             Intent intent = new Intent(this, DebtRepaymentView.class);
+            intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);
         } else if (button_text.equals("Applicable Grant")) {
             Intent intent = new Intent(this, ApplicableGrantView.class);

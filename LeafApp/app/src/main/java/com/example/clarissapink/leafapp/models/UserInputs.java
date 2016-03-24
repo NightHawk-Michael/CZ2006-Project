@@ -9,8 +9,8 @@ import android.os.Parcelable;
 public class UserInputs implements Parcelable{
     private double monthlyIncome;
     private double amtRepay;
-    private int yearToPay;
-    private double loanAmt;
+    private int selectedYears;
+    private double selectedLoan;
     private String typeOfGrant;
     private boolean selectedSale;
     private String selectedRoomType = "";
@@ -24,11 +24,11 @@ public class UserInputs implements Parcelable{
         this.selectedRoomType = selectedRoomType;
         this.priceRange = priceRange;
     }
-    public UserInputs(double monthlyIncome, double amtRepay, int yearToPay, double loanAmt, String typeOfGrant, boolean selectedSale, String selectedRoomType, String region,String priceRange){
+    public UserInputs(double monthlyIncome, double amtRepay, int selectedYears, double selectedLoan, String typeOfGrant, boolean selectedSale, String selectedRoomType, String region,String priceRange){
         this.monthlyIncome = monthlyIncome;
         this.amtRepay = amtRepay;
-        this.yearToPay = yearToPay;
-        this.loanAmt = loanAmt;
+        this.selectedYears = selectedYears;
+        this.selectedLoan = selectedLoan;
         this.typeOfGrant = typeOfGrant;
         this.selectedSale = selectedSale;
         this.selectedRoomType = selectedRoomType;
@@ -39,8 +39,8 @@ public class UserInputs implements Parcelable{
     public UserInputs (Parcel in){
         this.monthlyIncome = in.readDouble();
         this.amtRepay = in.readDouble();
-        this.yearToPay  = in.readInt();
-        this.loanAmt = in.readDouble();
+        this.selectedYears  = in.readInt();
+        this.selectedLoan = in.readDouble();
         this.typeOfGrant = in.readString();
         this.selectedSale = in.readByte() != 0;
         this.selectedRoomType = in.readString();
@@ -64,20 +64,20 @@ public class UserInputs implements Parcelable{
         this.amtRepay = amtRepay;
     }
 
-    public int getYearToPay() {
-        return yearToPay;
+    public int getSelectedYears() {
+        return selectedYears;
     }
 
-    public void setYearToPay(int yearToPay) {
-        this.yearToPay = yearToPay;
+    public void setSelectedYears(int selectedYears) {
+        this.selectedYears = selectedYears;
     }
 
-    public double getLoanAmt() {
-        return loanAmt;
+    public double getSelectedLoan() {
+        return selectedLoan;
     }
 
-    public void setLoanAmt(double loanAmt) {
-        this.loanAmt = loanAmt;
+    public void setSelectedLoan(double selectedLoan) {
+        this.selectedLoan = selectedLoan;
     }
 
     public String getTypeOfGrant() {
@@ -130,8 +130,8 @@ public class UserInputs implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(monthlyIncome);
         dest.writeDouble(amtRepay);
-        dest.writeInt(yearToPay);
-        dest.writeDouble(loanAmt);
+        dest.writeInt(selectedYears);
+        dest.writeDouble(selectedLoan);
         dest.writeString(typeOfGrant);
         dest.writeByte((byte) (selectedSale ? 1 : 0));
         dest.writeString(selectedRoomType);

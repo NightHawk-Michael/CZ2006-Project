@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.lang.Math;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
 /**
  * This class will manage the footer buttons and displays Debt Repayment result
@@ -21,16 +21,19 @@ import com.example.clarissapink.leafapp.R;
  *
  */
 public class DebtRepaymentView extends AppCompatActivity {
-    /**
-     * Initialize a Spinner Object
-     */
-    Spinner spinner;
+    EventHandler eventHandler;
+
+
     /**
      * Creates an array adapter
      */
     ArrayAdapter<CharSequence> adapter;
-    final double interestRate = 2.6;
     public Spinner spinnerDRYearOfLoan;
+    EditText textUserLoanAmount;
+    double selectedLoan;
+    int selectedyYears;
+    Button cal;
+
 
     /**
      * This method will save the state of the application in a bundle
@@ -41,6 +44,11 @@ public class DebtRepaymentView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debt__repayment);
+
+        Bundle debtRpt = getIntent().getExtras();
+        eventHandler = debtRpt.getParcelable("eventHandler");
+
+        textUserLoanAmount = (EditText) findViewById(R.id.userLoanAmount);
 
         spinnerDRYearOfLoan = (Spinner) findViewById(R.id.spinnerDRYearOfLoan);
         adapter = ArrayAdapter.createFromResource(this, R.array.yearOfLoan, android.R.layout.simple_spinner_item);
@@ -56,54 +64,29 @@ public class DebtRepaymentView extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+
             }
+
         });
 
-        /**
-         *  Retrieve Loan Amount entered by user
-         *  Loan Amount entered by user will be pass to the ViewDebtRepayment class upon executing cal
-         *  @param userLoanAmount  Loan Amount User Entered
-         *  @param intent  Pass data from DebtRepayment to ViewDebtRepayment
-         *  @param putExtra bundle EditText with intent when calling the next activity
-         */
 
 
-        // get button
-        Button cal = (Button) findViewById(R.id.calButton);
-        // button listener
-        cal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                double interestRate = 0.026;
-                double loanAmt, noOfYears, mthlyDR, mthlyAmt, mthlyinterestRate, powerYear;
-                String answer;
+    }
 
-                // pass data over to another activity
-                Intent intent = new Intent(DebtRepaymentView.this, DebtRepaymentResultView.class);
+    public void calButton(View view) {
+        String buttonCal;
+        buttonCal = ((Button) view).getText().toString();
+        if (buttonCal.equals("  Calculate!  ")) {
+            selectedLoan = Double.parseDouble(textUserLoanAmount.getText().toString());
+            selectedyYears = Integer.parseInt(spinnerDRYearOfLoan.getSelectedItem().toString());
 
-                // retrieve, pass user input loan amount
-                EditText userLoanAmount = (EditText) findViewById(R.id.userLoanAmount);
-                intent.putExtra("loanAmount", userLoanAmount.getText().toString());
+            //update user input using eventhandler
+            eventHandler.setDebtInputs(selectedLoan,selectedyYears);
 
-                // retrieve, pass year of loan
-                String YearOfLoan = spinnerDRYearOfLoan.getSelectedItem().toString();
-                intent.putExtra("yearOfLoan", spinnerDRYearOfLoan.getSelectedItem().toString());
-
-                loanAmt = Double.parseDouble(userLoanAmount.getText().toString());
-                noOfYears = Double.parseDouble(spinnerDRYearOfLoan.getSelectedItem().toString());
-
-                mthlyAmt = loanAmt * (interestRate / 12);
-                powerYear = (1 / (Math.pow((1 + (interestRate / 12)), ((noOfYears) * 12))));
-                mthlyinterestRate = 1 - powerYear;
-                mthlyDR = mthlyAmt / mthlyinterestRate;
-
-                answer = String.format("%.2f", mthlyDR);
-                intent.putExtra("answer", answer.toString());
-
-                // start ViewDebtRepayment activity
-                startActivity(intent);
-            }
-        });
+            Intent intent = new Intent(this, DebtRepaymentResultView.class);
+            intent.putExtra("eventHandler", eventHandler);
+            startActivity(intent);
+        }
 
     }
 

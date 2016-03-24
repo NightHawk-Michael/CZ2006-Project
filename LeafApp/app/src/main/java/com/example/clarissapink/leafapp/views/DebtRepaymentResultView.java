@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
 /**
  * This class will manage the footer buttons and displays Debt Repayment result
@@ -15,6 +16,10 @@ import com.example.clarissapink.leafapp.R;
  *
  */
 public class DebtRepaymentResultView extends AppCompatActivity {
+    EventHandler eventHandler;
+    double monthlyRepayment;
+    double interestRate = 0.026;
+
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -26,17 +31,21 @@ public class DebtRepaymentResultView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /**
-         * Displays the loan amount user entered in debt_repayment screen
-         */
+        Bundle debtResult = getIntent().getExtras();
+        eventHandler = debtResult.getParcelable("eventHandler");
+
+
         TextView yearOfLoanView = (TextView) findViewById(R.id.displayYearOfLoan);
-        yearOfLoanView.setText(getIntent().getExtras().getString("yearOfLoan"));
-
         TextView loanAmountView = (TextView) findViewById(R.id.displayLoanAmount);
-        loanAmountView.setText(getIntent().getExtras().getString("loanAmount"));
-
         TextView loanRepaymentPerMView = (TextView) findViewById(R.id.displayLoanRepaymentPerM);
-        loanRepaymentPerMView.setText(getIntent().getExtras().getString("answer"));
+
+        monthlyRepayment = eventHandler.findMonthlyRepayment();
+
+
+
+        yearOfLoanView.setText(Double.toString(eventHandler.getSelectedYears()));
+        loanAmountView.setText(String.valueOf(eventHandler.getSelectedLoan()));
+        loanRepaymentPerMView.setText(Double.toString(eventHandler.findMonthlyRepayment()));
     }
 
     /**

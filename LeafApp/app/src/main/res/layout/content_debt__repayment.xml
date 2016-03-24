@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:text="  Calculate!  "
         android:id="@+id/calButton"
+        android:onClick="calButton"
         android:textSize="20dp"
         android:background="#4238fa"
         android:textColor="#ffffff"
