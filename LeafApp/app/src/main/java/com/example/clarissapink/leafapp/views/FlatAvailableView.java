@@ -106,12 +106,7 @@ public class FlatAvailableView extends AppCompatActivity{
         });
 
 
-        selectedRoomType = roomTypeSpinner.getSelectedItem().toString();
-        selectedLocation = locationSpinner.getSelectedItem().toString();
-        selectedPriceRange  = priceRangeSpinner.getSelectedItem().toString();
 
-        //update user input ising eventhandler
-        eventHandler.setAvailFlatInputs(selectedRoomType,selectedLocation,selectedPriceRange);
 
         // edit user inputs before passing
         // n parsel to controller
@@ -129,6 +124,13 @@ public class FlatAvailableView extends AppCompatActivity{
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
+            selectedRoomType = roomTypeSpinner.getSelectedItem().toString();
+            selectedLocation = locationSpinner.getSelectedItem().toString();
+            selectedPriceRange  = priceRangeSpinner.getSelectedItem().toString();
+
+            //update user input using eventhandler
+            eventHandler.setAvailFlatInputs(selectedRoomType,selectedLocation,selectedPriceRange);
+
             Intent intent = new Intent(this, FlatAvailableResultView.class);
             intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);

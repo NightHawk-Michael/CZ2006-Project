@@ -9,6 +9,7 @@ import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.HDBFlat;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -104,8 +105,13 @@ public class EventHandler implements Parcelable {
         this.viewHDBController.findFlats(userInputs);
     }
 
-    public List<HDBFlat> findAvailFlats(){
-        return viewHDBController.findFlats(inputs);
+    public ArrayList<String> findAvailFlats(){
+        ArrayList<String> result = new ArrayList<>();
+        List<HDBFlat> resultList = viewHDBController.findFlats(inputs);
+        for(HDBFlat hdb : resultList){
+          result.add(hdb.getTown() + " " + hdb.getRoomType() + "\n" + hdb.getMinPrice() + " - " + hdb.getMaxPrice());
+        }
+        return result;
     }
 
 

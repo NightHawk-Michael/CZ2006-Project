@@ -12,60 +12,61 @@
     tools:context=".views.FlatAvailableResultView"
     tools:showIn="@layout/activity_flat_available_result">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="434dp"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp">
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#b5d8a0"
+        android:onClick="showGreetings"
+        android:text="      Flat Availability     "
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/roomFlatFA"
+        android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
+        android:layout_below="@+id/LocationFA"
+        android:layout_alignStart="@+id/LocationFA" />
 
-            <Button
-                android:id="@+id/button11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="#b5d8a0"
-                android:onClick="showGreetings"
-                android:text="      Flat Availability     "
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/LocationFA"
+        android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
+        android:layout_below="@+id/button10"
+        android:layout_centerHorizontal="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/LocationFA"
-                android:layout_gravity="center_horizontal"
-                android:textSize="22dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/priceRangeFA"
+        android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
+        android:layout_below="@+id/roomFlatFA"
+        android:layout_alignStart="@+id/roomFlatFA" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/roomFlatFA"
-                android:layout_gravity="center_horizontal"
-                android:textSize="22dp" />
+    <ListView
+        android:id="@+id/listView"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:alwaysDrawnWithCache="true"
+        android:scrollingCache="true"
+        android:smoothScrollbar="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="93dp"
+        android:layout_below="@+id/priceRangeFA" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/priceRangeFA"
-                android:layout_gravity="center_horizontal"
-                android:textSize="22dp" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/flatDetailsFAList" />
-
-        </LinearLayout>
-    </ScrollView>
 </RelativeLayout>
