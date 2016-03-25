@@ -12,6 +12,10 @@
     tools:context=".views.AffordableFlatView"
     tools:showIn="@layout/activity_affordable_flat">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +25,8 @@
         android:background="#7eba56"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,6 +34,7 @@
         android:text="Enter Preferred Monthly Instalment (S$):"
         android:id="@+id/textView20"
         android:layout_marginTop="48dp"
+        android:layout_marginLeft="30dp"
         android:textSize="22dp"
         android:width="300dp"
         android:layout_below="@+id/button12"
@@ -38,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/monthlyInstallment"
+        android:layout_marginLeft="30dp"
         android:text="                                                              "
         android:layout_below="@+id/textView20"
         android:layout_alignStart="@+id/textView20" />
@@ -46,6 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Repayment Period (Years)"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/textView21"
         android:textSize="22dp"
         android:width="300dp"
@@ -53,11 +62,10 @@
         android:layout_alignStart="@+id/monthlyInstallment" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:id="@+id/spinnerAFRepaymentPeriod"
-        android:spinnerMode="dropdown"
-        android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView21"
         android:layout_alignStart="@+id/textView21" />
 
@@ -68,8 +76,11 @@
         android:onClick="searchButton"
         android:id="@+id/searchButtonAF"
         android:textSize="20dp"
+        android:layout_marginTop="18dp"
         android:background="#4238fa"
         android:textColor="#ffffff"
         android:layout_below="@+id/spinnerAFRepaymentPeriod"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 </RelativeLayout>

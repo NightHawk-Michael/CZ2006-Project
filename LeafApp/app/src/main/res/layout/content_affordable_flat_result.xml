@@ -31,6 +31,7 @@
         android:text="List Of HDB Flats:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="22dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/button8"
         android:layout_centerHorizontal="true" />
 

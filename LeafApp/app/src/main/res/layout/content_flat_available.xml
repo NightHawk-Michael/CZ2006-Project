@@ -39,8 +39,7 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/checkBox16"
-                android:layout_below="@+id/button9"
+                android:layout_below="@+id/button13"
                 android:layout_marginTop="35dp"
                 android:layout_marginLeft="30dp"
                 android:text="Room Type:"
@@ -50,17 +49,16 @@
                 android:id="@+id/spinnerFAroomType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/checkBox15"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
-                android:layout_below="@+id/textView12" />
+                android:layout_below="@+id/textView11" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/textView11"
-                android:layout_below="@+id/checkBox15"
-                android:layout_marginTop="33dp"
+                android:layout_below="@+id/spinnerFAroomType"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:text="Location"
                 android:textSize="22dp" />
@@ -69,12 +67,14 @@
                 android:id="@+id/spinnerFALocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/checkBox15"
+                android:layout_alignStart="@+id/textView12"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
                 android:layout_below="@+id/textView12" />
 
             <TextView
                 android:id="@+id/textView13"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -87,9 +87,10 @@
                 android:id="@+id/spinnerFApriceRange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/checkBox15"
+                android:layout_alignStart="@+id/textView13"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
-                android:layout_below="@+id/textView12" />
+                android:layout_below="@+id/textView13" />
 
             <Button
                 android:id="@+id/searchButtonFA"
@@ -102,6 +103,7 @@
                 android:text="Search"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
     </ScrollView>
