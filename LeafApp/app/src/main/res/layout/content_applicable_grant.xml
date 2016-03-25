@@ -16,7 +16,7 @@
         android:paddingRight="16dp"
         android:paddingTop="16dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -36,175 +36,74 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Room Type:"
-                android:id="@+id/textView7"
-                android:layout_marginTop="21dp"
+                android:text="Type Of Applicant:"
+                android:id="@+id/textView2"
+                android:layout_marginTop="42dp"
                 android:textSize="22dp"
                 android:layout_below="@+id/button7"
-                android:layout_marginLeft="30dp"
                 android:layout_alignStart="@+id/button7" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select All Types"
-                android:id="@+id/checkBox"
-                android:layout_below="@+id/textView7"
-                android:layout_alignStart="@+id/textView7"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="true" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1 Room"
-                android:id="@+id/checkBox2"
-                android:layout_below="@+id/checkBox"
-                android:layout_alignStart="@+id/checkBox"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2 Room"
-                android:id="@+id/checkBox3"
-                android:layout_below="@+id/checkBox2"
-                android:layout_alignStart="@+id/checkBox2"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3 Room"
-                android:id="@+id/checkBox4"
-                android:layout_below="@+id/checkBox3"
-                android:layout_alignStart="@+id/checkBox3"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4 Room"
-                android:id="@+id/checkBox5"
-                android:layout_below="@+id/checkBox4"
-                android:layout_alignStart="@+id/checkBox4"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5 Room"
-                android:id="@+id/checkBox6"
-                android:layout_below="@+id/checkBox5"
-                android:layout_alignStart="@+id/checkBox5"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="false" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Executive"
-                android:id="@+id/checkBox7"
-                android:checked="false"
-                android:layout_below="@+id/checkBox6"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:layout_alignStart="@+id/checkBox6" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3rd Gen"
-                android:id="@+id/checkBox8"
-                android:layout_below="@+id/checkBox7"
-                android:layout_alignStart="@+id/checkBox7"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:checked="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type Of Applicant:"
-                android:id="@+id/textView8"
-                android:textSize="22dp"
-                android:layout_marginTop="41dp"
-                android:layout_below="@+id/checkBox8"
-                android:layout_marginLeft="30dp"
-                android:layout_alignStart="@+id/checkBox8" />
 
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinnerAGTypeOfApplicant"
-                android:layout_below="@+id/textView8"
-                android:layout_marginLeft="30dp"
-                android:textSize="18dp"
-                android:layout_alignParentStart="true" />
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_alignParentEnd="true"
+                android:spinnerMode="dropdown" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Average Montly Household Income:"
-                android:id="@+id/textView9"
+                android:text="Average Monthly Household Income:"
+                android:id="@+id/textView3"
+                android:layout_marginTop="42dp"
                 android:textSize="22dp"
-                android:layout_marginLeft="30dp"
                 android:layout_below="@+id/spinnerAGTypeOfApplicant"
-                android:layout_alignParentStart="true" />
+                android:layout_alignStart="@+id/spinnerAGTypeOfApplicant" />
 
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinnerAGAverageMonthlyHouseholdIncome"
-                android:layout_below="@+id/textView9"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/textView3"
+                android:layout_alignStart="@+id/textView3"
                 android:layout_alignParentEnd="true"
-                android:gravity="left" />
+                android:spinnerMode="dropdown" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sales Launch:"
-                android:id="@+id/textView10"
+                android:id="@+id/textView4"
+                android:layout_marginTop="42dp"
                 android:textSize="22dp"
-                android:layout_marginLeft="30dp"
                 android:layout_below="@+id/spinnerAGAverageMonthlyHouseholdIncome"
-                android:layout_alignParentStart="true" />
+                android:layout_alignStart="@+id/spinnerAGAverageMonthlyHouseholdIncome" />
 
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinnerAGSalesLaunch"
-                android:layout_below="@+id/textView10"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:layout_alignParentStart="true" />
+                android:layout_below="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_alignParentEnd="true"
+                android:spinnerMode="dropdown" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"
+                android:text="  Search  "
                 android:onClick="searchButton"
                 android:id="@+id/searchButton"
                 android:textSize="20dp"
                 android:background="#4238fa"
                 android:textColor="#ffffff"
+                android:layout_marginTop="43dp"
                 android:layout_below="@+id/spinnerAGSalesLaunch"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="34dp"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
 

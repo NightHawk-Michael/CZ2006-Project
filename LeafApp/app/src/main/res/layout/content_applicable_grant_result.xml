@@ -26,21 +26,67 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="XXX(from database)"
-        android:id="@+id/grantAmount"
-        android:textSize="22dp"
-        android:layout_below="@+id/textView22"
-        android:layout_alignStart="@+id/button6"
-        android:layout_marginTop="41dp" />
+        android:text="Based on the information provided:"
+        android:id="@+id/textView22"
+        android:layout_marginTop="41dp"
+        android:textSize="25dp"
+        android:width="300dp"
+        android:layout_below="@+id/button6"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Based on the information provided, you are eligible for:"
-        android:id="@+id/textView22"
+        android:text="ApplicantType"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/displayApplicantType"
+        android:layout_below="@+id/textView22"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Income"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/displayIncome"
+        android:layout_below="@+id/displayApplicantType"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Period"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/displayPeriod"
+        android:layout_below="@+id/displayIncome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated Grant Amount:"
+        android:id="@+id/textView6"
+        android:textSize="25dp"
         android:layout_marginTop="41dp"
-        android:textSize="22dp"
-        android:width="300dp"
-        android:layout_below="@+id/button6"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/displayPeriod"
+        android:layout_alignStart="@+id/textView22" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grant Amount"
+        android:id="@+id/displayGrantResult"
+        android:textSize="28dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:textColor="#3cc94f" />
+
+
 </RelativeLayout>

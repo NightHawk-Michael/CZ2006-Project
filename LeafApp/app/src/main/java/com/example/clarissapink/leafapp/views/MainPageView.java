@@ -52,17 +52,20 @@ public class MainPageView extends AppCompatActivity{
 
 
         databaseHandler = new DatabaseHandler(this);
-//        boolean exists = databaseHandler.checkDataBase();
+        boolean exists = databaseHandler.checkDataBase();
 //        //check connection
-//        boolean connected = checkConnection();
+        boolean connected = checkConnection();
 
         inputs = new UserInputs();
 
 
-        ApiManager apiMgr = new ApiManager(databaseHandler);
-        apiMgr.getApiData();
-        db = databaseHandler.openDatabase();
-        db = databaseHandler.getReadableDatabase();
+        if(exists) {
+            db = databaseHandler.openDatabase();
+            db = databaseHandler.getReadableDatabase();
+        } else if (connected == true) {
+            ApiManager apiMgr = new ApiManager(databaseHandler);
+            apiMgr.getApiData();
+        }
 
 
         hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
