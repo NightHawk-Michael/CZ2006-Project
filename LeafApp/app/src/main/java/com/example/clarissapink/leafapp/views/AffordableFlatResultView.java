@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,6 +24,7 @@ public class AffordableFlatResultView extends AppCompatActivity {
     private ListView lv;
     private ArrayList<String> strArr;
     private ArrayAdapter<String> adapter;
+    public String flatLocation;
 
     /**
      * This method will save the state of the application in a bundle
@@ -43,41 +45,36 @@ public class AffordableFlatResultView extends AppCompatActivity {
         lv = (ListView)findViewById(R.id.listView2);
 
         strArr = eventHandler.findAffordFlats();
+        String noFlatFound = "No flat found!";
         if (strArr.size()== 0 ){
-            strArr.add("No flats found!");
+            strArr.add(noFlatFound);
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strArr);
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        /**
+         * onclick listener for data in listview
+         */
+        if(!strArr.contains(noFlatFound)){
+            String tmp = strArr.get(0);
+            flatLocation = tmp.substring(0,tmp.indexOf(' '));
+            lv.setOnItemClickListener(onListClick);
+        }
     }
+    /**
+     * method to handler onListClick
+     */
 
-/*    private void populateAFListViewFromDB() {
-        Cursor cursor = myDb.getAllRows();
-        //Allow activity to manage lifetime of the cursor ; deprecated
-        startManagingCursor(cursor);
-
-        //Setup mapping from cursor to view fields:
-        String[] fromFieldNames = new String[]
-                {DatabaseHandl.};
-        int[] toViewIDs = new int[]
-                {R.id.locationAF, R.id.priceRangeAF};//get the IDS from layout
-
-        //Create adaptor to map columns of the DB onto elements in the UI
-        SimpleCursorAdapter myCursorAdaptor =
-                new simpleCursorAdaptor(
-                        this,
-                        R.layout.af_list_layout_, //row layout template (new activity)
-                        Cursor,          //cursor (set of DB records to map)
-                        fromFieldNames,    //DB Column names
-                        toViewIDs     //view IDS to put information in
-                );
-        //Set the adapter for the list view
-        ListView myList = (ListView) findViewById(R.id.flatDetailsAFList);
-        myList.setAdapter(myCursorAdapter);
-
-    }*/
-
+    private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+            //create intent
+            Intent i = new Intent(AffordableFlatResultView.this, MapDisplay.class);
+            i.putExtra("location", flatLocation);
+            startActivity(i);
+        }
+    };
 
 
     /**
