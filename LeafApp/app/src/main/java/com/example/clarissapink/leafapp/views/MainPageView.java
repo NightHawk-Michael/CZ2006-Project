@@ -18,8 +18,10 @@ import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
 import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
 import com.example.clarissapink.leafapp.controllers.DebtController;
+import com.example.clarissapink.leafapp.controllers.GrantController;
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.DebtRepaymentDetails;
+import com.example.clarissapink.leafapp.models.GrantInformation;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
@@ -33,12 +35,15 @@ public class MainPageView extends AppCompatActivity{
     DatabaseHandler databaseHandler;
     SQLiteDatabase db;
     HDBCollection hdbCollection;
+    GrantInformation grant;
     DebtRepaymentDetails debt;
     ViewHDBController availFlatsCtr;
+    GrantController grantCtr;
     AffordableFlatController affordFlatsCtr;
     DebtController debtCtr;
     EventHandler eventHandler;
     UserInputs inputs;
+
 
 
     /**
@@ -69,11 +74,13 @@ public class MainPageView extends AppCompatActivity{
 
 
         hdbCollection = new HDBCollection(databaseHandler.getAllHDB());
+        grant = new GrantInformation("","","");
         debt = new DebtRepaymentDetails(0);
         availFlatsCtr = new ViewHDBController(hdbCollection);
+        grantCtr = new GrantController();
         affordFlatsCtr = new AffordableFlatController(hdbCollection);
         debtCtr = new DebtController();
-         eventHandler = new EventHandler(inputs,hdbCollection, debt, availFlatsCtr,affordFlatsCtr,debtCtr);
+         eventHandler = new EventHandler(inputs,hdbCollection,grant, debt, availFlatsCtr,grantCtr,affordFlatsCtr,debtCtr);
 
     }
     /**
@@ -89,6 +96,7 @@ public class MainPageView extends AppCompatActivity{
             startActivity(intent);
         } else if (button_text.equals("Applicable Grant")) {
             Intent intent = new Intent(this, ApplicableGrantView.class);
+            intent.putExtra("eventHandler", eventHandler);
             startActivity(intent);
         } else if (button_text.equals("Affordable Flat")) {
             Intent intent = new Intent(this, AffordableFlatView.class);

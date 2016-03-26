@@ -5,8 +5,10 @@ import android.os.Parcelable;
 
 import com.example.clarissapink.leafapp.controllers.AffordableFlatController;
 import com.example.clarissapink.leafapp.controllers.DebtController;
+import com.example.clarissapink.leafapp.controllers.GrantController;
 import com.example.clarissapink.leafapp.controllers.ViewHDBController;
 import com.example.clarissapink.leafapp.models.DebtRepaymentDetails;
+import com.example.clarissapink.leafapp.models.GrantInformation;
 import com.example.clarissapink.leafapp.models.HDBCollection;
 import com.example.clarissapink.leafapp.models.HDBFlat;
 import com.example.clarissapink.leafapp.models.UserInputs;
@@ -20,30 +22,30 @@ import java.util.List;
 public class EventHandler implements Parcelable {
     private UserInputs inputs;
     private HDBCollection flatCollection;
-//    private GrantInformation grantInfo;
+    private GrantInformation grantInfo;
     private DebtRepaymentDetails debtRepayDetails;
     private ViewHDBController viewHDBController;
-//    private GrantController grantController;
+    private GrantController grantController;
     private DebtController debtController;
     private AffordableFlatController affordableFlatController;
 
     //Constructor
     public EventHandler(UserInputs inputs,
                         HDBCollection flatCollection,
-//                        GrantInformation grantInfo,
+                        GrantInformation grantInfo,
                         DebtRepaymentDetails debtRepayDetails,
                         ViewHDBController viewHDBController,
-//                            ,GrantController grantController,
+                        GrantController grantController,
                         AffordableFlatController affordableFlatController,
                         DebtController debtController
                         ){
         this.inputs = inputs;
         this.flatCollection = flatCollection;
         this.debtRepayDetails = debtRepayDetails;
-//        this.grantInfo = grantInfo;
+        this.grantInfo = grantInfo;
         this.viewHDBController = viewHDBController;
-//        this.grantController = grantController;
-       this.affordableFlatController = affordableFlatController;
+        this.grantController = grantController;
+        this.affordableFlatController = affordableFlatController;
         this.debtController = debtController;
     }
 
@@ -51,7 +53,9 @@ public class EventHandler implements Parcelable {
         this.inputs = in.readParcelable(UserInputs.class.getClassLoader());
         this.flatCollection = in.readParcelable(HDBCollection.class.getClassLoader());
         this.debtRepayDetails = in.readParcelable(DebtRepaymentDetails.class.getClassLoader());
+        this.grantInfo = in.readParcelable(GrantInformation.class.getClassLoader());
         this.viewHDBController = in.readParcelable(ViewHDBController.class.getClassLoader());
+        this.grantController = in.readParcelable(GrantController.class.getClassLoader());
         this.affordableFlatController = in.readParcelable(ViewHDBController.class.getClassLoader());
         this.debtController = in.readParcelable(DebtController.class.getClassLoader());
     }
@@ -63,10 +67,10 @@ public class EventHandler implements Parcelable {
         return this.flatCollection;
     }
 
-//    public GrantInformation getGrantInformation(){
-//        return this.grantInfo;
-//    }
-//
+    public GrantInformation getGrantInformation(){
+        return this.grantInfo;
+    }
+
     public DebtRepaymentDetails getDebtRepaymentDetails(){
         return this.debtRepayDetails;
     }
@@ -105,7 +109,6 @@ public class EventHandler implements Parcelable {
         this.viewHDBController.findFlats(userInputs);
     }
 
-
     public String getSelectedRoomType(){
         return inputs.getSelectedRoomType();
     }
@@ -114,6 +117,17 @@ public class EventHandler implements Parcelable {
     }
     public String getSelectedPriceRange(){
         return inputs.getPriceRange();
+    }
+
+    public String getSelectedTypeOfApplicant(){
+        return inputs.getSelectedTypeOfApplicant();
+    }
+    public String getSelectedMonthlyIncome(){
+        return inputs.getSelectedGrantMonthlyIncome();
+    }
+
+    public String getSelectedSalesLaunch(){
+        return inputs.getSelectedSalesLaunch();
     }
 
     public double getSelectedLoan(){
@@ -141,6 +155,10 @@ public class EventHandler implements Parcelable {
         return result;
     }
 
+    public String findGrant(){
+        return grantController.findGrant(inputs);
+    }
+
     public double findMonthlyRepayment(){
         debtRepayDetails = debtController.calMonthlyRepayment(inputs);
         return debtRepayDetails.getMonthlyRepayment();
@@ -153,11 +171,21 @@ public class EventHandler implements Parcelable {
         return 0;
     }
 
-
+    public void setAvailFlatInputs(String selectedRoomType, String selectedLocation, String selectedPriceRange){
+        inputs.setSelectedRoomType(selectedRoomType);
+        inputs.setRegion(selectedLocation);
+        inputs.setPriceRange(selectedPriceRange);
+    }
 
     public void setAffordFlatInputs(double monthlyInstallment, int repaymentPeriod){
         inputs.setMonthlyIncome(monthlyInstallment);
         inputs.setSelectedYears(repaymentPeriod);
+    }
+
+    public void setGrantInfo(String selectedTypeOfApplicant, String selectedGrantMonthlyIncome, String selectedSalesLaunch){
+        inputs.setSelectedTypeOfApplicant(selectedTypeOfApplicant);
+        inputs.setSelectedGrantMonthlyIncome(selectedGrantMonthlyIncome);
+        inputs.setSelectedSalesLaunch(selectedSalesLaunch);
     }
 
     public void setDebtInputs(double selectedLoan, int selectedYears){
@@ -170,16 +198,14 @@ public class EventHandler implements Parcelable {
         dest.writeParcelable(inputs, flags);
         dest.writeParcelable(flatCollection, flags);
         dest.writeParcelable(debtRepayDetails, flags);
+        dest.writeParcelable(grantInfo, flags);
         dest.writeParcelable(viewHDBController, flags);
+        dest.writeParcelable(grantController, flags);
         dest.writeParcelable(affordableFlatController, flags);
         dest.writeParcelable(debtController, flags);
     }
 
-    public void setAvailFlatInputs(String selectedRoomType, String selectedLocation, String selectedPriceRange){
-        inputs.setSelectedRoomType(selectedRoomType);
-        inputs.setRegion(selectedLocation);
-        inputs.setPriceRange(selectedPriceRange);
-    }
+
 
     public static Parcelable.Creator<EventHandler> CREATOR = new Parcelable.Creator<EventHandler>(){
 

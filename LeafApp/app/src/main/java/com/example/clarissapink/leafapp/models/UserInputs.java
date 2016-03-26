@@ -16,6 +16,10 @@ public class UserInputs implements Parcelable{
     private String selectedRoomType = "";
     private String region = "";
     private String priceRange = "";
+    private String selectedTypeOfApplicant;
+    private String selectedGrantMonthlyIncome;
+    private String selectedSalesLaunch;
+
 
     public UserInputs(){}
 
@@ -46,6 +50,9 @@ public class UserInputs implements Parcelable{
         this.selectedRoomType = in.readString();
         this.region = in.readString();
         this.priceRange = in.readString();
+        this.selectedTypeOfApplicant = in.readString();
+        this.selectedGrantMonthlyIncome = in.readString();
+        this.selectedSalesLaunch = in.readString();
     }
 
     public double getMonthlyIncome() {
@@ -120,6 +127,30 @@ public class UserInputs implements Parcelable{
         this.priceRange = priceRange;
     }
 
+    public String getSelectedTypeOfApplicant() {
+        return selectedTypeOfApplicant;
+    }
+
+    public void setSelectedTypeOfApplicant(String selectedTypeOfApplicant) {
+        this.selectedTypeOfApplicant = selectedTypeOfApplicant;
+    }
+
+    public String getSelectedGrantMonthlyIncome() {
+        return selectedGrantMonthlyIncome;
+    }
+
+    public void setSelectedGrantMonthlyIncome(String selectedGrantMonthlyIncome) {
+        this.selectedGrantMonthlyIncome = selectedGrantMonthlyIncome;
+    }
+
+    public String getSelectedSalesLaunch() {
+        return selectedSalesLaunch;
+    }
+
+    public void setSelectedSalesLaunch(String selectedSalesLaunch) {
+        this.selectedSalesLaunch = selectedSalesLaunch;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -137,6 +168,9 @@ public class UserInputs implements Parcelable{
         dest.writeString(selectedRoomType);
         dest.writeString(region);
         dest.writeString(priceRange);
+        dest.writeString(selectedTypeOfApplicant);
+        dest.writeString(selectedGrantMonthlyIncome);
+        dest.writeString(selectedSalesLaunch);
     }
 
     //method to recreate a Userinput from a Parcel

@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
 /**
  * This class will manage the footer buttons and displays Debt Repayment result
@@ -15,6 +16,8 @@ import com.example.clarissapink.leafapp.R;
  *
  */
 public class ApplicableGrantResultView extends AppCompatActivity {
+
+    EventHandler eventHandler;
 
     /**
      * This method will save the state of the application in a bundle
@@ -27,20 +30,22 @@ public class ApplicableGrantResultView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        Bundle grantResult = getIntent().getExtras();
+        eventHandler = grantResult.getParcelable("eventHandler");
+
         /**
          * Displays the loan amount user entered in ApplicableGrantView screen
          */
         TextView typeOfApplicantView = (TextView) findViewById(R.id.displayApplicantType);
-        typeOfApplicantView.setText(getIntent().getExtras().getString("typeOfApplicant"));
-
-        TextView averageMonthlyHouseholdIncomeView = (TextView) findViewById(R.id.displayIncome);
-        averageMonthlyHouseholdIncomeView.setText(getIntent().getExtras().getString("averageMonthlyHouseholdIncome"));
-
+        TextView monthlyIncomeView = (TextView) findViewById(R.id.displayIncome);
         TextView salesLaunchView = (TextView) findViewById(R.id.displayPeriod);
-        salesLaunchView.setText(getIntent().getExtras().getString("salesLaunch"));
-
         TextView grantedAmtView = (TextView) findViewById(R.id.displayGrantResult);
-        grantedAmtView.setText(getIntent().getExtras().getString("grantedAmt"));
+
+        typeOfApplicantView.setText(eventHandler.getSelectedTypeOfApplicant());
+        monthlyIncomeView.setText(eventHandler.getSelectedMonthlyIncome());
+        salesLaunchView.setText(eventHandler.getSelectedSalesLaunch());
+        grantedAmtView.setText(eventHandler.findGrant());
 
     }
 
