@@ -32,7 +32,7 @@ public class GrantController implements Parcelable{
         }
 
         // First-Timer and Second-Timer Couple Applicants, Non-Citizen Spouse Scheme, Single Singapore Citizen Scheme
-        if ((selectedTypeOfApplicant.contentEquals("First-Timer and Second-Timer Couple Applicants")) || (selectedTypeOfApplicant.contentEquals("Non-Citizen Spouse Scheme")) || (selectedTypeOfApplicant.contentEquals("Single Singapore Citizen Scheme"))) {
+        if ((selectedTypeOfApplicant.contentEquals("First-Timer and Second-Timer Couple Applicants")) || (selectedTypeOfApplicant.contentEquals("Non-Citizen Spouse Applicants")) || (selectedTypeOfApplicant.contentEquals("Single Singapore Citizen Applicants"))) {
             if ((selectedGrantMonthlyIncome.contentEquals("$750 to $1,000")) || (selectedGrantMonthlyIncome.contentEquals("$1,001 to $1,500")))
                 if (selectedSalesLaunch.contentEquals("From November 2015 Sales Launch"))
                     return "S$32.5K - S$40K";
@@ -58,7 +58,7 @@ public class GrantController implements Parcelable{
         }
 
         // First-Timer Applicants, Joint Singles Scheme or Orphans Scheme
-        if ((selectedTypeOfApplicant.contentEquals("First-Timer Applicants")) || (selectedTypeOfApplicant.contentEquals("Joint Singles Scheme or Orphans Scheme"))) {
+        if ((selectedTypeOfApplicant.contentEquals("First-Timer Applicants")) || (selectedTypeOfApplicant.contentEquals("Joint Singles Applicants or Orphans Applicants"))) {
             if ((selectedGrantMonthlyIncome.contentEquals("$750 to $1,000")) || (selectedGrantMonthlyIncome.contentEquals("$1,001 to $1,500")))
                 if (selectedSalesLaunch.contentEquals("From November 2015 Sales Launch"))
                     return "S$80K";

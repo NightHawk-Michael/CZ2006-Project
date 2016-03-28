@@ -15,9 +15,9 @@
         <item>First-Timer Applicants</item>
         <item>Second-Timer Applicants</item>
         <item>First-Timer and Second-Timer Couple Applicants</item>
-        <item>Non-Citizen Spouse Scheme</item>
-        <item>Single Singapore Citizen Scheme</item>
-        <item>Joint Singles Scheme or Orphans Scheme</item>
+        <item>Non-Citizen Spouse Applicants</item>
+        <item>Single Singapore Citizen Applicants</item>
+        <item>Joint Singles Applicants or Orphans Applicants</item>
     </string-array>
     <string-array name="averageMonthlyHouseholdIncome">
         <item>$750 to $1,000</item>
