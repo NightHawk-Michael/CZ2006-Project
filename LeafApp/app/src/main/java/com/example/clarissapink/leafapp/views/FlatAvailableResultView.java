@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -95,6 +94,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
      */
     public void btn1(View view) {
         Intent intent = new Intent(this, FlatAvailableView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 
@@ -104,6 +104,8 @@ public class FlatAvailableResultView extends AppCompatActivity {
      */
     public void btn2(View view) {
         Intent intent = new Intent(this, AffordableFlatView.class);
+        intent.putExtra("eventHandler", eventHandler);
+
         startActivity(intent);
     }
 
@@ -113,6 +115,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
      */
     public void btn3(View view) {
         Intent intent = new Intent(this, ApplicableGrantView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 
@@ -122,6 +125,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
      */
     public void btn4(View view) {
         Intent intent = new Intent(this, DebtRepaymentView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 

@@ -54,6 +54,7 @@ public class DebtRepaymentResultView extends AppCompatActivity {
      */
     public void btn1(View view) {
         Intent intent = new Intent(this, FlatAvailableView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 
@@ -63,6 +64,7 @@ public class DebtRepaymentResultView extends AppCompatActivity {
      */
     public void btn2(View view) {
         Intent intent = new Intent(this, AffordableFlatView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 
@@ -72,6 +74,7 @@ public class DebtRepaymentResultView extends AppCompatActivity {
      */
     public void btn3(View view) {
         Intent intent = new Intent(this, ApplicableGrantView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 
@@ -81,6 +84,7 @@ public class DebtRepaymentResultView extends AppCompatActivity {
      */
     public void btn4(View view) {
         Intent intent = new Intent(this, DebtRepaymentView.class);
+        intent.putExtra("eventHandler", eventHandler);
         startActivity(intent);
     }
 
