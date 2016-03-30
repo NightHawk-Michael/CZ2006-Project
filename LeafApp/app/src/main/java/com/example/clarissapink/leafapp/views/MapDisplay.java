@@ -3,14 +3,20 @@ package com.example.clarissapink.leafapp.views;
 import android.Manifest;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.R;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -18,9 +24,17 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.vision.barcode.Barcode;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+
 /**
  * This class will manage the map displayed on the app
  * @author Emily
@@ -28,8 +42,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapDisplay extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
+        OnMapReadyCallback,
         LocationListener {
     private String flatLocation = null;
+    private double flatLong;
+    private double flatLat;
     /**
      * Creates a TAG to get where the Map is located at
      */
@@ -63,16 +80,28 @@ public class MapDisplay extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_display);
-        setUpMapIfNeeded();
+        flatLocation = getIntent().getExtras().getString("location");
+        TextView chosenLocation = (TextView) findViewById(R.id.textView14);
+        chosenLocation.setText(flatLocation);
+        try {
+            Address add = this.getCoordinates(flatLocation);
+            this.flatLat = add.getLatitude();
+            this.flatLong = add.getLongitude();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        setUpMapIfNeeded();
         /**
          * Create the GoogleApiClient object
          */
+        // ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
-                .build();
+                .addApi(AppIndex.API).build();
 
         /**
          * Create the LocationRequest object
@@ -82,9 +111,25 @@ public class MapDisplay extends FragmentActivity implements
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
                 .setFastestInterval(1 * 1000); // 1 second, in milliseconds
 
-        flatLocation = getIntent().getExtras().getString("location");
-        TextView chosenLocation = (TextView) findViewById(R.id.textView14);
-        chosenLocation.setText(flatLocation);
+    }
+
+    /**
+     * Generate Coordinates of the flat Location.
+     * @param flatLocation
+     * @return
+     * @throws IOException
+     */
+    public Address getCoordinates(String flatLocation) throws IOException {
+        Geocoder geocoder = new Geocoder(this);
+        String locationName = flatLocation.concat(", Singapore");
+        List<Address> addresslist = geocoder.getFromLocationName(locationName, 10);
+        Random rand = new Random();
+        int randNumber = rand.nextInt(addresslist.size());
+        Address flatAddress = addresslist.get(randNumber);
+        //String locality = flatAddress.getSubLocality();
+        Toast.makeText(this, locationName, Toast.LENGTH_LONG).show();
+
+        return flatAddress;
     }
 
     /**
@@ -115,12 +160,16 @@ public class MapDisplay extends FragmentActivity implements
      */
     private void setUpMapIfNeeded() {
         if (mMap == null) {
-            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
+            SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+                    mapFragment.getMapAsync(this);
             if (mMap != null) {
                 setUpMap();
             }
         }
+    }
+
+    public void onMapReady(GoogleMap googleMap){
+        mMap = googleMap;
     }
 
     /**
@@ -136,18 +185,17 @@ public class MapDisplay extends FragmentActivity implements
     private void handleNewLocation(Location location) {
         Log.d(TAG, location.toString());
 
-        double currentLatitude = location.getLatitude();
-        double currentLongitude = location.getLongitude();
+        double currentLatitude = this.flatLat; //location.getLatitude();
+        double currentLongitude = this.flatLong; //location.getLongitude();
 
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
-
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
-                .title("I am here!");
+                .title(flatLocation);
 
         mMap.addMarker(options);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
     }
 
     /**
@@ -199,4 +247,45 @@ public class MapDisplay extends FragmentActivity implements
     public void onLocationChanged(Location location) {
         handleNewLocation(location);
     }
+
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        mGoogleApiClient.connect();
+//        Action viewAction = Action.newAction(
+//                Action.TYPE_VIEW, // TODO: choose an action type.
+//                "MapDisplay Page", // TODO: Define a title for the content shown.
+//                // TODO: If you have web page content that matches this app activity's content,
+//                // make sure this auto-generated web page URL is correct.
+//                // Otherwise, set the URL to null.
+//                Uri.parse("http://host/path"),
+//                // TODO: Make sure this auto-generated app deep link URI is correct.
+//                Uri.parse("android-app://com.example.clarissapink.leafapp.views/http/host/path")
+//        );
+//        AppIndex.AppIndexApi.start(mGoogleApiClient, viewAction);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        Action viewAction = Action.newAction(
+//                Action.TYPE_VIEW, // TODO: choose an action type.
+//                "MapDisplay Page", // TODO: Define a title for the content shown.
+//                // TODO: If you have web page content that matches this app activity's content,
+//                // make sure this auto-generated web page URL is correct.
+//                // Otherwise, set the URL to null.
+//                Uri.parse("http://host/path"),
+//                // TODO: Make sure this auto-generated app deep link URI is correct.
+//                Uri.parse("android-app://com.example.clarissapink.leafapp.views/http/host/path")
+//        );
+//        AppIndex.AppIndexApi.end(mGoogleApiClient, viewAction);
+//        mGoogleApiClient.disconnect();
+//    }
 }

@@ -59,7 +59,7 @@ public class AffordableFlatResultView extends AppCompatActivity {
          */
         if(!strArr.contains(noFlatFound)){
             String tmp = strArr.get(0);
-            flatLocation = tmp.substring(0,tmp.indexOf(' '));
+            flatLocation = tmp.substring(0,tmp.indexOf(','));
             lv.setOnItemClickListener(onListClick);
         }
     }
