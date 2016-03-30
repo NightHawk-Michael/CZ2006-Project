@@ -133,17 +133,26 @@ public class AffordableFlatView extends AppCompatActivity {
         String buttonSearch;
         buttonSearch = ((Button) view).getText().toString();
         if (buttonSearch.equals("Search")) {
-            Intent intent = new Intent(this, AffordableFlatResultView.class);
+             if(monthlyInstallment.getText().toString().matches("[0-9]+")) {
+                monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
+                 if(monthlyIn <= 500 || monthlyIn >= 10000){
+                     Toast.makeText(AffordableFlatView.this, "Please Enter a loan between 500 to 10000", Toast.LENGTH_LONG).show();
+                 }else
+                 {
+                     repaymentP = Integer.parseInt(repaymentPeriod.getSelectedItem().toString());
 
-            //Passing monthlyIn & repaymentP
-            monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
-            repaymentP = Integer.parseInt(repaymentPeriod.getSelectedItem().toString());
+                     //update user input using eventhandler
+                     eventHandler.setAffordFlatInputs(monthlyIn, repaymentP);
 
-            //update user input using eventhandler
-            eventHandler.setAffordFlatInputs(monthlyIn, repaymentP);
+                     Intent intent = new Intent(this, AffordableFlatResultView.class);
+                     intent.putExtra("eventHandler", eventHandler);
+                     startActivity(intent);
+                 }
+            }else
+            {
+                Toast.makeText(AffordableFlatView.this, "Please Enter an valid loan amount", Toast.LENGTH_LONG).show();
+            }
 
-            intent.putExtra("eventHandler", eventHandler);
-            startActivity(intent);
         }
 
     }

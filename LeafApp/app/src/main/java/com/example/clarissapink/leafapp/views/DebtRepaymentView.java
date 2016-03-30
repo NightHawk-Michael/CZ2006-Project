@@ -31,7 +31,7 @@ public class DebtRepaymentView extends AppCompatActivity {
     public Spinner spinnerDRYearOfLoan;
     EditText textUserLoanAmount;
     double selectedLoan;
-    int selectedyYears;
+    int selectedYears;
     Button cal;
 
 
@@ -77,15 +77,25 @@ public class DebtRepaymentView extends AppCompatActivity {
         String buttonCal;
         buttonCal = ((Button) view).getText().toString();
         if (buttonCal.equals("  Calculate!  ")) {
-            selectedLoan = Double.parseDouble(textUserLoanAmount.getText().toString());
-            selectedyYears = Integer.parseInt(spinnerDRYearOfLoan.getSelectedItem().toString());
+            if (textUserLoanAmount.getText().toString().matches("[0-9]+")) {
+                selectedLoan = Double.parseDouble(textUserLoanAmount.getText().toString());
+                if(selectedLoan <= 1000 || selectedLoan >= 1000000) {
+                    Toast.makeText(DebtRepaymentView.this, "Please Enter a loan between 1000 to 1000000", Toast.LENGTH_LONG).show();
+                }else
+                {
+                    selectedYears = Integer.parseInt(spinnerDRYearOfLoan.getSelectedItem().toString());
+                    //update user input using eventhandler
+                    eventHandler.setDebtInputs(selectedLoan,selectedYears);
 
-            //update user input using eventhandler
-            eventHandler.setDebtInputs(selectedLoan,selectedyYears);
+                    Intent intent = new Intent(this, DebtRepaymentResultView.class);
+                    intent.putExtra("eventHandler", eventHandler);
+                    startActivity(intent);
+                }
+            }else
+            {
+                Toast.makeText(DebtRepaymentView.this, "Please Enter an valid loan amount", Toast.LENGTH_LONG).show();
+            }
 
-            Intent intent = new Intent(this, DebtRepaymentResultView.class);
-            intent.putExtra("eventHandler", eventHandler);
-            startActivity(intent);
         }
 
     }
