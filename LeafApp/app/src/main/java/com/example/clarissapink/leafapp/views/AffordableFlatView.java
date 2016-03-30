@@ -135,7 +135,7 @@ public class AffordableFlatView extends AppCompatActivity {
         if (buttonSearch.equals("Search")) {
              if(monthlyInstallment.getText().toString().matches("[0-9]+")) {
                 monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
-                 if(monthlyIn <= 500 || monthlyIn >= 10000){
+                 if(monthlyIn < 500 || monthlyIn > 10000){
                      Toast.makeText(AffordableFlatView.this, "Please Enter a loan between 500 to 10000", Toast.LENGTH_LONG).show();
                  }else
                  {

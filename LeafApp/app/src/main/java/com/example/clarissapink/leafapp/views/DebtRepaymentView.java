@@ -79,7 +79,7 @@ public class DebtRepaymentView extends AppCompatActivity {
         if (buttonCal.equals("  Calculate!  ")) {
             if (textUserLoanAmount.getText().toString().matches("[0-9]+")) {
                 selectedLoan = Double.parseDouble(textUserLoanAmount.getText().toString());
-                if(selectedLoan <= 1000 || selectedLoan >= 1000000) {
+                if(selectedLoan < 1000 || selectedLoan > 1000000) {
                     Toast.makeText(DebtRepaymentView.this, "Please Enter a loan between 1000 to 1000000", Toast.LENGTH_LONG).show();
                 }else
                 {

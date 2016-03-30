@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.example.clarissapink.leafapp.models.DebtRepaymentDetails;
 import com.example.clarissapink.leafapp.models.UserInputs;
 
+
 /**
  * GrantController is control class which handle all the application logic for grant function.
  * @author Michael
@@ -32,7 +33,6 @@ public class DebtController implements Parcelable {
 
         //Calculation
         double monthlyRepayment = (loan * interestRate)/(1-(1/Math.pow((1 + interestRate),12*years)));
-
         DebtRepaymentDetails debt = new DebtRepaymentDetails(monthlyRepayment);
         return debt;
     }
