@@ -1,6 +1,7 @@
 package com.example.clarissapink.leafapp.views;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -11,9 +12,11 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -44,7 +47,9 @@ public class MapDisplay extends FragmentActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         OnMapReadyCallback,
         LocationListener {
+    private EventHandler eventHandler;
     private String flatLocation = null;
+    private String town = null;
     private double flatLong;
     private double flatLat;
     /**
@@ -81,8 +86,11 @@ public class MapDisplay extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_display);
         flatLocation = getIntent().getExtras().getString("location");
+        town = getIntent().getExtras().getString("town");
+//        Bundle mapDisplay = getIntent().getExtras();
+//        eventHandler = mapDisplay.getParcelable("eventHandler");
         TextView chosenLocation = (TextView) findViewById(R.id.textView14);
-        chosenLocation.setText(flatLocation);
+        chosenLocation.setText(town);
         try {
             Address add = this.getCoordinates(flatLocation);
             this.flatLat = add.getLatitude();
@@ -119,16 +127,15 @@ public class MapDisplay extends FragmentActivity implements
      * @return
      * @throws IOException
      */
-    public Address getCoordinates(String flatLocation) throws IOException {
+    private Address getCoordinates(String flatLocation) throws IOException {
         Geocoder geocoder = new Geocoder(this);
         String locationName = flatLocation.concat(", Singapore");
-        List<Address> addresslist = geocoder.getFromLocationName(locationName, 10);
-        Random rand = new Random();
-        int randNumber = rand.nextInt(addresslist.size());
-        Address flatAddress = addresslist.get(randNumber);
+        List<Address> addresslist = geocoder.getFromLocationName(locationName,1);
+//        Random rand = new Random();
+//        int randNumber = rand.nextInt(addresslist.size());
+        Address flatAddress = addresslist.get(0);
         //String locality = flatAddress.getSubLocality();
-        Toast.makeText(this, locationName, Toast.LENGTH_LONG).show();
-
+        Toast.makeText(this, flatLocation, Toast.LENGTH_LONG).show();
         return flatAddress;
     }
 
@@ -191,7 +198,7 @@ public class MapDisplay extends FragmentActivity implements
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
-                .title(flatLocation);
+                .title(this.flatLocation);
 
         mMap.addMarker(options);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -248,44 +255,45 @@ public class MapDisplay extends FragmentActivity implements
         handleNewLocation(location);
     }
 
+    /**
+     * This method navigates to FlatAvailableResults
+     * @param view stores what the user interact with the button
+     */
+    public void btn1(View view) {
+        Intent intent = new Intent(this, FlatAvailableView.class);
+        intent.putExtra("eventHandler", eventHandler);
+        startActivity(intent);
+    }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//
-//        // ATTENTION: This was auto-generated to implement the App Indexing API.
-//        // See https://g.co/AppIndexing/AndroidStudio for more information.
-//        mGoogleApiClient.connect();
-//        Action viewAction = Action.newAction(
-//                Action.TYPE_VIEW, // TODO: choose an action type.
-//                "MapDisplay Page", // TODO: Define a title for the content shown.
-//                // TODO: If you have web page content that matches this app activity's content,
-//                // make sure this auto-generated web page URL is correct.
-//                // Otherwise, set the URL to null.
-//                Uri.parse("http://host/path"),
-//                // TODO: Make sure this auto-generated app deep link URI is correct.
-//                Uri.parse("android-app://com.example.clarissapink.leafapp.views/http/host/path")
-//        );
-//        AppIndex.AppIndexApi.start(mGoogleApiClient, viewAction);
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//
-//        // ATTENTION: This was auto-generated to implement the App Indexing API.
-//        // See https://g.co/AppIndexing/AndroidStudio for more information.
-//        Action viewAction = Action.newAction(
-//                Action.TYPE_VIEW, // TODO: choose an action type.
-//                "MapDisplay Page", // TODO: Define a title for the content shown.
-//                // TODO: If you have web page content that matches this app activity's content,
-//                // make sure this auto-generated web page URL is correct.
-//                // Otherwise, set the URL to null.
-//                Uri.parse("http://host/path"),
-//                // TODO: Make sure this auto-generated app deep link URI is correct.
-//                Uri.parse("android-app://com.example.clarissapink.leafapp.views/http/host/path")
-//        );
-//        AppIndex.AppIndexApi.end(mGoogleApiClient, viewAction);
-//        mGoogleApiClient.disconnect();
-//    }
+    /**
+     * This method navigates to AffordableFlatView
+     * @param view stores what the user interact with the button
+     */
+    public void btn2(View view) {
+        Intent intent = new Intent(this, AffordableFlatView.class);
+        intent.putExtra("eventHandler", eventHandler);
+
+        startActivity(intent);
+    }
+
+    /**
+     * This method navigates to ApplicableGrantView
+     * @param view stores what the user interact with the button
+     */
+    public void btn3(View view) {
+        Intent intent = new Intent(this, ApplicableGrantView.class);
+        intent.putExtra("eventHandler", eventHandler);
+        startActivity(intent);
+    }
+
+    /**
+     * This method navigates to DebtRepaymentView
+     * @param view stores what the user interact with the button
+     */
+    public void btn4(View view) {
+        Intent intent = new Intent(this, DebtRepaymentView.class);
+        intent.putExtra("eventHandler", eventHandler);
+        startActivity(intent);
+    }
+
 }

@@ -52,7 +52,7 @@ public class AffordableFlatView extends AppCompatActivity {
         repaymentPeriod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getBaseContext(), parent.getItemIdAtPosition(position) + " selected", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -135,8 +135,8 @@ public class AffordableFlatView extends AppCompatActivity {
         if (buttonSearch.equals("Search")) {
              if(monthlyInstallment.getText().toString().matches("[0-9]+")) {
                 monthlyIn = Double.parseDouble(monthlyInstallment.getText().toString());
-                 if(monthlyIn < 500 || monthlyIn > 10000){
-                     Toast.makeText(AffordableFlatView.this, "Please Enter a loan between 500 to 10000", Toast.LENGTH_LONG).show();
+                 if(monthlyIn < 500 || monthlyIn > 20000){
+                     Toast.makeText(AffordableFlatView.this, "Please Enter a monthly instalment between 500 to 20000", Toast.LENGTH_LONG).show();
                  }else
                  {
                      repaymentP = Integer.parseInt(repaymentPeriod.getSelectedItem().toString());

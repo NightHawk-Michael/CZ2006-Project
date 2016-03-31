@@ -185,16 +185,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                HDBFlat hdb = new HDBFlat();
-                hdb.setId(Integer.parseInt(cursor.getString(0)));
-                hdb.setYear(Integer.parseInt(cursor.getString(1)));
-                hdb.setTown(cursor.getString(2));
-                hdb.setRoomType(cursor.getString(3));
-                hdb.setMinPrice(cursor.getString(4));
-                hdb.setMaxPrice(cursor.getString(5));
-                hdb.setMinPriceLess(cursor.getString(6));
-                hdb.setMaxPriceLess(cursor.getString(7));
-
+                int id = (Integer.parseInt(cursor.getString(0)));
+                int year = (Integer.parseInt(cursor.getString(1)));
+                String town = (cursor.getString(2));
+                String roomType = (cursor.getString(3));
+                String minPrice = (cursor.getString(4));
+                String maxPrice = (cursor.getString(5));
+                String minPriceLess = (cursor.getString(6));
+                String maxPriceLess = (cursor.getString(7));
+                HDBFlat hdb = new HDBFlat(id,year,town,roomType,minPrice,maxPrice,minPriceLess,maxPriceLess);
                 // Adding hdb to list
                 hdbList.add(hdb);
             } while (cursor.moveToNext());

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.EventHandler.EventHandler;
 import com.example.clarissapink.leafapp.R;
@@ -29,6 +30,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
     private ArrayList<String> strArr;
     private ArrayAdapter<String> adapter;
     public String flatLocation;
+    public String town;
     /**
      * This method will save the state of the application in a bundle
      * @param savedInstanceState save state created previously
@@ -51,6 +53,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
         locationText.setText(eventHandler.getSelectedLocation());
         priceRangeText.setText(eventHandler.getSelectedPriceRange());
 
+
         strArr= new ArrayList<String>();
         lv = (ListView)findViewById(R.id.listView);
 
@@ -67,9 +70,7 @@ public class FlatAvailableResultView extends AppCompatActivity {
         /**
          * onclick listener for data in listview
          */
-        if(!strArr.contains(noFlatFound)){
-            String tmp = strArr.get(0);
-            flatLocation = tmp.substring(0,tmp.indexOf(','));
+        if(!strArr.contains("No flat found!")){
             lv.setOnItemClickListener(onListClick);
         }
 
@@ -82,8 +83,14 @@ public class FlatAvailableResultView extends AppCompatActivity {
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
             //create intent
+            int pos = position;
+            String tmp = strArr.get(pos);
+            town = tmp.substring(0,tmp.indexOf(','));
+            flatLocation = tmp.substring((tmp.indexOf(',')+1),tmp.indexOf('\n'));
             Intent i = new Intent(FlatAvailableResultView.this, MapDisplay.class);
             i.putExtra("location", flatLocation);
+            i.putExtra("town", town);
+            i.putExtra("eventHandler",eventHandler);
             startActivity(i);
         }
     };

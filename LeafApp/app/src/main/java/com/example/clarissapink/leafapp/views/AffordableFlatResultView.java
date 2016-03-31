@@ -25,6 +25,7 @@ public class AffordableFlatResultView extends AppCompatActivity {
     private ArrayList<String> strArr;
     private ArrayAdapter<String> adapter;
     public String flatLocation;
+    public String town;
 
     /**
      * This method will save the state of the application in a bundle
@@ -58,8 +59,6 @@ public class AffordableFlatResultView extends AppCompatActivity {
          * onclick listener for data in listview
          */
         if(!strArr.contains(noFlatFound)){
-            String tmp = strArr.get(0);
-            flatLocation = tmp.substring(0,tmp.indexOf(','));
             lv.setOnItemClickListener(onListClick);
         }
     }
@@ -70,8 +69,14 @@ public class AffordableFlatResultView extends AppCompatActivity {
     private AdapterView.OnItemClickListener onListClick = new AdapterView.OnItemClickListener(){
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
             //create intent
+            int pos = position;
+            String tmp = strArr.get(pos);
+            town = tmp.substring(0,tmp.indexOf(','));
+            flatLocation = tmp.substring((tmp.indexOf(',')+1),tmp.indexOf('\n'));
             Intent i = new Intent(AffordableFlatResultView.this, MapDisplay.class);
             i.putExtra("location", flatLocation);
+            i.putExtra("town", town);
+            i.putExtra("eventHandler",eventHandler);
             startActivity(i);
         }
     };

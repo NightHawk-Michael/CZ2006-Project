@@ -72,10 +72,7 @@ public class ViewHDBController implements Parcelable {
 
             }
         }
-        if (searchResults != null){
-            return searchResults;
-        }
-        else return null;
+        return searchResults;
     }
 
     @Override

@@ -58,7 +58,7 @@ public class DebtRepaymentView extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 TextView myText = (TextView) view;
-                Toast.makeText(getBaseContext(), myText.getText() + " selected", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getBaseContext(), myText.getText() + " selected", Toast.LENGTH_LONG).show();
             }
 
             @Override

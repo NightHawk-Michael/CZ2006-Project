@@ -7,6 +7,8 @@
         <item>10</item>
         <item>15</item>
         <item>20</item>
+        <item>25</item>
+        <item>30</item>
     </string-array>
     <string name="title_activity_view__debt__repayment">View_Debt_Repayment</string>
     <string name="title_activity_applicable_grant_result">ApplicableGrantResult</string>
@@ -51,10 +53,12 @@
         <item>10</item>
         <item>15</item>
         <item>20</item>
+        <item>25</item>
+        <item>30</item>
     </string-array>
     <string-array name="locSpinnerItems">
         <item>Bukit Panjang</item>
-        <item>Chua Chu Kang</item>
+        <item>Choa Chu Kang</item>
         <item>Jurong West</item>
         <item>Punggol</item>
         <item>Sembawang</item>

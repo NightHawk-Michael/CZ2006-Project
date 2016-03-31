@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.clarissapink.leafapp.ApiManager;
 import com.example.clarissapink.leafapp.DatabaseHandler;
@@ -56,21 +57,24 @@ public class MainPageView extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
 
-        databaseHandler = new DatabaseHandler(this);
-        boolean exists = databaseHandler.checkDataBase();
 //        //check connection
         boolean connected = checkConnection();
 
         inputs = new UserInputs();
 
-
-        if(exists) {
-            db = databaseHandler.openDatabase();
-            db = databaseHandler.getReadableDatabase();
-        } else if (connected == true) {
+        databaseHandler = new DatabaseHandler(this);
+        if (connected == true) {
             ApiManager apiMgr = new ApiManager(databaseHandler);
             apiMgr.getApiData();
         }
+        boolean exists = databaseHandler.checkDataBase();
+        if(exists) {
+            db = databaseHandler.openDatabase();
+            db = databaseHandler.getReadableDatabase();
+        } else{
+            Toast.makeText(this, "Please Connect To Internet", Toast.LENGTH_LONG).show();
+        }
+
 
 
         hdbCollection = new HDBCollection(databaseHandler.getAllHDB());

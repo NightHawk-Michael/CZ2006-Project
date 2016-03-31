@@ -142,7 +142,7 @@ public class EventHandler implements Parcelable {
         ArrayList<String> result = new ArrayList<>();
         List<HDBFlat> resultList = viewHDBController.findFlats(inputs);
         for(HDBFlat hdb : resultList){
-            result.add(hdb.getTown() + ", " + hdb.getRoomType() + "\n" + hdb.getMinPrice() + " - " + hdb.getMaxPrice());
+            result.add(hdb.getTown() + ", " + hdb.getAddress() + "\n" + hdb.getRoomType() + hdb.getMinPrice() + " - " + hdb.getMaxPrice());
         }
         return result;
     }
@@ -150,7 +150,7 @@ public class EventHandler implements Parcelable {
         ArrayList<String> result = new ArrayList<>();
         List<HDBFlat> resultList = affordableFlatController.findAffordableFlats(inputs);
         for(HDBFlat hdb : resultList){
-            result.add(hdb.getTown() + ", " + hdb.getRoomType() + "\n" + hdb.getMinPrice() + " - " + hdb.getMaxPrice());
+            result.add(hdb.getTown() + ", " + hdb.getAddress() + "\n" + hdb.getRoomType() + hdb.getMinPrice() + " - " + hdb.getMaxPrice());
         }
         return result;
     }
