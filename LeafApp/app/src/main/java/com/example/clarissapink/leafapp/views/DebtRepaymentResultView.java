@@ -28,8 +28,8 @@ public class DebtRepaymentResultView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view__debt__repayment);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         Bundle debtResult = getIntent().getExtras();
         eventHandler = debtResult.getParcelable("eventHandler");
@@ -40,12 +40,12 @@ public class DebtRepaymentResultView extends AppCompatActivity {
         TextView loanRepaymentPerMView = (TextView) findViewById(R.id.displayLoanRepaymentPerM);
 
         monthlyRepayment = eventHandler.findMonthlyRepayment();
-
+        String debtRepaymentResult = String.format("%.2f",monthlyRepayment);
 
 
         yearOfLoanView.setText(Double.toString(eventHandler.getSelectedYears()));
         loanAmountView.setText(String.valueOf(eventHandler.getSelectedLoan()));
-        loanRepaymentPerMView.setText(Double.toString(eventHandler.findMonthlyRepayment()));
+        loanRepaymentPerMView.setText(debtRepaymentResult);
     }
 
     /**

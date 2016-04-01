@@ -38,8 +38,8 @@ public class FlatAvailableResultView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flat_available_result);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         Bundle flatAvailResult = getIntent().getExtras();
         eventHandler = flatAvailResult.getParcelable("eventHandler");
