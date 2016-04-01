@@ -87,8 +87,8 @@ public class MapDisplay extends FragmentActivity implements
         setContentView(R.layout.activity_map_display);
         flatLocation = getIntent().getExtras().getString("location");
         town = getIntent().getExtras().getString("town");
-//        Bundle mapDisplay = getIntent().getExtras();
-//        eventHandler = mapDisplay.getParcelable("eventHandler");
+        Bundle mapDisplay = getIntent().getExtras();
+        eventHandler = mapDisplay.getParcelable("eventHandler");
         TextView chosenLocation = (TextView) findViewById(R.id.textView14);
         chosenLocation.setText(town);
         try {
